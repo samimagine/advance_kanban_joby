@@ -165,6 +165,7 @@ const Droppable: React.FC<DroppableColumnProps> = ({ id, title, cards = [], onDr
             >
               <Card sx={{
                 backgroundColor: card.isDeleted ? '#f8d7da' : '#f3f4f5',
+                paddingBottom: '8px',
               }}>
                 <CardContent sx={{
                   paddingBottom: '0 !important',
