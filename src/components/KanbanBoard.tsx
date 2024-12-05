@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, TextField } from '@mui/material';
 import Droppable from './Droppable';
-import { useKanbanStore } from '../store/kanbanStore';
+import { DetailedCardProps, useKanbanStore } from '../store/kanbanStore';
 
 const KanbanBoard: React.FC = () => {
   const { columns, loadCards } = useKanbanStore();
@@ -39,7 +39,7 @@ const KanbanBoard: React.FC = () => {
     useKanbanStore.getState().moveCard(fromColumnId, toColumnId, sourceIndex, destinationIndex);
   };
 
-  const filterCards = (cards: any[]) => {
+  const filterCards = (cards: DetailedCardProps[]) => {
     return cards.filter((card) =>
       Object.values(card)
         .join(' ')

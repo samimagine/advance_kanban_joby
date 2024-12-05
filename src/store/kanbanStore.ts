@@ -101,24 +101,24 @@ loadCards: async () => {
       return;
     }
 
-    const cards: DetailedCardProps[] = mockCards.map((card: any) => ({
+    const cards: DetailedCardProps[] = mockCards.map((card: DetailedCardProps) => ({
       id: card.id,
       title: card.title,
       priority: card.priority,
       estimatedShippingDate: card.estimatedShippingDate,
-      orderDescription: card.orderDetails.part,
+      orderDescription: card.orderDetails?.part,
       orderDetails: {
-        part: card.orderDetails.part || '',
-        partNumber: card.orderDetails.partNumber || '',
-        releaseStatus: card.orderDetails.releaseStatus || '',
-        drawingNumber: card.orderDetails.drawingNumber || '',
-        flightArticle: card.orderDetails.flightArticle || '',
+        part: card.orderDetails?.part || '',
+        partNumber: card.orderDetails?.partNumber || '',
+        releaseStatus: card.orderDetails?.releaseStatus || '',
+        drawingNumber: card.orderDetails?.drawingNumber || '',
+        flightArticle: card.orderDetails?.flightArticle || '',
       },
       processDetails: {
-        material: card.processDetails.material || '',
-        materialStockSize: card.processDetails.materialStockSize || '',
-        surfaceTreatment: card.processDetails.surfaceTreatment || '',
-        machine: card.processDetails.machine || '',
+        material: card.processDetails?.material || '',
+        materialStockSize: card.processDetails?.materialStockSize || '',
+        surfaceTreatment: card.processDetails?.surfaceTreatment || '',
+        machine: card.processDetails?.machine || '',
       },
       isDeleted: false,
       files: card.files || [],
