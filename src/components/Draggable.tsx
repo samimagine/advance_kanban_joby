@@ -13,10 +13,13 @@ import {
   Divider,
   Popover,
   Modal,
+  Chip,
+  TextField,
 } from '@mui/material';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import EditIcon from '@mui/icons-material/Edit';
 import DescriptionIcon from '@mui/icons-material/Description';
+import AddIcon from '@mui/icons-material/Add';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { DetailedCardProps, useKanbanStore } from '../store/kanbanStore';
 import ColorChip from './common/StatusColorChip/StatusColorChip';
@@ -48,7 +51,8 @@ const Draggable: React.FC<DraggableCardProps> = ({
       isDragging: monitor.isDragging(),
     }),
   }));
-
+  const [tagInput, setTagInput] = useState('');
+  const [addingTag, setAddingTag] = useState(false);
   const [openDetailsModal, setOpenDetailsModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [details, setDetails] = useState<DetailedCardProps | null>(null);
@@ -58,7 +62,7 @@ const Draggable: React.FC<DraggableCardProps> = ({
 
   const isMenuOpen = Boolean(anchorEl);
 
-  const { addLastViewed, editCard, deleteCard, columns } = useKanbanStore();
+  const { addLastViewed, addTagToCard, removeTagFromCard, editCard, deleteCard, columns } = useKanbanStore();
 
   const currentCard = columns
     .flatMap((col) => col.cards)
@@ -122,6 +126,21 @@ const Draggable: React.FC<DraggableCardProps> = ({
     editCard(id, { priority: newPriority });
   };
 
+  const handleAddTag = () => {
+    if (tagInput.trim()) {
+      addTagToCard(id, columnId, tagInput.trim());
+      setTagInput('');
+      setAddingTag(false);
+      addLastViewed({
+        id,
+        title,
+        orderDescription,
+        priority,
+        estimatedShippingDate,
+        tags: [...(currentCard?.tags || []), tagInput.trim()],
+      });
+    }
+  };
   return (
     <>
       <div
@@ -192,6 +211,49 @@ const Draggable: React.FC<DraggableCardProps> = ({
             <Typography variant="body2">
               Due Date: {currentCard?.estimatedShippingDate || estimatedShippingDate}
             </Typography>
+            <Box sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+              {currentCard?.tags?.map((tag, index) => (
+                <Chip
+                  size="small"
+                  key={index}
+                  label={tag}
+                  onDelete={() => {
+                    removeTagFromCard(id, columnId, tag);
+                    addLastViewed({
+                      id,
+                      title,
+                      orderDescription,
+                      priority,
+                      estimatedShippingDate,
+                      tags: currentCard.tags?.filter((t) => t !== tag),
+                    });
+                  }}
+                />
+              ))}
+              {addingTag ? (
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <TextField
+                    size="small"
+                    value={tagInput}
+                    onChange={(e) => setTagInput(e.target.value)}
+                    placeholder="Add a tag"
+                  />
+                  <Button variant="contained" size="small" onClick={handleAddTag}>
+                    Add
+                  </Button>
+                </Box>
+              ) : (
+                <Chip
+                  size="small"
+                  label="Tag"
+                  onClick={() => setAddingTag(true)}
+                  icon={<AddIcon />}
+                  clickable
+                  color="primary"
+                  variant="outlined"
+                />
+              )}
+            </Box>
           </CardContent>
         </Card>
       </div>

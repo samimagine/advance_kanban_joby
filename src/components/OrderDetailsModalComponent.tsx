@@ -150,7 +150,7 @@ const OrderDetailsModalComponent: React.FC<OrderDetailsModalProps> = ({
           </Box>
         </Box>
         <Box mt={2} sx={{
-          overflow: 'hidden', marginLeft: '32px',
+          overflow: 'hidden', marginLeft: '32px', flex: '1'
         }}>
           <Typography variant="h6" sx={{ margin: '0 16px' }}>Files:</Typography>
           <Box display='flex' flexDirection='row' sx={{
@@ -180,7 +180,8 @@ const OrderDetailsModalComponent: React.FC<OrderDetailsModalProps> = ({
                       fontWeight: 'bold',
                       fontSize: '12px',
                       borderRadius: '16px',
-                      padding: '0 10px',
+                      padding: '4px 10px',
+                      minHeight: '30px',
                       color: 'text.primary',
                       backgroundColor: 'white',
                       transition: 'all 0.3s ease',

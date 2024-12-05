@@ -18,8 +18,8 @@ const FilesComponent: React.FC<FilesComponentProps> = ({ files }) => {
     }}>
       {files.length ? (
         files.map((file: FileProps) => (
-          <>
-            <Box key={file.id} display="flex" flexDirection="row" gap={4} mt={2} sx={{ margin: '8px 8px 30px 8px' }}>
+          <React.Fragment key={file.id}>
+            <Box display="flex" flexDirection="row" gap={4} mt={2} sx={{ margin: '8px 8px 30px 8px' }}>
               <Box
                 component="img"
                 sx={{
@@ -48,7 +48,7 @@ const FilesComponent: React.FC<FilesComponentProps> = ({ files }) => {
               </Box>
             </Box>
             <Divider sx={{ marginY: 2, color: 'red' }} />
-          </>
+          </React.Fragment>
         ))
       ) : (
         <Typography variant="body2" color="text.secondary">

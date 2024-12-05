@@ -13,6 +13,7 @@ import {
   CardContent,
   Card,
   Divider,
+  Chip,
 } from '@mui/material';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import AddIcon from '@mui/icons-material/Add';
@@ -153,49 +154,60 @@ const Droppable: React.FC<DroppableColumnProps> = ({ id, title, cards = [], onDr
             title={card.isDeleted ? 'This card was removed from the board' : ''}
             arrow
           >
-            <Card sx={{
-              backgroundColor: '#f3f4f5',
-            }}>
-              <CardContent sx={{
-                paddingBottom: '0 !important',
+            <div
+              style={{
+                marginBottom: '8px',
+                padding: '16px',
+                background: '#fff',
+                border: '1px solid #ddd',
+                borderRadius: '4px',
+              }}
+            >
+              <Card sx={{
+                backgroundColor: card.isDeleted ? '#f8d7da' : '#f3f4f5',
               }}>
-                <div
-                  onClick={() => {
-                    if (!card.isDeleted) {
-                      const modalCard = document.getElementById(`modal-card-${card.id}`);
-                      if (modalCard) modalCard.click();
-                    }
-                  }}
-                  style={{
-                    marginBottom: '8px',
-                    padding: '16px',
-                    background: card.isDeleted ? '#f8d7da' : '#fff',
-                    border: '1px solid #ddd',
-                    borderRadius: '4px',
-                    cursor: card.isDeleted ? 'not-allowed' : 'pointer',
-                    textDecoration: card.isDeleted ? 'line-through' : 'none',
-                  }}
-                >
-                  <Typography variant="h6">{card.title}</Typography>
-                  <Typography variant="body2">{card.orderDescription}</Typography>
-                  <Divider sx={{ my: '10px' }} />
-                  {!card.isDeleted && (<Box
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 2,
+                <CardContent sx={{
+                  paddingBottom: '0 !important',
+                }}>
+                  <div
+                    onClick={() => {
+                      if (!card.isDeleted) {
+                        const modalCard = document.getElementById(`modal-card-${card.id}`);
+                        if (modalCard) modalCard.click();
+                      }
+                    }}
+                    style={{
+                      cursor: card.isDeleted ? 'not-allowed' : 'default',
+                      textDecoration: card.isDeleted ? 'line-through' : 'none',
                     }}
                   >
-                    <Typography variant="body2">Priority:</Typography>
-                    <ColorChip
-                      label={card.priority}
-                    />
-                  </Box>)}
-                  <Typography variant="body2">Due Date: {card.estimatedShippingDate}</Typography>
-                </div>
-              </CardContent>
-            </Card>
+                    <Typography variant="h6">{card.title}</Typography>
+                    <Typography variant="body2">{card.orderDescription}</Typography>
+                    <Divider sx={{ my: '10px' }} />
+                    {!card.isDeleted && (<Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: 2,
+                      }}
+                    >
+                      <Typography variant="body2">Priority:</Typography>
+                      <ColorChip
+                        label={card.priority}
+                      />
+                    </Box>)}
+                    <Typography variant="body2">Due Date: {card.estimatedShippingDate}</Typography>
+                    <Box sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                      {card.tags?.map((tag, index) => (
+                        <Chip key={index} label={tag} />
+                      ))}
+                    </Box>
+                  </div>
+
+                </CardContent>
+              </Card>
+            </div>
           </Tooltip>
         ) : (
           <Draggable

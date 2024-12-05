@@ -25,15 +25,15 @@ const App = () => {
   const renderContent = () => {
     switch (selectedView) {
       case "Home":
-        return <Typography variant="h4">Welcome Home</Typography>;
+        return <Typography variant="h3" color="#c2d8ff" align="center">Welcome Home</Typography>;
       case "User":
-        return <Typography variant="h4">User Profile</Typography>;
+        return <Typography variant="h3" color="#c2d8ff" align="center">User Profile</Typography>;
       case "Settings":
-        return <Typography variant="h4">Settings</Typography>;
+        return <Typography variant="h3" color="#c2d8ff" align="center">Settings</Typography>;
       case "Order Overview":
         return (
           <DndProvider backend={HTML5Backend}>
-            <Typography variant="h5" color="#c2d8ff" align="center">Order Overview</Typography>
+            <Typography variant="h3" color="#c2d8ff" align="center">Order Overview</Typography>
             <KanbanBoard />
           </DndProvider>
         );
