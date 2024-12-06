@@ -28,7 +28,7 @@ const FilesSectionComponent: React.FC<FilesSectionProps> = ({ selectedTab, onTab
                 justifyContent: 'flex-start',
                 marginLeft: '80px'
             }}>
-            <InsertDriveFileOutlinedIcon fontSize="large" sx={{ color: '#626879' }} />
+            <InsertDriveFileOutlinedIcon fontSize="large" sx={{ color: '#626879', marginRight: '16px' }} />
             <Typography variant="h6">Files:</Typography>
         </Box>
 
