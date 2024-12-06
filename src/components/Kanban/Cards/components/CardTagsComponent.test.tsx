@@ -35,7 +35,7 @@ describe('CardTagsComponent', () => {
     it('does not add a tag if input is empty', () => {
         render(<CardTagsComponent tags={[]} onAddTag={mockOnAddTag} onRemoveTag={mockOnRemoveTag} />);
 
-        fireEvent.click(screen.getByText('Tag')); 
+        fireEvent.click(screen.getByText('Tag'));
         fireEvent.click(screen.getByTestId('add-tag-button'));
 
         expect(mockOnAddTag).not.toHaveBeenCalled();
@@ -44,7 +44,7 @@ describe('CardTagsComponent', () => {
     it('toggles the tag input when add chip is clicked', () => {
         render(<CardTagsComponent tags={[]} onAddTag={mockOnAddTag} onRemoveTag={mockOnRemoveTag} />);
 
-        fireEvent.click(screen.getByText('Tag')); 
+        fireEvent.click(screen.getByText('Tag'));
         expect(screen.getByPlaceholderText('Add a tag')).toBeInTheDocument();
 
         fireEvent.change(screen.getByPlaceholderText('Add a tag'), { target: { value: 'Test' } });

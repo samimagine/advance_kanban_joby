@@ -6,12 +6,12 @@ import OrderInformationSectionComponent from './OrderInformationComponent';
 
 jest.mock('./OrderDetailsComponent', () => ({
     __esModule: true,
-    default: () => <div data-testid="order-details-component">OrderDetailsComponent</div>,
+    default: () => <div data-testid="order-details-component">OrderDetailsComponent</div>
 }));
 
 jest.mock('./ProcessDetailsComponent', () => ({
     __esModule: true,
-    default: () => <div data-testid="process-details-component">ProcessDetailsComponent</div>,
+    default: () => <div data-testid="process-details-component">ProcessDetailsComponent</div>
 }));
 
 describe('OrderInformationSectionComponent', () => {
@@ -25,14 +25,14 @@ describe('OrderInformationSectionComponent', () => {
             partNumber: 'P12345',
             releaseStatus: 'Released',
             drawingNumber: 'DR123',
-            flightArticle: 'FA456',
+            flightArticle: 'FA456'
         },
         processDetails: {
             material: 'Steel',
             materialStockSize: '20x20x100 mm',
             surfaceTreatment: 'Anodizing',
-            machine: 'CNC Milling Machine',
-        },
+            machine: 'CNC Milling Machine'
+        }
     };
 
     it('renders OrderDetailsComponent and ProcessDetailsComponent', () => {
@@ -86,8 +86,8 @@ describe('OrderInformationSectionComponent', () => {
                 material: '',
                 materialStockSize: '',
                 surfaceTreatment: '',
-                machine: '',
-            },
+                machine: ''
+            }
         };
 
         render(

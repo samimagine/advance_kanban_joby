@@ -23,7 +23,7 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ label, icon, selected
     return (
         <Tooltip title={label} placement="right" aria-label={label}>
             <ListItem
-            role="button"
+                role="button"
                 onClick={onClick}
                 sx={{
                     display: 'flex',

@@ -6,8 +6,8 @@ import CardAddModalComponent from './CardAddModalComponent';
 
 jest.mock('../../../../store/kanbanStore', () => ({
     useKanbanStore: jest.fn(() => ({
-        addCard: jest.fn(),
-    })),
+        addCard: jest.fn()
+    }))
 }));
 
 describe('CardAddModalComponent', () => {
@@ -17,13 +17,13 @@ describe('CardAddModalComponent', () => {
     beforeEach(() => {
         jest.clearAllMocks();
         (useKanbanStore as jest.Mock).mockReturnValue({
-            addCard: mockAddCard,
+            addCard: mockAddCard
         });
     });
 
     it('renders the modal with the correct initial state', () => {
         render(<CardAddModalComponent open={true} onClose={mockOnClose} columnId="test-column" />);
-        
+
         expect(screen.getByText(/Add New Card/i)).toBeInTheDocument();
         expect(screen.getByLabelText(/Title/i)).toBeInTheDocument();
         expect(screen.getByLabelText(/Estimated Shipping Date/i)).toBeInTheDocument();

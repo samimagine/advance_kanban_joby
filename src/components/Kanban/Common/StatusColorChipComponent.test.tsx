@@ -13,7 +13,7 @@ describe('StatusColorChipComponent', () => {
     test('applies correct styles for High Priority', () => {
         render(<StatusColorChipComponent label="High Priority" isLastViewed={false} />);
         const chip = screen.getByTestId('status-chip');
-    
+
         expect(chip).toHaveStyle('background-color: #f6eddb');
         expect(chip).toHaveStyle('color: #ca8b00');
     });

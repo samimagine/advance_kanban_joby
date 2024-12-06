@@ -38,10 +38,10 @@ describe('CardHeader', () => {
 
     it('calls onMenuClick when the menu button is clicked', () => {
         render(<CardHeader {...props} />);
-    
+
         const menuButton = screen.getByRole('button', { name: /more options/i });
         fireEvent.click(menuButton);
-    
+
         expect(mockOnMenuClick).toHaveBeenCalledTimes(1);
     });
 });

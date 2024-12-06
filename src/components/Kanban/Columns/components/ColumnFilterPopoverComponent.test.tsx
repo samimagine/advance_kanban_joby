@@ -25,7 +25,7 @@ describe('ColumnFilterPopoverComponent', () => {
         renderComponent();
 
         fireEvent.mouseDown(screen.getByText(/High Priority/i));
-        
+
         fireEvent.click(screen.getByText('Standard'));
 
         expect(mockOnPriorityChange).toHaveBeenCalledWith('Standard');
@@ -35,10 +35,9 @@ describe('ColumnFilterPopoverComponent', () => {
         renderComponent();
 
         fireEvent.mouseDown(screen.getByText(/Sort by Date \(Newest to Oldest\)/i));
-        
+
         fireEvent.click(screen.getByText('Sort by Date (Oldest to Newest)'));
 
         expect(mockOnSortChange).toHaveBeenCalledWith('oldest');
     });
-
 });

@@ -8,12 +8,7 @@ describe('SearchBarComponent', () => {
         const mockSetSearchQuery = jest.fn();
         const initialSearchQuery = 'Initial Query';
 
-        render(
-            <SearchBarComponent
-                searchQuery={initialSearchQuery}
-                setSearchQuery={mockSetSearchQuery}
-            />
-        );
+        render(<SearchBarComponent searchQuery={initialSearchQuery} setSearchQuery={mockSetSearchQuery} />);
 
         const searchInput = screen.getByLabelText(/Search Cards/i);
 
@@ -26,12 +21,7 @@ describe('SearchBarComponent', () => {
         const mockSetSearchQuery = jest.fn();
         const initialSearchQuery = '';
 
-        render(
-            <SearchBarComponent
-                searchQuery={initialSearchQuery}
-                setSearchQuery={mockSetSearchQuery}
-            />
-        );
+        render(<SearchBarComponent searchQuery={initialSearchQuery} setSearchQuery={mockSetSearchQuery} />);
 
         const searchInput = screen.getByLabelText(/Search Cards/i);
 
@@ -43,12 +33,7 @@ describe('SearchBarComponent', () => {
     it('displays the search icon in the input field', () => {
         const mockSetSearchQuery = jest.fn();
 
-        render(
-            <SearchBarComponent
-                searchQuery=""
-                setSearchQuery={mockSetSearchQuery}
-            />
-        );
+        render(<SearchBarComponent searchQuery="" setSearchQuery={mockSetSearchQuery} />);
 
         expect(screen.getByTestId('SearchIcon')).toBeInTheDocument();
     });

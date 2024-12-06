@@ -25,23 +25,17 @@ describe('ColumnsMainContainerComponent', () => {
                 title: 'Column 1',
                 cards: [
                     { id: 'card1', title: 'Card 1', priority: 'High', estimatedShippingDate: '2023-12-31' },
-                    { id: 'card2', title: 'Card 2', priority: 'Low', estimatedShippingDate: '2024-01-15' },
-                ],
+                    { id: 'card2', title: 'Card 2', priority: 'Low', estimatedShippingDate: '2024-01-15' }
+                ]
             },
             {
                 id: 'column2',
                 title: 'Column 2',
-                cards: [{ id: 'card3', title: 'Card 3', priority: 'Medium', estimatedShippingDate: '2024-03-10' }],
-            },
+                cards: [{ id: 'card3', title: 'Card 3', priority: 'Medium', estimatedShippingDate: '2024-03-10' }]
+            }
         ];
 
-        render(
-            <ColumnsMainContainerComponent
-                columns={columns}
-                filterCards={mockFilterCards}
-                onDrop={mockOnDrop}
-            />
-        );
+        render(<ColumnsMainContainerComponent columns={columns} filterCards={mockFilterCards} onDrop={mockOnDrop} />);
 
         expect(screen.getByTestId('column-column1')).toBeInTheDocument();
         expect(screen.getByTestId('column-column2')).toBeInTheDocument();
@@ -56,13 +50,7 @@ describe('ColumnsMainContainerComponent', () => {
     });
 
     it('renders no columns when the list is empty', () => {
-        render(
-            <ColumnsMainContainerComponent
-                columns={[]}
-                filterCards={mockFilterCards}
-                onDrop={mockOnDrop}
-            />
-        );
+        render(<ColumnsMainContainerComponent columns={[]} filterCards={mockFilterCards} onDrop={mockOnDrop} />);
 
         expect(screen.queryByTestId('column-column1')).not.toBeInTheDocument();
         expect(screen.queryByTestId('column-column2')).not.toBeInTheDocument();

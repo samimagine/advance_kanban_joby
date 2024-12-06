@@ -9,14 +9,7 @@ describe('CardActions Component', () => {
     const mockOnEdit = jest.fn();
 
     const renderComponent = (anchorEl: HTMLElement | null) =>
-        render(
-            <CardActions
-                anchorEl={anchorEl}
-                onClose={mockOnClose}
-                onDelete={mockOnDelete}
-                onEdit={mockOnEdit}
-            />
-        );
+        render(<CardActions anchorEl={anchorEl} onClose={mockOnClose} onDelete={mockOnDelete} onEdit={mockOnEdit} />);
 
     it('renders correctly when anchorEl is provided', () => {
         const anchor = document.createElement('div');

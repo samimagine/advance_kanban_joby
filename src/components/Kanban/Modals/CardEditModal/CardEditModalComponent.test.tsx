@@ -13,24 +13,18 @@ describe('CardEditModalComponent', () => {
         id: 'card1',
         title: 'Test Card',
         priority: 'Standard',
-        estimatedShippingDate: '15/Dec/2023',
+        estimatedShippingDate: '15/Dec/2023'
     };
 
     beforeEach(() => {
         jest.clearAllMocks();
         (useKanbanStore as jest.Mock).mockReturnValue({
-            editCard: mockEditCard,
+            editCard: mockEditCard
         });
     });
 
     it('closes the modal without saving when the close button is clicked', () => {
-        render(
-            <CardEditModalComponent
-                open={true}
-                onClose={mockOnClose}
-                card={card}
-            />
-        );
+        render(<CardEditModalComponent open={true} onClose={mockOnClose} card={card} />);
 
         fireEvent.click(screen.getByTestId('close-button'));
 

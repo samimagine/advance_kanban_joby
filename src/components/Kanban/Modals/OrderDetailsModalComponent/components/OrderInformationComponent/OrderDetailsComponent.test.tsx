@@ -5,7 +5,7 @@ import OrderDetailsComponent from './OrderDetailsComponent';
 
 jest.mock('../../../../Common/StatusColorChipComponent', () => ({
     __esModule: true,
-    default: ({ label }: { label: string }) => <span data-testid="status-chip">{label}</span>,
+    default: ({ label }: { label: string }) => <span data-testid="status-chip">{label}</span>
 }));
 
 describe('OrderDetailsComponent', () => {
@@ -20,8 +20,8 @@ describe('OrderDetailsComponent', () => {
                 partNumber: 'P12345',
                 releaseStatus: 'Released',
                 drawingNumber: 'DR123',
-                flightArticle: 'FA456',
-            },
+                flightArticle: 'FA456'
+            }
         };
 
         render(
@@ -40,16 +40,9 @@ describe('OrderDetailsComponent', () => {
             'Drawing Number',
             'Flight Article',
             'Estimated Shipping Date',
-            'Priority',
+            'Priority'
         ];
-        const values = [
-            'Test Part',
-            'P12345',
-            'Released',
-            'DR123',
-            'FA456',
-            '2023-12-15',
-        ];
+        const values = ['Test Part', 'P12345', 'Released', 'DR123', 'FA456', '2023-12-15'];
 
         labels.forEach(label => {
             expect(screen.getByText(label)).toBeInTheDocument();
@@ -73,8 +66,8 @@ describe('OrderDetailsComponent', () => {
                 partNumber: '',
                 releaseStatus: '',
                 drawingNumber: '',
-                flightArticle: '',
-            },
+                flightArticle: ''
+            }
         };
 
         render(
@@ -87,7 +80,7 @@ describe('OrderDetailsComponent', () => {
         );
 
         expect(screen.getByText('Fallback Test')).toBeInTheDocument();
-        expect(screen.getAllByText('-')).toHaveLength(4); 
+        expect(screen.getAllByText('-')).toHaveLength(4);
         expect(screen.getByText('2023-12-20')).toBeInTheDocument();
         expect(screen.getByTestId('status-chip')).toHaveTextContent('High Priority');
     });

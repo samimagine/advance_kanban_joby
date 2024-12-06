@@ -6,7 +6,7 @@ import { DetailedCardProps } from '../../../../store/interfaces';
 
 jest.mock('./components/FilesSectionComponent/FilesSectionComponent', () => ({
     __esModule: true,
-    default: () => <div data-testid="files-section">FilesSectionComponent</div>,
+    default: () => <div data-testid="files-section">FilesSectionComponent</div>
 }));
 
 jest.mock('./components/HeaderModalComponent/HeaderModalComponent', () => ({
@@ -14,14 +14,16 @@ jest.mock('./components/HeaderModalComponent/HeaderModalComponent', () => ({
     default: ({ title, onClose }: { title: string; onClose: () => void }) => (
         <div>
             <h1 data-testid="header-modal">{title}</h1>
-            <button data-testid="close-button" onClick={onClose}>Close</button>
+            <button data-testid="close-button" onClick={onClose}>
+                Close
+            </button>
         </div>
-    ),
+    )
 }));
 
 jest.mock('./components/OrderInformationComponent/OrderInformationComponent', () => ({
     __esModule: true,
-    default: () => <div data-testid="order-information-section">OrderInformationSectionComponent</div>,
+    default: () => <div data-testid="order-information-section">OrderInformationSectionComponent</div>
 }));
 
 describe('OrderDetailsModalComponent', () => {
@@ -39,7 +41,7 @@ describe('OrderDetailsModalComponent', () => {
                 thumbnail: 'thumbnail1.jpg',
                 date: '2023-11-01',
                 description: 'Test File 1',
-                type: 'image/png',
+                type: 'image/png'
             },
             {
                 id: 'f2',
@@ -48,16 +50,16 @@ describe('OrderDetailsModalComponent', () => {
                 thumbnail: 'thumbnail2.jpg',
                 date: '2023-11-02',
                 description: 'Test File 2',
-                type: 'application/pdf',
-            },
+                type: 'application/pdf'
+            }
         ],
         orderDetails: {
             part: 'Test Part',
             partNumber: 'P12345',
             releaseStatus: 'Released',
             drawingNumber: 'DR123',
-            flightArticle: 'FA456',
-        },
+            flightArticle: 'FA456'
+        }
     };
 
     it('renders the modal with all sections', () => {

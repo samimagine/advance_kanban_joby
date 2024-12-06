@@ -6,12 +6,18 @@ import { FileProps } from '../../../../../../store/interfaces';
 
 jest.mock('./SelectDepartmentComponent/SelectDepartmentComponent', () => ({
     __esModule: true,
-    default: ({ selectedTab, onTabChange }: { selectedTab: string; onTabChange: (event: React.SyntheticEvent, newValue: string) => void }) => (
+    default: ({
+        selectedTab,
+        onTabChange
+    }: {
+        selectedTab: string;
+        onTabChange: (event: React.SyntheticEvent, newValue: string) => void;
+    }) => (
         <div data-testid="select-department">
             <span>{selectedTab}</span>
-            <button onClick={(e) => onTabChange(e, 'Mock Tab')}>Change Tab</button>
+            <button onClick={e => onTabChange(e, 'Mock Tab')}>Change Tab</button>
         </div>
-    ),
+    )
 }));
 
 jest.mock('./FilesComponent/FilesComponent', () => ({
@@ -20,14 +26,30 @@ jest.mock('./FilesComponent/FilesComponent', () => ({
         <div data-testid="files-component">
             <span>{files.length} files</span>
         </div>
-    ),
+    )
 }));
 
 describe('FilesSectionComponent', () => {
     const mockOnTabChange = jest.fn();
     const mockFiles: FileProps[] = [
-        { id: '1', name: 'File1', date: '2023-01-01', description: 'Description1', category: 'Category1', type: 'pdf', thumbnail: '' },
-        { id: '2', name: 'File2', date: '2023-01-02', description: 'Description2', category: 'Category2', type: 'docx', thumbnail: '' },
+        {
+            id: '1',
+            name: 'File1',
+            date: '2023-01-01',
+            description: 'Description1',
+            category: 'Category1',
+            type: 'pdf',
+            thumbnail: ''
+        },
+        {
+            id: '2',
+            name: 'File2',
+            date: '2023-01-02',
+            description: 'Description2',
+            category: 'Category2',
+            type: 'docx',
+            thumbnail: ''
+        }
     ];
 
     beforeEach(() => {
@@ -35,7 +57,13 @@ describe('FilesSectionComponent', () => {
     });
 
     it('renders the component with files and selected tab', () => {
-        render(<FilesSectionComponent selectedTab="All Categories" onTabChange={mockOnTabChange} filteredFiles={mockFiles} />);
+        render(
+            <FilesSectionComponent
+                selectedTab="All Categories"
+                onTabChange={mockOnTabChange}
+                filteredFiles={mockFiles}
+            />
+        );
 
         expect(screen.getByText(/Files:/i)).toBeInTheDocument();
         expect(screen.getByTestId('select-department')).toBeInTheDocument();
@@ -45,7 +73,13 @@ describe('FilesSectionComponent', () => {
     });
 
     it('calls onTabChange when the tab is changed', () => {
-        render(<FilesSectionComponent selectedTab="All Categories" onTabChange={mockOnTabChange} filteredFiles={mockFiles} />);
+        render(
+            <FilesSectionComponent
+                selectedTab="All Categories"
+                onTabChange={mockOnTabChange}
+                filteredFiles={mockFiles}
+            />
+        );
 
         fireEvent.click(screen.getByText(/Change Tab/i));
 

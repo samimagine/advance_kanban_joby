@@ -33,8 +33,8 @@ describe('CardModals Component', () => {
             orderDescription: 'Test Order',
             priority: 'High Priority',
             estimatedShippingDate: '2023-12-31',
-            tags: [],
-        },
+            tags: []
+        }
     };
 
     it('renders modals but they are closed by default', () => {

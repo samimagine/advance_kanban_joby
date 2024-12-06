@@ -91,8 +91,9 @@
         "transformIgnorePatterns": [
             "/node_modules/(?!(react-dnd|react-dnd-html5-backend|dnd-core|@react-dnd)/)"
         ],
-        "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"]
-
+        "setupFilesAfterEnv": [
+            "<rootDir>/jest.setup.js"
+        ]
     },
     "type": "module"
 }

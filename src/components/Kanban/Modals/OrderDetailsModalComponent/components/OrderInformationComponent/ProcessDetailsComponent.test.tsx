@@ -14,8 +14,8 @@ describe('ProcessDetailsComponent', () => {
                 material: 'Steel',
                 materialStockSize: '20x20x100 mm',
                 surfaceTreatment: 'Anodizing',
-                machine: 'CNC Milling Machine',
-            },
+                machine: 'CNC Milling Machine'
+            }
         };
 
         render(<ProcessDetailsComponent details={mockDetails} />);
@@ -40,14 +40,14 @@ describe('ProcessDetailsComponent', () => {
                 material: '',
                 materialStockSize: '',
                 surfaceTreatment: '',
-                machine: '',
-            },
+                machine: ''
+            }
         };
 
         render(<ProcessDetailsComponent details={mockDetails} />);
 
         expect(screen.getByText('Material')).toBeInTheDocument();
-        expect(screen.getAllByText('-')).toHaveLength(4); 
+        expect(screen.getAllByText('-')).toHaveLength(4);
     });
 
     it('renders correctly when no processDetails are provided', () => {
@@ -55,7 +55,7 @@ describe('ProcessDetailsComponent', () => {
             id: '3',
             title: 'No Details Test',
             priority: 'Low',
-            estimatedShippingDate: '2023-12-25',
+            estimatedShippingDate: '2023-12-25'
         };
 
         render(<ProcessDetailsComponent details={mockDetails} />);

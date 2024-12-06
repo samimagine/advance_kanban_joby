@@ -11,7 +11,7 @@ describe('ItemFileComponent', () => {
         date: '2023-12-01',
         description: 'This is a sample file description.',
         category: 'Document',
-        type: 'PDF',
+        type: 'PDF'
     };
 
     it('renders the file details correctly', () => {

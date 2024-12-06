@@ -69,7 +69,7 @@ const CardEditModalComponent: React.FC<CardEditModalProps> = ({ open, onClose, c
                 }}>
                 <Box display="flex" justifyContent="space-between" alignItems="center">
                     <Typography variant="h6">Edit Card</Typography>
-                    <IconButton onClick={() => onClose()} role='button' aria-label='close' data-testid='close-button'>
+                    <IconButton onClick={() => onClose()} role="button" aria-label="close" data-testid="close-button">
                         <CloseIcon />
                     </IconButton>
                 </Box>
@@ -80,11 +80,18 @@ const CardEditModalComponent: React.FC<CardEditModalProps> = ({ open, onClose, c
                         onChange={handleInputChange('title')}
                         fullWidth
                         required
-                        data-testid='title-input'
+                        data-testid="title-input"
                     />
-                    <Select value={form.priority} onChange={handleSelectChange('priority')} fullWidth required data-testid='priority-select'>
+                    <Select
+                        value={form.priority}
+                        onChange={handleSelectChange('priority')}
+                        fullWidth
+                        required
+                        data-testid="priority-select">
                         <MenuItem value="Standard">Standard</MenuItem>
-                        <MenuItem value="High Priority" data-testid="priority-option-high">High Priority</MenuItem>
+                        <MenuItem value="High Priority" data-testid="priority-option-high">
+                            High Priority
+                        </MenuItem>
                         <MenuItem value="Critical Path">Critical Path</MenuItem>
                     </Select>
                     <TextField
@@ -95,14 +102,14 @@ const CardEditModalComponent: React.FC<CardEditModalProps> = ({ open, onClose, c
                         InputLabelProps={{ shrink: true }}
                         fullWidth
                         required
-                        data-testid='due-date-input'
+                        data-testid="due-date-input"
                     />
                     <Button
                         variant="contained"
                         type="submit"
                         fullWidth
                         disabled={!form.title || !form.priority || !form.estimatedShippingDate}
-                        data-testid='save-button'>
+                        data-testid="save-button">
                         Save Changes
                     </Button>
                 </Box>

@@ -5,12 +5,12 @@ import CardBodyComponent from './CardBodyComponent';
 
 jest.mock('./PrioritySelectionComponent', () => ({
     __esModule: true,
-    default: jest.fn(() => <div data-testid="priority-selection">Priority Selection</div>),
+    default: jest.fn(() => <div data-testid="priority-selection">Priority Selection</div>)
 }));
 
 jest.mock('./CardTagsComponent', () => ({
     __esModule: true,
-    default: jest.fn(() => <div data-testid="card-tags">Card Tags</div>),
+    default: jest.fn(() => <div data-testid="card-tags">Card Tags</div>)
 }));
 
 describe('CardBodyComponent', () => {
@@ -32,7 +32,7 @@ describe('CardBodyComponent', () => {
         onPriorityBlur: mockOnPriorityBlur,
         tags: ['tag1', 'tag2'],
         onAddTag: mockOnAddTag,
-        onRemoveTag: mockOnRemoveTag,
+        onRemoveTag: mockOnRemoveTag
     };
 
     it('renders order description', () => {
@@ -54,5 +54,4 @@ describe('CardBodyComponent', () => {
         render(<CardBodyComponent {...props} />);
         expect(screen.getByTestId('card-tags')).toBeInTheDocument();
     });
-
 });

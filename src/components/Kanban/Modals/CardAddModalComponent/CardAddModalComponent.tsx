@@ -108,10 +108,21 @@ const CardAddModalComponent: React.FC<AddCardModalProps> = ({ open, onClose, col
                         fullWidth
                         required
                     />
-                    <Select value={form.priority} onChange={handleSelectChange('priority')} data-testid="priority-select" fullWidth required>
-                        <MenuItem value="Standard" role='option'>Standard</MenuItem>
-                        <MenuItem value="High Priority" role='option' data-testid="priority-option-high">High Priority</MenuItem>
-                        <MenuItem value="Critical Path" role='option'>Critical Path</MenuItem>
+                    <Select
+                        value={form.priority}
+                        onChange={handleSelectChange('priority')}
+                        data-testid="priority-select"
+                        fullWidth
+                        required>
+                        <MenuItem value="Standard" role="option">
+                            Standard
+                        </MenuItem>
+                        <MenuItem value="High Priority" role="option" data-testid="priority-option-high">
+                            High Priority
+                        </MenuItem>
+                        <MenuItem value="Critical Path" role="option">
+                            Critical Path
+                        </MenuItem>
                     </Select>
                     <TextField
                         label="Estimated Shipping Date"

@@ -16,11 +16,6 @@
         "noEmit": true,
         "jsx": "react-jsx"
     },
-    "include": [
-        "src", 
-        "createTests.js"
-    ],
-    "exclude": [
-        "node_modules",
-    ]
+    "include": ["src", "createTests.js"],
+    "exclude": ["node_modules"]
 }

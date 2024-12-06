@@ -12,8 +12,8 @@ jest.mock('../../../store/kanbanStore', () => ({
         editCard: jest.fn(),
         addTagToCard: jest.fn(),
         removeTagFromCard: jest.fn(),
-        addLastViewed: jest.fn(),
-    })),
+        addLastViewed: jest.fn()
+    }))
 }));
 
 describe('DraggableCard', () => {

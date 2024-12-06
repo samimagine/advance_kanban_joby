@@ -18,7 +18,7 @@ describe('FilesComponent', () => {
             date: '2023-12-01',
             description: 'This is a sample file description.',
             category: 'Document',
-            type: 'PDF',
+            type: 'PDF'
         },
         {
             id: '2',
@@ -27,8 +27,8 @@ describe('FilesComponent', () => {
             date: '2023-12-02',
             description: 'This is another sample file description.',
             category: 'Image',
-            type: 'JPEG',
-        },
+            type: 'JPEG'
+        }
     ];
 
     it('renders the list of files correctly', () => {

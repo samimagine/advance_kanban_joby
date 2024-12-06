@@ -6,7 +6,7 @@ import DroppableColumn from './DroppableColumn';
 import { DetailedCardProps } from '../../../store/interfaces';
 
 jest.mock('react-dnd', () => ({
-    useDrop: jest.fn(),
+    useDrop: jest.fn()
 }));
 
 jest.mock('./components', () => ({
@@ -18,7 +18,7 @@ jest.mock('./components', () => ({
     ColumnFilterPopoverComponent: () => <div data-testid="column-filter-popover">Filter Popover</div>,
     ColumnWrapperComponent: ({ children }: { children: React.ReactNode }) => (
         <div data-testid="column-wrapper">{children}</div>
-    ),
+    )
 }));
 
 describe('DroppableColumnComponent', () => {
@@ -32,17 +32,10 @@ describe('DroppableColumnComponent', () => {
     it('renders the column with the correct title and children', () => {
         const cards = [
             { id: 'card1', title: 'Card 1', priority: 'High', estimatedShippingDate: '2023-12-31' },
-            { id: 'card2', title: 'Card 2', priority: 'Low', estimatedShippingDate: '2024-01-15' },
+            { id: 'card2', title: 'Card 2', priority: 'Low', estimatedShippingDate: '2024-01-15' }
         ] as DetailedCardProps[];
 
-        render(
-            <DroppableColumn
-                id="test-column"
-                title="Test Column"
-                cards={cards}
-                onDrop={mockOnDrop}
-            />
-        );
+        render(<DroppableColumn id="test-column" title="Test Column" cards={cards} onDrop={mockOnDrop} />);
 
         expect(screen.getByTestId('column-header')).toHaveTextContent('Test Column');
 
@@ -52,16 +45,8 @@ describe('DroppableColumnComponent', () => {
     });
 
     it('does not render the AddCardButtonComponent when isLastViewed is true', () => {
-        render(
-            <DroppableColumn
-                id="last-viewed-column"
-                title="Last Viewed Column"
-                cards={[]}
-                onDrop={mockOnDrop}
-            />
-        );
+        render(<DroppableColumn id="last-viewed-column" title="Last Viewed Column" cards={[]} onDrop={mockOnDrop} />);
 
         expect(screen.queryByTestId('add-card-button')).not.toBeInTheDocument();
     });
-
 });
