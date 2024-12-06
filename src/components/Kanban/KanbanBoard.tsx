@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Box, TextField } from '@mui/material';
-import Droppable from './Droppable';
-import { DetailedCardProps, useKanbanStore } from '../store/kanbanStore';
+import { useKanbanStore } from '../../store/kanbanStore';
+import { DetailedCardProps } from '../../store/interfaces';
+import DroppableColumnComponent from './Columns/DroppableColumn';
 
 const KanbanBoard: React.FC = () => {
   const { columns, loadCards } = useKanbanStore();
@@ -11,7 +12,11 @@ const KanbanBoard: React.FC = () => {
     loadCards();
   }, [loadCards]);
 
-  const handleDrop = (cardId: string, fromColumnId: string, toColumnId: string) => {
+  const handleDrop = (
+    cardId: string,
+    fromColumnId: string,
+    toColumnId: string,
+  ) => {
     if (fromColumnId === toColumnId) {
       console.warn('Card dropped in the same column, no changes made.');
       return;
@@ -23,20 +28,30 @@ const KanbanBoard: React.FC = () => {
     const targetColumn = columns.find((col) => col.id === toColumnId);
 
     if (!sourceColumn || !targetColumn) {
-      console.error('Source or Target column not found:', { fromColumnId, toColumnId });
+      console.error('Source or Target column not found:', {
+        fromColumnId,
+        toColumnId,
+      });
       return;
     }
 
-    const sourceIndex = sourceColumn.cards.findIndex((card) => card.id === cardId);
+    const sourceIndex = sourceColumn.cards.findIndex(
+      (card) => card.id === cardId,
+    );
 
     if (sourceIndex === -1) {
-      console.error('Card not found in source column:', { cardId, sourceColumn });
+      console.error('Card not found in source column:', {
+        cardId,
+        sourceColumn,
+      });
       return;
     }
 
     const destinationIndex = targetColumn.cards.length;
 
-    useKanbanStore.getState().moveCard(fromColumnId, toColumnId, sourceIndex, destinationIndex);
+    useKanbanStore
+      .getState()
+      .moveCard(fromColumnId, toColumnId, sourceIndex, destinationIndex);
   };
 
   const filterCards = (cards: DetailedCardProps[]) => {
@@ -44,7 +59,7 @@ const KanbanBoard: React.FC = () => {
       Object.values(card)
         .join(' ')
         .toLowerCase()
-        .includes(searchQuery.toLowerCase())
+        .includes(searchQuery.toLowerCase()),
     );
   };
 
@@ -58,33 +73,38 @@ const KanbanBoard: React.FC = () => {
           margin: 'normal',
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
-              borderColor: '#c2d8ff',
+              borderColor: '#003B4A',
             },
             '&:hover fieldset': {
-              borderColor: '#c2d8ff',
+              borderColor: '#003B4A',
             },
             '&.Mui-focused fieldset': {
-              borderColor: '#c2d8ff',
+              borderColor: '#003B4A',
             },
           },
           '& .MuiInputLabel-root': {
-            color: '#c2d8ff',
+            color: '#003B4A',
           },
           '& .MuiInputBase-input': {
-            color: '#c2d8ff',
+            color: '#003B4A',
           },
         }}
         margin="normal"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <Box display="flex" gap={2} p={2} sx={{
-        backgroundColor: 'hsl(0deg 0% 0% / 20%)',
-        width: 'fit-content',
-        borderRadius: '20px',
-      }}>
+      <Box
+        display="flex"
+        gap={2}
+        p={2}
+        sx={{
+          backgroundColor: 'hsl(0deg 0% 0% / 20%)',
+          width: 'fit-content',
+          borderRadius: '20px',
+        }}
+      >
         {columns.map((column) => (
-          <Droppable
+          <DroppableColumnComponent
             key={column.id}
             id={column.id}
             title={column.title}

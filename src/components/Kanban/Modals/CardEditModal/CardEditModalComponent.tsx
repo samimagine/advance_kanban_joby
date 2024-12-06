@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import dayjs from "dayjs";
+import React, { useState } from 'react';
+import dayjs from 'dayjs';
 import {
   Modal,
   Box,
@@ -9,9 +9,10 @@ import {
   IconButton,
   Select,
   MenuItem,
-} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { useKanbanStore, DetailedCardProps } from "../store/kanbanStore";
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { DetailedCardProps } from '../../../../store/interfaces';
+import { useKanbanStore } from '../../../../store/kanbanStore';
 
 interface CardEditModalProps {
   open: boolean;
@@ -19,7 +20,11 @@ interface CardEditModalProps {
   card: DetailedCardProps;
 }
 
-const CardEditModal: React.FC<CardEditModalProps> = ({ open, onClose, card }) => {
+const CardEditModalComponent: React.FC<CardEditModalProps> = ({
+  open,
+  onClose,
+  card,
+}) => {
   const [title, setTitle] = useState(card.title);
   const [priority, setPriority] = useState<string>(card.priority);
   const [dueDate, setDueDate] = useState(card.estimatedShippingDate);
@@ -35,9 +40,9 @@ const CardEditModal: React.FC<CardEditModalProps> = ({ open, onClose, card }) =>
     try {
       await editCard(card.id, updatedFields);
       onClose(updatedFields);
-      console.log("Updated card:", updatedFields);
+      console.log('Updated card:', updatedFields);
     } catch (error) {
-      console.error("Failed to update card:", error);
+      console.error('Failed to update card:', error);
     }
   };
 
@@ -45,12 +50,12 @@ const CardEditModal: React.FC<CardEditModalProps> = ({ open, onClose, card }) =>
     <Modal open={open} onClose={onClose}>
       <Box
         sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
           width: 400,
-          bgcolor: "background.paper",
+          bgcolor: 'background.paper',
           boxShadow: 24,
           borderRadius: 2,
           p: 3,
@@ -81,10 +86,10 @@ const CardEditModal: React.FC<CardEditModalProps> = ({ open, onClose, card }) =>
           <TextField
             label="Due Date"
             type="date"
-            value={dayjs(dueDate, "DD/MMM/YYYY").format("YYYY-MM-DD")}
+            value={dayjs(dueDate, 'DD/MMM/YYYY').format('YYYY-MM-DD')}
             onChange={(e) => {
-              const formattedDate = dayjs(e.target.value, "YYYY-MM-DD").format(
-                "DD/MMM/YYYY"
+              const formattedDate = dayjs(e.target.value, 'YYYY-MM-DD').format(
+                'DD/MMM/YYYY',
               );
               setDueDate(formattedDate);
             }}
@@ -100,4 +105,4 @@ const CardEditModal: React.FC<CardEditModalProps> = ({ open, onClose, card }) =>
   );
 };
 
-export default CardEditModal;
+export default CardEditModalComponent;

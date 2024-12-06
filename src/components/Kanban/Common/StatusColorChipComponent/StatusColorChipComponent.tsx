@@ -2,7 +2,7 @@ import React from 'react';
 import Chip from '@mui/material/Chip';
 import { styled } from '@mui/material/styles';
 
-interface ColorChipProps {
+interface StatusColorChipProps {
   label: string;
   onClick?: () => void;
 }
@@ -46,8 +46,11 @@ const StyledChip = styled(Chip, {
   };
 });
 
-const ColorChip: React.FC<ColorChipProps> = ({ label, onClick }) => {
+const StatusColorChipComponent: React.FC<StatusColorChipProps> = ({
+  label,
+  onClick,
+}) => {
   return <StyledChip label={label} priority={label} onClick={onClick} />;
 };
 
-export default ColorChip;
+export default StatusColorChipComponent;

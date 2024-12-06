@@ -17,10 +17,10 @@ import {
 } from '@mui/material';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import AddIcon from '@mui/icons-material/Add';
-import Draggable from './Draggable';
-import { DetailedCardProps } from '../store/kanbanStore';
-import ColorChip from './common/StatusColorChip/StatusColorChip';
-import AddCardModal from './AddCardModal';
+import DraggableCard from '../Cards/DraggableCard/DraggableCardComponent';
+import StatusColorChipComponent from '../Common/StatusColorChipComponent/StatusColorChipComponent';
+import { DetailedCardProps } from '../../../store/interfaces';
+import CardAddModalComponent from '../Modals/CardAddModalComponent/CardAddModalComponent';
 
 interface DroppableColumnProps {
   id: string;
@@ -29,7 +29,12 @@ interface DroppableColumnProps {
   onDrop: (cardId: string, fromColumnId: string, toColumnId: string) => void;
 }
 
-const Droppable: React.FC<DroppableColumnProps> = ({ id, title, cards = [], onDrop }) => {
+const DroppableColumnComponent: React.FC<DroppableColumnProps> = ({
+  id,
+  title,
+  cards = [],
+  onDrop,
+}) => {
   const [isAddCardOpen, setIsAddCardOpen] = useState(false);
   const [priorityFilter, setPriorityFilter] = useState<string>('');
   const [sortOrder, setSortOrder] = useState<string>('');
@@ -52,9 +57,17 @@ const Droppable: React.FC<DroppableColumnProps> = ({ id, title, cards = [], onDr
     : cards;
 
   if (sortOrder === 'oldest') {
-    filteredCards = filteredCards.sort((a, b) => new Date(a.estimatedShippingDate).getTime() - new Date(b.estimatedShippingDate).getTime());
+    filteredCards = filteredCards.sort(
+      (a, b) =>
+        new Date(a.estimatedShippingDate).getTime() -
+        new Date(b.estimatedShippingDate).getTime(),
+    );
   } else if (sortOrder === 'newest') {
-    filteredCards = filteredCards.sort((a, b) => new Date(b.estimatedShippingDate).getTime() - new Date(a.estimatedShippingDate).getTime());
+    filteredCards = filteredCards.sort(
+      (a, b) =>
+        new Date(b.estimatedShippingDate).getTime() -
+        new Date(a.estimatedShippingDate).getTime(),
+    );
   }
 
   const handleFilterClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -90,17 +103,28 @@ const Droppable: React.FC<DroppableColumnProps> = ({ id, title, cards = [], onDr
         paddingBottom: '24px',
       }}
     >
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2} sx={{
-        backgroundColor: '#61687c',
-        color: 'white',
-        padding: '0 16px',
-        borderTopLeftRadius: '15px',
-        borderTopRightRadius: '15px',
-        height: '30px',
-      }}>
-        <Typography variant="subtitle2" sx={{
-          fontWeight: '700',
-        }}>{title}</Typography>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mb={2}
+        sx={{
+          backgroundColor: '#61687c',
+          color: 'white',
+          padding: '0 16px',
+          borderTopLeftRadius: '15px',
+          borderTopRightRadius: '15px',
+          height: '30px',
+        }}
+      >
+        <Typography
+          variant="subtitle2"
+          sx={{
+            fontWeight: '700',
+          }}
+        >
+          {title}
+        </Typography>
         {!isLastViewed && (
           <Tooltip title="Filter">
             <IconButton onClick={handleFilterClick} sx={{ color: 'white' }}>
@@ -163,17 +187,23 @@ const Droppable: React.FC<DroppableColumnProps> = ({ id, title, cards = [], onDr
                 borderRadius: '4px',
               }}
             >
-              <Card sx={{
-                backgroundColor: card.isDeleted ? '#f8d7da' : '#f3f4f5',
-                paddingBottom: '8px',
-              }}>
-                <CardContent sx={{
-                  paddingBottom: '0 !important',
-                }}>
+              <Card
+                sx={{
+                  backgroundColor: card.isDeleted ? '#f8d7da' : '#f3f4f5',
+                  paddingBottom: '8px',
+                }}
+              >
+                <CardContent
+                  sx={{
+                    paddingBottom: '0 !important',
+                  }}
+                >
                   <div
                     onClick={() => {
                       if (!card.isDeleted) {
-                        const modalCard = document.getElementById(`modal-card-${card.id}`);
+                        const modalCard = document.getElementById(
+                          `modal-card-${card.id}`,
+                        );
                         if (modalCard) modalCard.click();
                       }
                     }}
@@ -183,35 +213,40 @@ const Droppable: React.FC<DroppableColumnProps> = ({ id, title, cards = [], onDr
                     }}
                   >
                     <Typography variant="h6">{card.title}</Typography>
-                    <Typography variant="body2">{card.orderDescription}</Typography>
+                    <Typography variant="body2">
+                      {card.orderDescription}
+                    </Typography>
                     <Divider sx={{ my: '10px' }} />
-                    {!card.isDeleted && (<Box
-                      sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        gap: 2,
-                      }}
+                    {!card.isDeleted && (
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          gap: 2,
+                        }}
+                      >
+                        <Typography variant="body2">Priority:</Typography>
+                        <StatusColorChipComponent label={card.priority} />
+                      </Box>
+                    )}
+                    <Typography variant="body2">
+                      Due Date: {card.estimatedShippingDate}
+                    </Typography>
+                    <Box
+                      sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}
                     >
-                      <Typography variant="body2">Priority:</Typography>
-                      <ColorChip
-                        label={card.priority}
-                      />
-                    </Box>)}
-                    <Typography variant="body2">Due Date: {card.estimatedShippingDate}</Typography>
-                    <Box sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                       {card.tags?.map((tag, index) => (
                         <Chip key={index} label={tag} />
                       ))}
                     </Box>
                   </div>
-
                 </CardContent>
               </Card>
             </div>
           </Tooltip>
         ) : (
-          <Draggable
+          <DraggableCard
             key={card.id}
             id={card.id}
             title={card.title}
@@ -220,18 +255,27 @@ const Droppable: React.FC<DroppableColumnProps> = ({ id, title, cards = [], onDr
             estimatedShippingDate={card.estimatedShippingDate}
             columnId={id}
           />
-        )
+        ),
       )}
       {!isLastViewed && (
-        <Button variant="outlined" sx={{
-          margin: '8px 16px',
-        }} endIcon={<AddIcon />} onClick={handleAddCard}>
+        <Button
+          variant="outlined"
+          sx={{
+            margin: '8px 16px',
+          }}
+          endIcon={<AddIcon />}
+          onClick={handleAddCard}
+        >
           Add new card
         </Button>
       )}
-      <AddCardModal open={isAddCardOpen} onClose={handleAddCardClose} columnId={id} />
+      <CardAddModalComponent
+        open={isAddCardOpen}
+        onClose={handleAddCardClose}
+        columnId={id}
+      />
     </Paper>
   );
 };
 
-export default Droppable;
+export default DroppableColumnComponent;

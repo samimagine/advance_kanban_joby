@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Modal,
   Box,
@@ -8,9 +8,10 @@ import {
   IconButton,
   Select,
   MenuItem,
-} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { useKanbanStore, DetailedCardProps } from "../store/kanbanStore";
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { useKanbanStore } from '../../../../store/kanbanStore';
+import { DetailedCardProps } from '../../../../store/interfaces';
 
 interface AddCardModalProps {
   open: boolean;
@@ -18,29 +19,33 @@ interface AddCardModalProps {
   columnId: string;
 }
 
-const AddCardModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) => {
+const AddCardModal: React.FC<AddCardModalProps> = ({
+  open,
+  onClose,
+  columnId,
+}) => {
   const addCard = useKanbanStore((state) => state.addCard);
 
-  const [title, setTitle] = useState("");
-  const [priority, setPriority] = useState("");
-  const [estimatedShippingDate, setEstimatedShippingDate] = useState("");
+  const [title, setTitle] = useState('');
+  const [priority, setPriority] = useState('');
+  const [estimatedShippingDate, setEstimatedShippingDate] = useState('');
   const [dateError, setDateError] = useState(false);
 
-  const [part, setPart] = useState("");
-  const [partNumber, setPartNumber] = useState("");
-  const [releaseStatus, setReleaseStatus] = useState("");
-  const [drawingNumber, setDrawingNumber] = useState("");
-  const [flightArticle, setFlightArticle] = useState("");
+  const [part, setPart] = useState('');
+  const [partNumber, setPartNumber] = useState('');
+  const [releaseStatus, setReleaseStatus] = useState('');
+  const [drawingNumber, setDrawingNumber] = useState('');
+  const [flightArticle, setFlightArticle] = useState('');
 
   const resetForm = () => {
-    setTitle("");
-    setPriority("");
-    setEstimatedShippingDate("");
-    setPart("");
-    setPartNumber("");
-    setReleaseStatus("");
-    setDrawingNumber("");
-    setFlightArticle("");
+    setTitle('');
+    setPriority('');
+    setEstimatedShippingDate('');
+    setPart('');
+    setPartNumber('');
+    setReleaseStatus('');
+    setDrawingNumber('');
+    setFlightArticle('');
     setDateError(false);
   };
 
@@ -77,12 +82,12 @@ const AddCardModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
     <Modal open={open} onClose={onClose}>
       <Box
         sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
           width: 400,
-          bgcolor: "background.paper",
+          bgcolor: 'background.paper',
           boxShadow: 24,
           borderRadius: 2,
           p: 3,
@@ -118,7 +123,7 @@ const AddCardModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
             onChange={(e) => handleDateChange(e.target.value)}
             InputLabelProps={{ shrink: true }}
             error={dateError}
-            helperText={dateError ? "Date is required" : ""}
+            helperText={dateError ? 'Date is required' : ''}
             fullWidth
             required
           />

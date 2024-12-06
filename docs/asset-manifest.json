@@ -9,8 +9,5 @@
     "main.185ee44f.js.map": "/joby_aviation/static/js/main.185ee44f.js.map",
     "453.4e1a02b7.chunk.js.map": "/joby_aviation/static/js/453.4e1a02b7.chunk.js.map"
   },
-  "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.185ee44f.js"
-  ]
+  "entrypoints": ["static/css/main.e6c13ad2.css", "static/js/main.185ee44f.js"]
 }

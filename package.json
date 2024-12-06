@@ -32,7 +32,8 @@
     "deploy": "gh-pages -d docs",
     "build": "react-scripts build && mv build docs",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -59,6 +60,7 @@
     "eslint-plugin-react": "^7.37.2",
     "gh-pages": "^6.2.0",
     "globals": "^15.12.0",
+    "prettier": "^3.4.2",
     "typescript-eslint": "^8.16.0"
   }
 }
