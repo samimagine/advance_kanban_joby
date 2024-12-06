@@ -6,22 +6,22 @@ import Settings from '../../Content/Settings/Settings';
 import OrderOverview from '../../Content/OrderOverview/OrderOverview';
 
 interface ContentRendererProps {
-  selectedView: string;
+    selectedView: string;
 }
 
 const ContentRenderer: React.FC<ContentRendererProps> = ({ selectedView }) => {
-  switch (selectedView) {
-    case 'Home':
-      return <Home />;
-    case 'User':
-      return <UserProfile />;
-    case 'Settings':
-      return <Settings />;
-    case 'Order Overview':
-      return <OrderOverview />;
-    default:
-      return <Typography variant="h4">Welcome Home</Typography>;
-  }
+    switch (selectedView) {
+        case 'Home':
+            return <Home />;
+        case 'User':
+            return <UserProfile />;
+        case 'Settings':
+            return <Settings />;
+        case 'Order Overview':
+            return <OrderOverview />;
+        default:
+            return <Typography variant="h4">Welcome Home</Typography>;
+    }
 };
 
 export default ContentRenderer;

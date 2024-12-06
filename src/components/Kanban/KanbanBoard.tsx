@@ -1,120 +1,81 @@
 import React, { useState, useEffect } from 'react';
-import { Box, TextField } from '@mui/material';
+import { Box } from '@mui/material';
 import { useKanbanStore } from '../../store/kanbanStore';
+import ColumnsMainContainerComponent from './components/ColumnsMainContainerComponent';
+import SearchBarComponent from './components/SearchBarComponent';
 import { DetailedCardProps } from '../../store/interfaces';
-import DroppableColumnComponent from './Columns/DroppableColumn';
 
 const KanbanBoard: React.FC = () => {
-  const { columns, loadCards } = useKanbanStore();
-  const [searchQuery, setSearchQuery] = useState('');
+    const { columns, loadCards } = useKanbanStore();
+    const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    loadCards();
-  }, [loadCards]);
+    useEffect(() => {
+        loadCards();
+    }, [loadCards]);
 
-  const handleDrop = (
-    cardId: string,
-    fromColumnId: string,
-    toColumnId: string,
-  ) => {
-    if (fromColumnId === toColumnId) {
-      console.warn('Card dropped in the same column, no changes made.');
-      return;
-    }
+    const handleDrop = (
+        cardId: string,
+        fromColumnId: string,
+        toColumnId: string,
+    ) => {
+        if (fromColumnId === toColumnId) {
+            console.warn('Card dropped in the same column, no changes made.');
+            return;
+        }
 
-    const columns = useKanbanStore.getState().columns;
+        const { columns, moveCard } = useKanbanStore.getState();
+        const sourceColumn = columns.find((col) => col.id === fromColumnId);
+        const targetColumn = columns.find((col) => col.id === toColumnId);
 
-    const sourceColumn = columns.find((col) => col.id === fromColumnId);
-    const targetColumn = columns.find((col) => col.id === toColumnId);
+        if (!sourceColumn || !targetColumn) {
+            console.error('Source or Target column not found:', {
+                fromColumnId,
+                toColumnId,
+            });
+            return;
+        }
 
-    if (!sourceColumn || !targetColumn) {
-      console.error('Source or Target column not found:', {
-        fromColumnId,
-        toColumnId,
-      });
-      return;
-    }
+        const sourceIndex = sourceColumn.cards.findIndex(
+            (card) => card.id === cardId,
+        );
 
-    const sourceIndex = sourceColumn.cards.findIndex(
-      (card) => card.id === cardId,
+        if (sourceIndex === -1) {
+            console.error('Card not found in source column:', {
+                cardId,
+                sourceColumn,
+            });
+            return;
+        }
+
+        const destinationIndex = targetColumn.cards.length;
+        moveCard(fromColumnId, toColumnId, sourceIndex, destinationIndex);
+    };
+
+    const filterCards = (cards: DetailedCardProps[]) => {
+        return cards.filter((card) => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const { priority, ...cardWithoutPriority } = card;
+
+            return Object.values(cardWithoutPriority)
+                .join(' ')
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase());
+        });
+    };
+
+    return (
+        <Box>
+            <SearchBarComponent
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+            />
+            <ColumnsMainContainerComponent
+                columns={columns}
+                filterCards={filterCards}
+                onDrop={handleDrop}
+            />
+        </Box>
     );
-
-    if (sourceIndex === -1) {
-      console.error('Card not found in source column:', {
-        cardId,
-        sourceColumn,
-      });
-      return;
-    }
-
-    const destinationIndex = targetColumn.cards.length;
-
-    useKanbanStore
-      .getState()
-      .moveCard(fromColumnId, toColumnId, sourceIndex, destinationIndex);
-  };
-
-  const filterCards = (cards: DetailedCardProps[]) => {
-    return cards.filter((card) =>
-      Object.values(card)
-        .join(' ')
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase()),
-    );
-  };
-
-  return (
-    <Box>
-      <TextField
-        label="Search Cards"
-        variant="outlined"
-        sx={{
-          marginLeft: 'auto',
-          margin: 'normal',
-          '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-              borderColor: '#003B4A',
-            },
-            '&:hover fieldset': {
-              borderColor: '#003B4A',
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: '#003B4A',
-            },
-          },
-          '& .MuiInputLabel-root': {
-            color: '#003B4A',
-          },
-          '& .MuiInputBase-input': {
-            color: '#003B4A',
-          },
-        }}
-        margin="normal"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <Box
-        display="flex"
-        gap={2}
-        p={2}
-        sx={{
-          backgroundColor: 'hsl(0deg 0% 0% / 20%)',
-          width: 'fit-content',
-          borderRadius: '20px',
-        }}
-      >
-        {columns.map((column) => (
-          <DroppableColumnComponent
-            key={column.id}
-            id={column.id}
-            title={column.title}
-            cards={filterCards(column.cards || [])}
-            onDrop={handleDrop}
-          />
-        ))}
-      </Box>
-    </Box>
-  );
 };
 
 export default KanbanBoard;
