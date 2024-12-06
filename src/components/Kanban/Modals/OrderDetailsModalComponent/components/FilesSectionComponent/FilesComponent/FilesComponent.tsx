@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { FileProps } from '../../../../../../store/interfaces';
+import { FileProps } from '../../../../../../../store/interfaces';
 import ItemFileComponent from './components/ItemFileComponent';
 
 interface FilesComponentProps {
@@ -17,6 +17,7 @@ const FilesComponent: React.FC<FilesComponentProps> = ({ files }) => {
         backgroundColor: 'white',
         borderRadius: '10px',
         maxHeight: '260px',
+        marginRight: '32px',
       }}
     >
       {files.length ? (

@@ -11,8 +11,13 @@ const SelectDepartmentComponent: React.FC<SelectDepartmentComponentProps> = ({
   onTabChange,
 }) => {
   return (
-    <Box sx={{ width: '200px' }}>
-      <Typography variant="body2" color="text.secondary" mb={1}>
+    <Box sx={{ width: '200px', marginLeft: '34px' }}>
+      <Typography
+        variant="body1"
+        sx={{
+          margin: '16px 0 16px 0',
+        }}
+      >
         Select a Department:
       </Typography>
       <Box
@@ -41,7 +46,6 @@ const SelectDepartmentComponent: React.FC<SelectDepartmentComponentProps> = ({
             '& .MuiTab-root.Mui-selected': {
               backgroundColor: '#1976d2',
               color: 'white',
-              border: '1px solid #1976d2',
             },
             '& .MuiTab-root:hover': {
               backgroundColor: 'rgba(0, 0, 0, 0.1)',
