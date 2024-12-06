@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
 import { useKanbanStore } from '../../store/kanbanStore';
-import ColumnsMainContainerComponent from './components/ColumnsMainContainerComponent';
-import SearchBarComponent from './components/SearchBarComponent';
+import ColumnsMainContainerComponent from './Layout/ColumnsMainContainerComponent';
+import SearchBarComponent from './Layout/SearchBarComponent';
 import { DetailedCardProps } from '../../store/interfaces';
 
 const KanbanBoard: React.FC = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Select, MenuItem } from '@mui/material';
-import StatusColorChipComponent from '../../../Common/StatusColorChipComponent/StatusColorChipComponent';
+import StatusColorChipComponent from '../../Common/StatusColorChipComponent';
 
 interface PrioritySelectionProps {
     isEditingPriority: boolean;

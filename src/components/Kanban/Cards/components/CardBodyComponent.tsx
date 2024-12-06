@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, Divider } from '@mui/material';
-import { CardTagsComponent, PrioritySelectionComponent } from './';
+import { CardTagsComponent, PrioritySelectionComponent } from '.';
 
 interface CardBodyProps {
     orderDescription?: string;

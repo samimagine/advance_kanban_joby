@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '@mui/material';
-import { useKanbanStore } from '../../../../store/kanbanStore';
+import { useKanbanStore } from '../../../store/kanbanStore';
 import {
     CardActionsComponent,
     CardBodyComponent,
@@ -8,7 +8,7 @@ import {
     CardModalsComponent,
     DraggableCardWrapperComponent
 } from './components';
-import { DetailedCardProps } from '../../../../store/interfaces';
+import { DetailedCardProps } from '../../../store/interfaces';
 
 interface DraggableCardProps {
     id: string;

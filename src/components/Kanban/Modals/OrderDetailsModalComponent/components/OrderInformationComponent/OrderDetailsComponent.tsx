@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, Box } from '@mui/material';
 import ReceiptLongOutlinedIcon from '@mui/icons-material/ReceiptLongOutlined';
 import { DetailedCardProps } from '../../../../../../store/interfaces';
-import StatusColorChipComponent from '../../../../Common/StatusColorChipComponent/StatusColorChipComponent';
+import StatusColorChipComponent from '../../../../Common/StatusColorChipComponent';
 
 interface OrderDetailsProps {
     orderDescription?: string;

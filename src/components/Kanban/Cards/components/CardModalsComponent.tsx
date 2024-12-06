@@ -1,7 +1,7 @@
 import React from 'react';
-import CardEditModalComponent from '../../../Modals/CardEditModal/CardEditModalComponent';
-import OrderDetailsModalComponent from '../../../Modals/OrderDetailsModalComponent/OrderDetailsModalComponent';
-import { DetailedCardProps } from '../../../../../store/interfaces';
+import CardEditModalComponent from '../../Modals/CardEditModal/CardEditModalComponent';
+import OrderDetailsModalComponent from '../../Modals/OrderDetailsModalComponent/OrderDetailsModalComponent';
+import { DetailedCardProps } from '../../../../store/interfaces';
 
 interface CardModalsProps {
     openDetailsModal: boolean;

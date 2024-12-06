@@ -1,8 +1,8 @@
 import React from 'react';
 import { Tooltip, Card, CardContent, Typography, Divider, Box, Chip } from '@mui/material';
-import StatusColorChipComponent from '../../Common/StatusColorChipComponent/StatusColorChipComponent';
+import StatusColorChipComponent from '../../Common/StatusColorChipComponent';
 import { DetailedCardProps } from '../../../../store/interfaces';
-import DraggableCard from '../../Cards/DraggableCard/DraggableCardComponent';
+import DraggableCard from '../../Cards/DraggableCardComponent';
 
 interface ColumnCardListProps {
     cards: DetailedCardProps[];
