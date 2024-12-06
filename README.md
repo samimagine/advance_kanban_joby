@@ -195,7 +195,7 @@ This application is deployed using **GitHub Pages** to make the static build acc
   
 - **📦 Component Unification**:
   - Refactor and simplify reusable components such as titles, selects, tooltips, buttons and inputs for consistency.
-  - Enhance the Material-UI theme with variables for colors, sizes, and other styling options to ensure maintainability and scalability.
+  - With **Material UI Theme**, Centralize and enhance theme by defining reusable variables for colors, spacing, typography, and component-specific properties. This ensures consistent styling, scalability, and ease of maintenance across the application.
 
 - **🎯 Advanced Drag-and-Drop**:
   - Allow cards to be dragged and dropped not just into columns but also reordered within the target column based on the position where they are dropped.
