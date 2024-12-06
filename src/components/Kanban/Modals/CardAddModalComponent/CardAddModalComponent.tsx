@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
-import {
-    Modal,
-    Box,
-    TextField,
-    Button,
-    Typography,
-    IconButton,
-    Select,
-    MenuItem,
-} from '@mui/material';
+import { Modal, Box, TextField, Button, Typography, IconButton, Select, MenuItem } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useKanbanStore } from '../../../../store/kanbanStore';
 import { DetailedCardProps } from '../../../../store/interfaces';
@@ -19,12 +10,8 @@ interface AddCardModalProps {
     columnId: string;
 }
 
-const AddCardModal: React.FC<AddCardModalProps> = ({
-    open,
-    onClose,
-    columnId,
-}) => {
-    const addCard = useKanbanStore((state) => state.addCard);
+const AddCardModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) => {
+    const addCard = useKanbanStore(state => state.addCard);
 
     const [title, setTitle] = useState('');
     const [priority, setPriority] = useState('');
@@ -64,8 +51,8 @@ const AddCardModal: React.FC<AddCardModalProps> = ({
                 partNumber,
                 releaseStatus,
                 drawingNumber,
-                flightArticle,
-            },
+                flightArticle
+            }
         };
 
         addCard(columnId, newCard);
@@ -90,14 +77,9 @@ const AddCardModal: React.FC<AddCardModalProps> = ({
                     bgcolor: 'background.paper',
                     boxShadow: 24,
                     borderRadius: 2,
-                    p: 3,
-                }}
-            >
-                <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    alignItems="center"
-                >
+                    p: 3
+                }}>
+                <Box display="flex" justifyContent="space-between" alignItems="center">
                     <Typography variant="h6">Add New Card</Typography>
                     <IconButton onClick={onClose}>
                         <CloseIcon />
@@ -107,15 +89,11 @@ const AddCardModal: React.FC<AddCardModalProps> = ({
                     <TextField
                         label="Title"
                         value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        onChange={e => setTitle(e.target.value)}
                         fullWidth
                         required
                     />
-                    <Select
-                        value={priority}
-                        onChange={(e) => setPriority(e.target.value)}
-                        fullWidth
-                    >
+                    <Select value={priority} onChange={e => setPriority(e.target.value)} fullWidth>
                         <MenuItem value="Standard">Standard</MenuItem>
                         <MenuItem value="High Priority">High Priority</MenuItem>
                         <MenuItem value="Critical Path">Critical Path</MenuItem>
@@ -124,7 +102,7 @@ const AddCardModal: React.FC<AddCardModalProps> = ({
                         label="Estimated Shipping Date"
                         type="date"
                         value={estimatedShippingDate}
-                        onChange={(e) => handleDateChange(e.target.value)}
+                        onChange={e => handleDateChange(e.target.value)}
                         InputLabelProps={{ shrink: true }}
                         error={dateError}
                         helperText={dateError ? 'Date is required' : ''}
@@ -132,42 +110,36 @@ const AddCardModal: React.FC<AddCardModalProps> = ({
                         required
                     />
                     <Typography variant="subtitle1">Order Details</Typography>
-                    <TextField
-                        label="Part"
-                        value={part}
-                        onChange={(e) => setPart(e.target.value)}
-                        fullWidth
-                    />
+                    <TextField label="Part" value={part} onChange={e => setPart(e.target.value)} fullWidth />
                     <TextField
                         label="Part Number"
                         value={partNumber}
-                        onChange={(e) => setPartNumber(e.target.value)}
+                        onChange={e => setPartNumber(e.target.value)}
                         fullWidth
                     />
                     <TextField
                         label="Release Status"
                         value={releaseStatus}
-                        onChange={(e) => setReleaseStatus(e.target.value)}
+                        onChange={e => setReleaseStatus(e.target.value)}
                         fullWidth
                     />
                     <TextField
                         label="Drawing Number"
                         value={drawingNumber}
-                        onChange={(e) => setDrawingNumber(e.target.value)}
+                        onChange={e => setDrawingNumber(e.target.value)}
                         fullWidth
                     />
                     <TextField
                         label="Flight Article"
                         value={flightArticle}
-                        onChange={(e) => setFlightArticle(e.target.value)}
+                        onChange={e => setFlightArticle(e.target.value)}
                         fullWidth
                     />
                     <Button
                         variant="contained"
                         onClick={handleSubmit}
                         fullWidth
-                        disabled={!title || !priority || !estimatedShippingDate}
-                    >
+                        disabled={!title || !priority || !estimatedShippingDate}>
                         Add Card
                     </Button>
                 </Box>

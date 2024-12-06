@@ -7,10 +7,7 @@ interface SearchBarProps {
     setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SearchBarComponent: React.FC<SearchBarProps> = ({
-    searchQuery,
-    setSearchQuery,
-}) => (
+const SearchBarComponent: React.FC<SearchBarProps> = ({ searchQuery, setSearchQuery }) => (
     <TextField
         label="Search Cards"
         variant="outlined"
@@ -20,33 +17,33 @@ const SearchBarComponent: React.FC<SearchBarProps> = ({
                     <InputAdornment position="start">
                         <SearchIcon />
                     </InputAdornment>
-                ),
-            },
+                )
+            }
         }}
         sx={{
             marginLeft: 'auto',
             marginBottom: '24px',
             '& .MuiOutlinedInput-root': {
                 '& fieldset': {
-                    borderColor: '#393d48',
+                    borderColor: '#393d48'
                 },
                 '&:hover fieldset': {
-                    borderColor: '#393d48',
+                    borderColor: '#393d48'
                 },
                 '&.Mui-focused fieldset': {
-                    borderColor: '#393d48',
-                },
+                    borderColor: '#393d48'
+                }
             },
             '& .MuiInputLabel-root': {
-                color: '#393d48',
+                color: '#393d48'
             },
             '& .MuiInputBase-input': {
-                color: '#393d48',
-            },
+                color: '#393d48'
+            }
         }}
         size="small"
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={e => setSearchQuery(e.target.value)}
     />
 );
 

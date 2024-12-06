@@ -16,13 +16,9 @@ const App = () => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
-                backgroundAttachment: 'fixed',
-            }}
-        >
-            <SidebarComponent
-                selectedView={selectedView}
-                onViewChange={setSelectedView}
-            />
+                backgroundAttachment: 'fixed'
+            }}>
+            <SidebarComponent selectedView={selectedView} onViewChange={setSelectedView} />
             <Box
                 sx={{
                     marginLeft: '80px',
@@ -30,9 +26,8 @@ const App = () => {
                     padding: 3,
                     overflowY: 'auto',
                     height: '100vh',
-                    width: 'fit-content',
-                }}
-            >
+                    width: 'fit-content'
+                }}>
                 <ContentRendererComponent selectedView={selectedView} />
             </Box>
         </Box>

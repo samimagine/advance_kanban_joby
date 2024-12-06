@@ -10,34 +10,23 @@ interface CardActionsProps {
     onEdit: () => void;
 }
 
-const CardActions: React.FC<CardActionsProps> = ({
-    anchorEl,
-    onClose,
-    onDelete,
-    onEdit,
-}) => (
+const CardActions: React.FC<CardActionsProps> = ({ anchorEl, onClose, onDelete, onEdit }) => (
     <Popover
         open={Boolean(anchorEl)}
         anchorEl={anchorEl}
         onClose={onClose}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-    >
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', p: 1 }}>
             <Button
                 startIcon={<EditIcon />}
                 onClick={() => {
                     onEdit();
                     onClose();
-                }}
-            >
+                }}>
                 Edit
             </Button>
-            <Button
-                startIcon={<DeleteForeverOutlinedIcon />}
-                color="error"
-                onClick={onDelete}
-            >
+            <Button startIcon={<DeleteForeverOutlinedIcon />} color="error" onClick={onDelete}>
                 Delete
             </Button>
         </Box>

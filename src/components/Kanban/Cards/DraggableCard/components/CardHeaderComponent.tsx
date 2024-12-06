@@ -12,13 +12,7 @@ interface CardHeaderProps {
     addLastViewed: () => void;
 }
 
-const CardHeader: React.FC<CardHeaderProps> = ({
-    title,
-    currentCard,
-    onDetailsClick,
-    onMenuClick,
-    addLastViewed,
-}) => {
+const CardHeader: React.FC<CardHeaderProps> = ({ title, currentCard, onDetailsClick, onMenuClick, addLastViewed }) => {
     const textRef = useRef<HTMLDivElement>(null);
     const [isTruncated, setIsTruncated] = useState(false);
 
@@ -34,17 +28,15 @@ const CardHeader: React.FC<CardHeaderProps> = ({
             sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                alignItems: 'center',
-            }}
-        >
+                alignItems: 'center'
+            }}>
             <Box
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
                     width: '100%',
-                    justifyContent: 'space-between',
-                }}
-            >
+                    justifyContent: 'space-between'
+                }}>
                 <Tooltip title={isTruncated ? currentCard?.title || title : ''}>
                     <Typography
                         ref={textRef}
@@ -54,9 +46,8 @@ const CardHeader: React.FC<CardHeaderProps> = ({
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
-                            cursor: 'default',
-                        }}
-                    >
+                            cursor: 'default'
+                        }}>
                         {currentCard?.title || title}
                     </Typography>
                 </Tooltip>
@@ -69,37 +60,35 @@ const CardHeader: React.FC<CardHeaderProps> = ({
                             onDetailsClick();
                         }}
                         sx={{
-                            padding: 0,
-                        }}
-                    >
+                            padding: 0
+                        }}>
                         <Tooltip title="Details" placement="bottom">
                             <DescriptionIcon
                                 fontSize="inherit"
                                 sx={{
                                     color: '#626879',
                                     '&:hover': {
-                                        color: '#006ac6',
-                                    },
+                                        color: '#006ac6'
+                                    }
                                 }}
                             />
                         </Tooltip>
                     </IconButton>
                     <IconButton
                         size="small"
-                        onClick={(event) => onMenuClick(event)}
+                        onClick={event => onMenuClick(event)}
                         sx={{
                             padding: 0,
                             '&:hover': {
-                                color: '#006ac6',
-                            },
-                        }}
-                    >
+                                color: '#006ac6'
+                            }
+                        }}>
                         <MoreVertIcon
                             sx={{
                                 color: '#626879',
                                 '&:hover': {
-                                    color: '#006ac6',
-                                },
+                                    color: '#006ac6'
+                                }
                             }}
                         />
                     </IconButton>

@@ -6,10 +6,7 @@ interface ColumnWrapperProps {
     children: ReactNode;
 }
 
-const ColumnWrapperComponent: React.FC<ColumnWrapperProps> = ({
-    dropRef,
-    children,
-}) => (
+const ColumnWrapperComponent: React.FC<ColumnWrapperProps> = ({ dropRef, children }) => (
     <Paper
         ref={dropRef}
         sx={{
@@ -21,9 +18,8 @@ const ColumnWrapperComponent: React.FC<ColumnWrapperProps> = ({
             borderRadius: '15px',
             minWidth: '200px',
             height: 'fit-content',
-            paddingBottom: '24px',
-        }}
-    >
+            paddingBottom: '24px'
+        }}>
         {children}
     </Paper>
 );

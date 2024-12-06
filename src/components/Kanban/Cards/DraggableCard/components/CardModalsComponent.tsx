@@ -26,7 +26,7 @@ const CardModals: React.FC<CardModalsProps> = ({
     orderDescription,
     priority,
     estimatedShippingDate,
-    currentCard,
+    currentCard
 }) => (
     <>
         <CardEditModalComponent
@@ -37,7 +37,7 @@ const CardModals: React.FC<CardModalsProps> = ({
                 title,
                 orderDescription,
                 priority,
-                estimatedShippingDate,
+                estimatedShippingDate
             }}
         />
         <OrderDetailsModalComponent

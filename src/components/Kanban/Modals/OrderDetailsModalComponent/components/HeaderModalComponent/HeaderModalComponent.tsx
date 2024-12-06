@@ -7,10 +7,7 @@ interface HeaderModalProps {
     onClose: () => void;
 }
 
-const HeaderModalComponent: React.FC<HeaderModalProps> = ({
-    title,
-    onClose,
-}) => (
+const HeaderModalComponent: React.FC<HeaderModalProps> = ({ title, onClose }) => (
     <Box
         sx={{
             display: 'flex',
@@ -23,16 +20,14 @@ const HeaderModalComponent: React.FC<HeaderModalProps> = ({
             borderTopRightRadius: '6px',
             color: '#61677c',
             padding: '2px 10px',
-            boxSizing: 'border-box',
-        }}
-    >
+            boxSizing: 'border-box'
+        }}>
         <Typography
             sx={{
                 fontWeight: '700',
                 color: '#61677c',
-                marginLeft: '16px',
-            }}
-        >
+                marginLeft: '16px'
+            }}>
             {title}
         </Typography>
         <IconButton size="medium" onClick={onClose}>

@@ -8,11 +8,7 @@ interface DroppableColumnHeaderProps {
     onFilterClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-const ColumnHeaderComponent: React.FC<DroppableColumnHeaderProps> = ({
-    title,
-    isLastViewed,
-    onFilterClick,
-}) => (
+const ColumnHeaderComponent: React.FC<DroppableColumnHeaderProps> = ({ title, isLastViewed, onFilterClick }) => (
     <Box
         display="flex"
         justifyContent="space-between"
@@ -24,15 +20,13 @@ const ColumnHeaderComponent: React.FC<DroppableColumnHeaderProps> = ({
             padding: '0 16px',
             borderTopLeftRadius: '15px',
             borderTopRightRadius: '15px',
-            height: '30px',
-        }}
-    >
+            height: '30px'
+        }}>
         <Typography
             variant="subtitle2"
             sx={{
-                fontWeight: '700',
-            }}
-        >
+                fontWeight: '700'
+            }}>
             {title}
         </Typography>
         {!isLastViewed && (
@@ -41,12 +35,11 @@ const ColumnHeaderComponent: React.FC<DroppableColumnHeaderProps> = ({
                     size="medium"
                     onClick={onFilterClick}
                     sx={{
-                        color: 'white',
+                        color: '#a3d5ff',
                         '&:hover': {
-                            color: '#BFFFD4',
-                        },
-                    }}
-                >
+                            color: '#ffffff'
+                        }
+                    }}>
                     <FilterListIcon />
                 </IconButton>
             </Tooltip>

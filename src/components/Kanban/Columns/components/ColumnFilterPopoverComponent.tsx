@@ -18,7 +18,7 @@ const ColumnFilterPopoverComponent: React.FC<ColumnFilterPopoverProps> = ({
     priorityFilter,
     sortOrder,
     onPriorityChange,
-    onSortChange,
+    onSortChange
 }) => (
     <Popover
         open={isOpen}
@@ -26,39 +26,24 @@ const ColumnFilterPopoverComponent: React.FC<ColumnFilterPopoverProps> = ({
         onClose={onClose}
         anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'right',
+            horizontal: 'right'
         }}
         transformOrigin={{
             vertical: 'top',
-            horizontal: 'right',
-        }}
-    >
+            horizontal: 'right'
+        }}>
         <Box sx={{ p: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
             <Typography variant="subtitle1">Filters</Typography>
-            <Select
-                value={priorityFilter}
-                size="small"
-                onChange={(e) => onPriorityChange(e.target.value)}
-                displayEmpty
-            >
+            <Select value={priorityFilter} size="small" onChange={e => onPriorityChange(e.target.value)} displayEmpty>
                 <MenuItem value="">All Priorities</MenuItem>
                 <MenuItem value="Standard">Standard</MenuItem>
                 <MenuItem value="High Priority">High Priority</MenuItem>
                 <MenuItem value="Critical Path">Critical Path</MenuItem>
             </Select>
-            <Select
-                value={sortOrder}
-                size="small"
-                onChange={(e) => onSortChange(e.target.value)}
-                displayEmpty
-            >
+            <Select value={sortOrder} size="small" onChange={e => onSortChange(e.target.value)} displayEmpty>
                 <MenuItem value="">Default Order</MenuItem>
-                <MenuItem value="oldest">
-                    Sort by Date (Oldest to Newest)
-                </MenuItem>
-                <MenuItem value="newest">
-                    Sort by Date (Newest to Oldest)
-                </MenuItem>
+                <MenuItem value="oldest">Sort by Date (Oldest to Newest)</MenuItem>
+                <MenuItem value="newest">Sort by Date (Newest to Oldest)</MenuItem>
             </Select>
         </Box>
     </Popover>

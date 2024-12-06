@@ -8,7 +8,7 @@ interface StatusColorChipProps {
 }
 
 const StyledChip = styled(Chip, {
-    shouldForwardProp: (prop) => prop !== 'priority',
+    shouldForwardProp: prop => prop !== 'priority'
 })<{ priority: string }>(({ priority }) => {
     let backgroundColor;
     let textColor;
@@ -41,15 +41,12 @@ const StyledChip = styled(Chip, {
         height: '20px',
         cursor: 'pointer',
         '&:hover': {
-            opacity: 0.8,
-        },
+            opacity: 0.8
+        }
     };
 });
 
-const StatusColorChipComponent: React.FC<StatusColorChipProps> = ({
-    label,
-    onClick,
-}) => {
+const StatusColorChipComponent: React.FC<StatusColorChipProps> = ({ label, onClick }) => {
     return <StyledChip label={label} priority={label} onClick={onClick} />;
 };
 

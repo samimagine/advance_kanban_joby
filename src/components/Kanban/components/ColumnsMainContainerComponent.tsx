@@ -9,11 +9,7 @@ interface ColumnsMainContainerProps {
     onDrop: (cardId: string, fromColumnId: string, toColumnId: string) => void;
 }
 
-const ColumnsMainContainerComponent: React.FC<ColumnsMainContainerProps> = ({
-    columns,
-    filterCards,
-    onDrop,
-}) => (
+const ColumnsMainContainerComponent: React.FC<ColumnsMainContainerProps> = ({ columns, filterCards, onDrop }) => (
     <Box
         display="flex"
         gap={2}
@@ -21,10 +17,9 @@ const ColumnsMainContainerComponent: React.FC<ColumnsMainContainerProps> = ({
         sx={{
             backgroundColor: 'hsl(0deg 0% 0% / 20%)',
             width: 'fit-content',
-            borderRadius: '20px',
-        }}
-    >
-        {columns.map((column) => (
+            borderRadius: '20px'
+        }}>
+        {columns.map(column => (
             <DroppableColumnComponent
                 key={column.id}
                 id={column.id}

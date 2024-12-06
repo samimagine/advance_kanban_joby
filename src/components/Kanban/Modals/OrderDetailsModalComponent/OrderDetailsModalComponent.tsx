@@ -22,7 +22,7 @@ const OrderDetailsModalComponent: React.FC<OrderDetailsModalProps> = ({
     orderDescription,
     priority,
     estimatedShippingDate,
-    details,
+    details
 }) => {
     const [selectedTab, setSelectedTab] = useState<string>('All Categories');
 
@@ -33,43 +33,40 @@ const OrderDetailsModalComponent: React.FC<OrderDetailsModalProps> = ({
     const filteredFiles: FileProps[] =
         selectedTab === 'All Categories'
             ? details?.files || []
-            : details?.files?.filter(
-                  (file: FileProps) => file.category === selectedTab,
-              ) || [];
+            : details?.files?.filter((file: FileProps) => file.category === selectedTab) || [];
 
     return (
         <Modal open={open} onClose={onClose}>
             <Box
                 sx={{
                     position: 'absolute',
-                    top: '80px',
+                    top: '10%',
+                    left: '10%',
                     width: '80%',
                     height: '80%',
-                    marginLeft: '180px',
                     bgcolor: '#f2f4f5',
                     boxShadow: 24,
                     borderRadius: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                }}
-            >
+                    overflow: 'hidden'
+                }}>
                 <HeaderModalComponent title={title} onClose={onClose} />
                 <Box
                     sx={{
-                        padding: '16px, 32px',
-                    }}
-                >
+                        display: 'flex',
+                        flexDirection: 'column',
+                        flex: 1,
+                        padding: '16px 32px',
+                        overflow: 'hidden'
+                    }}>
                     <OrderInformationSectionComponent
                         orderDescription={orderDescription}
                         estimatedShippingDate={estimatedShippingDate}
                         priority={priority}
                         details={details}
                     />
-                    <Divider
-                        orientation="horizontal"
-                        variant="middle"
-                        flexItem
-                    />
+                    <Divider sx={{ marginY: 2 }} />
                     <FilesSectionComponent
                         selectedTab={selectedTab}
                         onTabChange={handleTabChange}

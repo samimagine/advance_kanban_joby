@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { useDrag } from 'react-dnd';
 import { Card, CardContent } from '@mui/material';
 import { useKanbanStore } from '../../../../store/kanbanStore';
-import {
-    CardActionsComponent,
-    CardBodyComponent,
-    CardHeaderComponent,
-    CardModalsComponent,
-} from './components';
+import { CardActionsComponent, CardBodyComponent, CardHeaderComponent, CardModalsComponent } from './components';
 import { DetailedCardProps } from '../../../../store/interfaces';
 
 interface DraggableCardProps {
@@ -25,34 +20,25 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
     orderDescription,
     priority,
     estimatedShippingDate,
-    columnId,
+    columnId
 }) => {
     const [{ isDragging }, dragRef] = useDrag(() => ({
         type: 'CARD',
         item: { id, columnId },
         canDrag: columnId !== 'last-viewed-column',
-        collect: (monitor) => ({
-            isDragging: monitor.isDragging(),
-        }),
+        collect: monitor => ({
+            isDragging: monitor.isDragging()
+        })
     }));
 
-    const {
-        columns,
-        deleteCard,
-        editCard,
-        addTagToCard,
-        removeTagFromCard,
-        addLastViewed,
-    } = useKanbanStore();
+    const { columns, deleteCard, editCard, addTagToCard, removeTagFromCard, addLastViewed } = useKanbanStore();
 
     const [isEditingPriority, setIsEditingPriority] = useState(false);
     const [openDetailsModal, setOpenDetailsModal] = useState(false);
     const [openEditModal, setOpenEditModal] = useState(false);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-    const currentCard = columns
-        .flatMap((col) => col.cards)
-        .find((card) => card.id === id) as DetailedCardProps | undefined;
+    const currentCard = columns.flatMap(col => col.cards).find(card => card.id === id) as DetailedCardProps | undefined;
 
     return (
         <div
@@ -65,9 +51,8 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
                 background: '#fff',
                 border: '1px solid #ddd',
                 borderRadius: '4px',
-                cursor: 'grab',
-            }}
-        >
+                cursor: 'grab'
+            }}>
             <Card sx={{ backgroundColor: '#f3f4f5' }}>
                 <CardContent>
                     <CardHeaderComponent
@@ -75,7 +60,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
                         orderDescription={orderDescription}
                         currentCard={currentCard}
                         onDetailsClick={() => setOpenDetailsModal(true)}
-                        onMenuClick={(e) => setAnchorEl(e.currentTarget)}
+                        onMenuClick={e => setAnchorEl(e.currentTarget)}
                         addLastViewed={() =>
                             addLastViewed({
                                 id,
@@ -83,7 +68,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
                                 orderDescription,
                                 priority,
                                 estimatedShippingDate,
-                                tags: currentCard?.tags || [],
+                                tags: currentCard?.tags || []
                             })
                         }
                     />
@@ -93,17 +78,15 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
                         estimatedShippingDate={estimatedShippingDate}
                         currentPriority={currentCard?.priority || priority}
                         isEditingPriority={isEditingPriority}
-                        onPriorityChange={(newPriority) => {
+                        onPriorityChange={newPriority => {
                             editCard(id, { priority: newPriority });
                             setIsEditingPriority(false);
                         }}
                         onPriorityEdit={() => setIsEditingPriority(true)}
                         onPriorityBlur={() => setIsEditingPriority(false)}
                         tags={currentCard?.tags || []}
-                        onAddTag={(tag) => addTagToCard(id, columnId, tag)}
-                        onRemoveTag={(tag) =>
-                            removeTagFromCard(id, columnId, tag)
-                        }
+                        onAddTag={tag => addTagToCard(id, columnId, tag)}
+                        onRemoveTag={tag => removeTagFromCard(id, columnId, tag)}
                     />
                 </CardContent>
             </Card>

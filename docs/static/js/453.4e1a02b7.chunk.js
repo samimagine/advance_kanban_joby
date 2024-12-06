@@ -9,7 +9,7 @@
                     getFCP: () => g,
                     getFID: () => C,
                     getLCP: () => P,
-                    getTTFB: () => D,
+                    getTTFB: () => D
                 });
             var i,
                 r,
@@ -21,24 +21,13 @@
                         value: void 0 === t ? -1 : t,
                         delta: 0,
                         entries: [],
-                        id: 'v2-'
-                            .concat(Date.now(), '-')
-                            .concat(
-                                Math.floor(8999999999999 * Math.random()) +
-                                    1e12,
-                            ),
+                        id: 'v2-'.concat(Date.now(), '-').concat(Math.floor(8999999999999 * Math.random()) + 1e12)
                     };
                 },
                 c = function (e, t) {
                     try {
-                        if (
-                            PerformanceObserver.supportedEntryTypes.includes(e)
-                        ) {
-                            if (
-                                'first-input' === e &&
-                                !('PerformanceEventTiming' in self)
-                            )
-                                return;
+                        if (PerformanceObserver.supportedEntryTypes.includes(e)) {
+                            if ('first-input' === e && !('PerformanceEventTiming' in self)) return;
                             var n = new PerformanceObserver(function (e) {
                                 return e.getEntries().map(t);
                             });
@@ -48,15 +37,13 @@
                 },
                 f = function (e, t) {
                     var n = function n(i) {
-                        ('pagehide' !== i.type &&
-                            'hidden' !== document.visibilityState) ||
+                        ('pagehide' !== i.type && 'hidden' !== document.visibilityState) ||
                             (e(i),
                             t &&
                                 (removeEventListener('visibilitychange', n, !0),
                                 removeEventListener('pagehide', n, !0)));
                     };
-                    addEventListener('visibilitychange', n, !0),
-                        addEventListener('pagehide', n, !0);
+                    addEventListener('visibilitychange', n, !0), addEventListener('pagehide', n, !0);
                 },
                 s = function (e) {
                     addEventListener(
@@ -64,7 +51,7 @@
                         function (t) {
                             t.persisted && e(t);
                         },
-                        !0,
+                        !0
                     );
                 },
                 m = function (e, t, n) {
@@ -72,8 +59,7 @@
                     return function (r) {
                         t.value >= 0 &&
                             (r || n) &&
-                            ((t.delta = t.value - (i || 0)),
-                            (t.delta || void 0 === i) && ((i = t.value), e(t)));
+                            ((t.delta = t.value - (i || 0)), (t.delta || void 0 === i) && ((i = t.value), e(t)));
                     };
                 },
                 v = -1,
@@ -99,7 +85,7 @@
                         {
                             get firstHiddenTime() {
                                 return v;
-                            },
+                            }
                         }
                     );
                 },
@@ -110,17 +96,12 @@
                         a = function (e) {
                             'first-contentful-paint' === e.name &&
                                 (f && f.disconnect(),
-                                e.startTime < i.firstHiddenTime &&
-                                    ((r.value = e.startTime),
-                                    r.entries.push(e),
-                                    n(!0)));
+                                e.startTime < i.firstHiddenTime && ((r.value = e.startTime), r.entries.push(e), n(!0)));
                         },
                         o =
                             window.performance &&
                             performance.getEntriesByName &&
-                            performance.getEntriesByName(
-                                'first-contentful-paint',
-                            )[0],
+                            performance.getEntriesByName('first-contentful-paint')[0],
                         f = o ? null : c('paint', a);
                     (o || f) &&
                         ((n = m(e, r, t)),
@@ -130,9 +111,7 @@
                                 (n = m(e, r, t)),
                                 requestAnimationFrame(function () {
                                     requestAnimationFrame(function () {
-                                        (r.value =
-                                            performance.now() - i.timeStamp),
-                                            n(!0);
+                                        (r.value = performance.now() - i.timeStamp), n(!0);
                                     });
                                 });
                         }));
@@ -156,13 +135,10 @@
                             if (!e.hadRecentInput) {
                                 var t = o[0],
                                     i = o[o.length - 1];
-                                a &&
-                                e.startTime - i.startTime < 1e3 &&
-                                e.startTime - t.startTime < 5e3
+                                a && e.startTime - i.startTime < 1e3 && e.startTime - t.startTime < 5e3
                                     ? ((a += e.value), o.push(e))
                                     : ((a = e.value), (o = [e])),
-                                    a > r.value &&
-                                        ((r.value = a), (r.entries = o), n());
+                                    a > r.value && ((r.value = a), (r.entries = o), n());
                             }
                         },
                         p = c('layout-shift', v);
@@ -172,21 +148,13 @@
                             p.takeRecords().map(v), n(!0);
                         }),
                         s(function () {
-                            (a = 0),
-                                (T = -1),
-                                (r = u('CLS', 0)),
-                                (n = m(i, r, t));
+                            (a = 0), (T = -1), (r = u('CLS', 0)), (n = m(i, r, t));
                         }));
                 },
                 E = { passive: !0, capture: !0 },
                 w = new Date(),
                 L = function (e, t) {
-                    i ||
-                        ((i = t),
-                        (r = e),
-                        (a = new Date()),
-                        F(removeEventListener),
-                        S());
+                    i || ((i = t), (r = e), (a = new Date()), F(removeEventListener), S());
                 },
                 S = function () {
                     if (r >= 0 && r < a - w) {
@@ -196,7 +164,7 @@
                             target: i.target,
                             cancelable: i.cancelable,
                             startTime: i.timeStamp,
-                            processingStart: i.timeStamp + r,
+                            processingStart: i.timeStamp + r
                         };
                         o.forEach(function (t) {
                             t(e);
@@ -206,10 +174,7 @@
                 },
                 b = function (e) {
                     if (e.cancelable) {
-                        var t =
-                            (e.timeStamp > 1e12
-                                ? new Date()
-                                : performance.now()) - e.timeStamp;
+                        var t = (e.timeStamp > 1e12 ? new Date() : performance.now()) - e.timeStamp;
                         'pointerdown' == e.type
                             ? (function (e, t) {
                                   var n = function () {
@@ -219,30 +184,16 @@
                                           r();
                                       },
                                       r = function () {
-                                          removeEventListener(
-                                              'pointerup',
-                                              n,
-                                              E,
-                                          ),
-                                              removeEventListener(
-                                                  'pointercancel',
-                                                  i,
-                                                  E,
-                                              );
+                                          removeEventListener('pointerup', n, E),
+                                              removeEventListener('pointercancel', i, E);
                                       };
-                                  addEventListener('pointerup', n, E),
-                                      addEventListener('pointercancel', i, E);
+                                  addEventListener('pointerup', n, E), addEventListener('pointercancel', i, E);
                               })(t, e)
                             : L(t, e);
                     }
                 },
                 F = function (e) {
-                    [
-                        'mousedown',
-                        'keydown',
-                        'touchstart',
-                        'pointerdown',
-                    ].forEach(function (t) {
+                    ['mousedown', 'keydown', 'touchstart', 'pointerdown'].forEach(function (t) {
                         return e(t, b, E);
                     });
                 },
@@ -252,9 +203,7 @@
                         v = u('FID'),
                         p = function (e) {
                             e.startTime < a.firstHiddenTime &&
-                                ((v.value = e.processingStart - e.startTime),
-                                v.entries.push(e),
-                                n(!0));
+                                ((v.value = e.processingStart - e.startTime), v.entries.push(e), n(!0));
                         },
                         d = c('first-input', p);
                     (n = m(e, v, t)),
@@ -283,18 +232,13 @@
                         r = u('LCP'),
                         a = function (e) {
                             var t = e.startTime;
-                            t < i.firstHiddenTime &&
-                                ((r.value = t), r.entries.push(e), n());
+                            t < i.firstHiddenTime && ((r.value = t), r.entries.push(e), n());
                         },
                         o = c('largest-contentful-paint', a);
                     if (o) {
                         n = m(e, r, t);
                         var v = function () {
-                            k[r.id] ||
-                                (o.takeRecords().map(a),
-                                o.disconnect(),
-                                (k[r.id] = !0),
-                                n(!0));
+                            k[r.id] || (o.takeRecords().map(a), o.disconnect(), (k[r.id] = !0), n(!0));
                         };
                         ['keydown', 'click'].forEach(function (e) {
                             addEventListener(e, v, { once: !0, capture: !0 });
@@ -305,11 +249,7 @@
                                     (n = m(e, r, t)),
                                     requestAnimationFrame(function () {
                                         requestAnimationFrame(function () {
-                                            (r.value =
-                                                performance.now() -
-                                                i.timeStamp),
-                                                (k[r.id] = !0),
-                                                n(!0);
+                                            (r.value = performance.now() - i.timeStamp), (k[r.id] = !0), n(!0);
                                         });
                                     });
                             });
@@ -326,21 +266,15 @@
                                     var e = performance.timing,
                                         t = {
                                             entryType: 'navigation',
-                                            startTime: 0,
+                                            startTime: 0
                                         };
                                     for (var n in e)
                                         'navigationStart' !== n &&
                                             'toJSON' !== n &&
-                                            (t[n] = Math.max(
-                                                e[n] - e.navigationStart,
-                                                0,
-                                            ));
+                                            (t[n] = Math.max(e[n] - e.navigationStart, 0));
                                     return t;
                                 })();
-                            if (
-                                ((n.value = n.delta = t.responseStart),
-                                n.value < 0 || n.value > performance.now())
-                            )
+                            if (((n.value = n.delta = t.responseStart), n.value < 0 || n.value > performance.now()))
                                 return;
                             (n.entries = [t]), e(n);
                         } catch (e) {}
@@ -351,7 +285,7 @@
                                   return setTimeout(t, 0);
                               });
                 };
-        },
-    },
+        }
+    }
 ]);
 //# sourceMappingURL=453.4e1a02b7.chunk.js.map

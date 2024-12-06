@@ -9,7 +9,7 @@ const icons: { [key: string]: JSX.Element } = {
     HomeIcon: <HomeIcon fontSize="large" />,
     PersonIcon: <PersonIcon fontSize="large" />,
     SettingsIcon: <SettingsIcon fontSize="large" />,
-    NoteAltIcon: <NoteAltIcon fontSize="large" />,
+    NoteAltIcon: <NoteAltIcon fontSize="large" />
 };
 
 interface SidebarMenuItemProps {
@@ -19,12 +19,7 @@ interface SidebarMenuItemProps {
     onClick: () => void;
 }
 
-const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
-    label,
-    icon,
-    selected,
-    onClick,
-}) => {
+const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ label, icon, selected, onClick }) => {
     return (
         <Tooltip title={label} placement="right">
             <ListItem
@@ -34,12 +29,9 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
                     justifyContent: 'center',
                     backgroundColor: selected ? '#e0e0e0' : 'transparent',
                     '&:hover': { backgroundColor: '#e0e0e0' },
-                    cursor: 'pointer',
-                }}
-            >
-                <ListItemIcon sx={{ minWidth: 'auto' }}>
-                    {icons[icon]}
-                </ListItemIcon>
+                    cursor: 'pointer'
+                }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>{icons[icon]}</ListItemIcon>
             </ListItem>
         </Tooltip>
     );

@@ -15,19 +15,10 @@ const AddCardButtonComponent: React.FC<AddCardButtonProps> = ({ columnId }) => {
 
     return (
         <>
-            <Button
-                variant="outlined"
-                sx={{ margin: '8px 16px' }}
-                endIcon={<AddIcon />}
-                onClick={handleAddCardOpen}
-            >
+            <Button variant="outlined" sx={{ margin: '8px 16px' }} endIcon={<AddIcon />} onClick={handleAddCardOpen}>
                 Add new card
             </Button>
-            <CardAddModalComponent
-                open={isAddCardOpen}
-                onClose={handleAddCardClose}
-                columnId={columnId}
-            />
+            <CardAddModalComponent open={isAddCardOpen} onClose={handleAddCardClose} columnId={columnId} />
         </>
     );
 };

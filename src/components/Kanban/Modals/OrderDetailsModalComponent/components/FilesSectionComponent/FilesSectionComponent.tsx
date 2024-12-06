@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
 import { FileProps } from '../../../../../../store/interfaces';
 import SelectDepartmentComponent from './SelectDepartmentComponent/SelectDepartmentComponent';
 import FilesComponent from './FilesComponent/FilesComponent';
@@ -10,34 +11,34 @@ interface FilesSectionProps {
     filteredFiles: FileProps[];
 }
 
-const FilesSectionComponent: React.FC<FilesSectionProps> = ({
-    selectedTab,
-    onTabChange,
-    filteredFiles,
-}) => (
+const FilesSectionComponent: React.FC<FilesSectionProps> = ({ selectedTab, onTabChange, filteredFiles }) => (
     <Box
-        mt={2}
         sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            flex: 1,
             overflow: 'hidden',
-            marginLeft: '32px',
-            flex: '1',
-        }}
-    >
-        <Typography variant="h6" sx={{ margin: '16px 0 0 46px' }}>
-            Files:
-        </Typography>
+            marginTop: 2
+        }}>
         <Box
-            display="flex"
-            flexDirection="row"
             sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+                marginLeft: '80px'
+            }}>
+            <InsertDriveFileOutlinedIcon fontSize="large" sx={{ color: '#626879' }} />
+            <Typography variant="h6">Files:</Typography>
+        </Box>
+
+        <Box
+            sx={{
+                display: 'flex',
                 flex: 1,
-                overflow: 'hidden',
-            }}
-        >
-            <SelectDepartmentComponent
-                selectedTab={selectedTab}
-                onTabChange={onTabChange}
-            />
+                overflow: 'hidden'
+            }}>
+            <SelectDepartmentComponent selectedTab={selectedTab} onTabChange={onTabChange} />
             <FilesComponent files={filteredFiles} />
         </Box>
     </Box>

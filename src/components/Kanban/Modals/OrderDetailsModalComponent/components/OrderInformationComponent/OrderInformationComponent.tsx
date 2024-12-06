@@ -11,17 +11,19 @@ interface OrderInformationSectionProps {
     details?: DetailedCardProps;
 }
 
-const OrderInformationSectionComponent: React.FC<
-    OrderInformationSectionProps
-> = ({ orderDescription, estimatedShippingDate, priority, details }) => (
+const OrderInformationSectionComponent: React.FC<OrderInformationSectionProps> = ({
+    orderDescription,
+    estimatedShippingDate,
+    priority,
+    details
+}) => (
     <Box display="flex" justifyContent="space-between" sx={{ flex: 1 }}>
         <Box
             flex={1}
             sx={{
                 margin: '8px 32px 0 32px',
-                padding: '0 32px 16px 32px',
-            }}
-        >
+                padding: '0 32px 16px 32px'
+            }}>
             <OrderDetailsComponent
                 orderDescription={orderDescription}
                 estimatedShippingDate={estimatedShippingDate}
@@ -35,9 +37,8 @@ const OrderInformationSectionComponent: React.FC<
             pr={2}
             sx={{
                 margin: '8px 50px 0 50px',
-                width: '300px',
-            }}
-        >
+                width: '300px'
+            }}>
             <ProcessDetailsComponent details={details} />
         </Box>
     </Box>

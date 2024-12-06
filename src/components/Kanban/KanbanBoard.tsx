@@ -13,36 +13,30 @@ const KanbanBoard: React.FC = () => {
         loadCards();
     }, [loadCards]);
 
-    const handleDrop = (
-        cardId: string,
-        fromColumnId: string,
-        toColumnId: string,
-    ) => {
+    const handleDrop = (cardId: string, fromColumnId: string, toColumnId: string) => {
         if (fromColumnId === toColumnId) {
             console.warn('Card dropped in the same column, no changes made.');
             return;
         }
 
         const { columns, moveCard } = useKanbanStore.getState();
-        const sourceColumn = columns.find((col) => col.id === fromColumnId);
-        const targetColumn = columns.find((col) => col.id === toColumnId);
+        const sourceColumn = columns.find(col => col.id === fromColumnId);
+        const targetColumn = columns.find(col => col.id === toColumnId);
 
         if (!sourceColumn || !targetColumn) {
             console.error('Source or Target column not found:', {
                 fromColumnId,
-                toColumnId,
+                toColumnId
             });
             return;
         }
 
-        const sourceIndex = sourceColumn.cards.findIndex(
-            (card) => card.id === cardId,
-        );
+        const sourceIndex = sourceColumn.cards.findIndex(card => card.id === cardId);
 
         if (sourceIndex === -1) {
             console.error('Card not found in source column:', {
                 cardId,
-                sourceColumn,
+                sourceColumn
             });
             return;
         }
@@ -52,28 +46,18 @@ const KanbanBoard: React.FC = () => {
     };
 
     const filterCards = (cards: DetailedCardProps[]) => {
-        return cards.filter((card) => {
+        return cards.filter(card => {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { priority, ...cardWithoutPriority } = card;
 
-            return Object.values(cardWithoutPriority)
-                .join(' ')
-                .toLowerCase()
-                .includes(searchQuery.toLowerCase());
+            return Object.values(cardWithoutPriority).join(' ').toLowerCase().includes(searchQuery.toLowerCase());
         });
     };
 
     return (
         <Box>
-            <SearchBarComponent
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-            />
-            <ColumnsMainContainerComponent
-                columns={columns}
-                filterCards={filterCards}
-                onDrop={handleDrop}
-            />
+            <SearchBarComponent searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            <ColumnsMainContainerComponent columns={columns} filterCards={filterCards} onDrop={handleDrop} />
         </Box>
     );
 };
