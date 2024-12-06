@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import { useDrag } from 'react-dnd';
-import {
-  Card,
-  CardContent,
-  Box,
-  Typography,
-  MenuItem,
-  Select,
-  Divider,
-} from '@mui/material';
-import StatusColorChipComponent from '../../Common/StatusColorChipComponent/StatusColorChipComponent';
+import { Card, CardContent } from '@mui/material';
 import { useKanbanStore } from '../../../../store/kanbanStore';
 import CardHeaderComponent from './components/CardHeaderComponent';
-import CardTagsComponent from './components/CardTagsComponent';
+import CardBodyComponent from './components/CardBodyComponent';
 import CardActionsComponent from './components/CardActionsComponent';
 import CardModalsComponent from './components/CardModalsComponent';
+import { DetailedCardProps } from '../../../../store/interfaces';
 
 interface DraggableCardProps {
   id: string;
@@ -47,8 +39,8 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
     deleteCard,
     editCard,
     addTagToCard,
-    addLastViewed,
     removeTagFromCard,
+    addLastViewed,
   } = useKanbanStore();
 
   const [isEditingPriority, setIsEditingPriority] = useState(false);
@@ -58,7 +50,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
 
   const currentCard = columns
     .flatMap((col) => col.cards)
-    .find((card) => card.id === id);
+    .find((card) => card.id === id) as DetailedCardProps | undefined;
 
   return (
     <div
@@ -93,52 +85,24 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
               })
             }
           />
-          <Typography variant="body2">{orderDescription}</Typography>
-          <Divider sx={{ my: '10px' }} />
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 2,
+          <CardBodyComponent
+            orderDescription={orderDescription}
+            priority={priority}
+            estimatedShippingDate={estimatedShippingDate}
+            currentPriority={currentCard?.priority || priority}
+            isEditingPriority={isEditingPriority}
+            onPriorityChange={(newPriority) => {
+              editCard(id, { priority: newPriority });
+              setIsEditingPriority(false);
             }}
-          >
-            <Typography variant="body2">Priority:</Typography>
-            {isEditingPriority ? (
-              <Select
-                defaultValue={currentCard?.priority || priority}
-                size="small"
-                onChange={(e) => {
-                  editCard(id, { priority: e.target.value });
-                  setIsEditingPriority(false);
-                }}
-                onBlur={() => setIsEditingPriority(false)}
-              >
-                <MenuItem value="Standard">Standard</MenuItem>
-                <MenuItem value="High Priority">High Priority</MenuItem>
-                <MenuItem value="Critical Path">Critical Path</MenuItem>
-              </Select>
-            ) : (
-              <StatusColorChipComponent
-                label={currentCard?.priority || priority}
-                onClick={() => setIsEditingPriority(true)}
-              />
-            )}
-          </Box>
-
-          <Typography variant="body2">
-            Due Date:{' '}
-            {currentCard?.estimatedShippingDate || estimatedShippingDate}
-          </Typography>
-
-          <CardTagsComponent
+            onPriorityEdit={() => setIsEditingPriority(true)}
+            onPriorityBlur={() => setIsEditingPriority(false)}
             tags={currentCard?.tags || []}
-            onAddTag={(tag: string) => addTagToCard(id, columnId, tag)}
-            onRemoveTag={(tag: string) => removeTagFromCard(id, columnId, tag)}
+            onAddTag={(tag) => addTagToCard(id, columnId, tag)}
+            onRemoveTag={(tag) => removeTagFromCard(id, columnId, tag)}
           />
         </CardContent>
       </Card>
-
       <CardActionsComponent
         anchorEl={anchorEl}
         onClose={() => setAnchorEl(null)}
@@ -148,7 +112,6 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
         }}
         onEdit={() => setOpenEditModal(true)}
       />
-
       <CardModalsComponent
         openDetailsModal={openDetailsModal}
         setOpenDetailsModal={setOpenDetailsModal}
