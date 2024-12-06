@@ -22,7 +22,6 @@ const App = () => {
             <SidebarComponent selectedView={selectedView} onViewChange={setSelectedView} />
             <Box
                 sx={{
-                    marginLeft: '80px',
                     flexGrow: 1,
                     padding: 3,
                     overflowY: 'auto',

@@ -21,8 +21,8 @@ const SearchBarComponent: React.FC<SearchBarProps> = ({ searchQuery, setSearchQu
             }
         }}
         sx={{
-            marginLeft: 'auto',
             marginBottom: '24px',
+            marginTop: '16px',
             '& .MuiOutlinedInput-root': {
                 '& fieldset': {
                     borderColor: '#393d48'

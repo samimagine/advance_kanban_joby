@@ -55,7 +55,14 @@ const KanbanBoard: React.FC = () => {
     };
 
     return (
-        <Box>
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100vw'
+            }}>
             <SearchBarComponent searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
             <ColumnsMainContainerComponent columns={columns} filterCards={filterCards} onDrop={handleDrop} />
         </Box>
