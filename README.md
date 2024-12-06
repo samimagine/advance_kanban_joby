@@ -13,6 +13,7 @@
     - [Kanban Board Overview](#kanban-board-overview)
     - [Order Details Modal](#order-details-modal)
   - [🛠️ Technical Stack](#️-technical-stack)
+  - [📐 Data Persistence and State Management](#-data-persistence-and-state-management)
   - [📐 Object Structure and Data Source](#-object-structure-and-data-source)
     - [Note:](#note)
   - [🚀 Installation and Setup](#-installation-and-setup)
@@ -98,6 +99,18 @@ Built with **React**, **TypeScript**, and **Material-UI**, it offers a modern, r
 - **Code Formatting**: Prettier 🖋️
 - **Linting**: ESLint 🚨
 - **Testing**: Jest and React Testing Library 🧪
+
+---
+
+## 📐 Data Persistence and State Management
+
+The Order Overview Application uses **localStorage** to manage and persist data on the client side, ensuring:
+
+- **Persistent State**: User edits, deletions, and additions remain intact after browser refreshes or restarts.
+- **High Performance**: Eliminates unnecessary network calls for faster updates.
+- **Scalability**: Modular implementation allows easy migration to advanced solutions like IndexedDB or backend APIs.
+
+Data is synchronized between **localStorage** and the state managed by **Zustand**, enabling real-time updates while maintaining a lightweight and efficient architecture. Changes to the Kanban board are instantly saved, ensuring a seamless user experience.
 
 ---
 
