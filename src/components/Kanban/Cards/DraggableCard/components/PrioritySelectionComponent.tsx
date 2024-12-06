@@ -6,6 +6,7 @@ interface PrioritySelectionProps {
     isEditingPriority: boolean;
     priority: string;
     currentPriority?: string;
+    isLastViewed: boolean;
     onEdit: () => void;
     onChange: (value: string) => void;
     onBlur: () => void;
@@ -15,19 +16,19 @@ const PrioritySelectionComponent: React.FC<PrioritySelectionProps> = ({
     isEditingPriority,
     priority,
     currentPriority,
+    isLastViewed,
     onEdit,
     onChange,
     onBlur
 }) => {
-    return isEditingPriority ? (
+    return isEditingPriority && !isLastViewed ? (
         <Select
-            defaultValue={currentPriority || priority}
+            value={currentPriority || priority}
             size="small"
             onChange={e => onChange(e.target.value)}
             onBlur={onBlur}
             sx={{
                 width: '120px',
-                height: '025px',
                 fontSize: '12px',
                 '& .MuiSelect-select': {
                     padding: '4px'
@@ -38,7 +39,7 @@ const PrioritySelectionComponent: React.FC<PrioritySelectionProps> = ({
             <MenuItem value="Critical Path">Critical Path</MenuItem>
         </Select>
     ) : (
-        <StatusColorChipComponent label={currentPriority || priority} onClick={onEdit} />
+        <StatusColorChipComponent label={currentPriority || priority} onClick={onEdit} isLastViewed={isLastViewed} />
     );
 };
 

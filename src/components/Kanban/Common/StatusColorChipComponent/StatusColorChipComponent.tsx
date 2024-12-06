@@ -4,12 +4,13 @@ import { styled } from '@mui/material/styles';
 
 interface StatusColorChipProps {
     label: string;
+    isLastViewed: boolean;
     onClick?: () => void;
 }
 
 const StyledChip = styled(Chip, {
-    shouldForwardProp: prop => prop !== 'priority'
-})<{ priority: string }>(({ priority }) => {
+    shouldForwardProp: prop => prop !== 'priority' && prop !== 'isLastViewed'
+})<{ priority: string; isLastViewed: boolean }>(({ priority, isLastViewed }) => {
     let backgroundColor;
     let textColor;
 
@@ -39,15 +40,22 @@ const StyledChip = styled(Chip, {
         borderRadius: '16px',
         textTransform: 'capitalize',
         height: '20px',
-        cursor: 'pointer',
+        cursor: isLastViewed ? 'default' : 'pointer',
         '&:hover': {
-            opacity: 0.8
+            opacity: isLastViewed ? 1 : 0.8
         }
     };
 });
 
-const StatusColorChipComponent: React.FC<StatusColorChipProps> = ({ label, onClick }) => {
-    return <StyledChip label={label} priority={label} onClick={onClick} />;
+const StatusColorChipComponent: React.FC<StatusColorChipProps> = ({ label, isLastViewed, onClick }) => {
+    return (
+        <StyledChip
+            label={label}
+            priority={label}
+            isLastViewed={isLastViewed}
+            onClick={isLastViewed ? undefined : onClick}
+        />
+    );
 };
 
 export default StatusColorChipComponent;

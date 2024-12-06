@@ -42,7 +42,7 @@ const SelectDepartmentComponent: React.FC<SelectDepartmentComponentProps> = ({ s
                             borderRadius: '16px',
                             padding: '4px 10px',
                             minHeight: '30px',
-                            color: 'text.primary',
+                            color: '#626879',
                             backgroundColor: 'white',
                             transition: 'all 0.3s ease'
                         },

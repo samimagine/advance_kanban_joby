@@ -7,6 +7,7 @@ interface CardBodyProps {
     priority: string;
     estimatedShippingDate: string;
     currentPriority: string;
+    isLastViewed: boolean;
     isEditingPriority: boolean;
     onPriorityChange: (newPriority: string) => void;
     onPriorityEdit: () => void;
@@ -20,6 +21,7 @@ const CardBodyComponent: React.FC<CardBodyProps> = ({
     orderDescription,
     estimatedShippingDate,
     currentPriority,
+    isLastViewed,
     isEditingPriority,
     onPriorityChange,
     onPriorityEdit,
@@ -44,6 +46,7 @@ const CardBodyComponent: React.FC<CardBodyProps> = ({
                 isEditingPriority={isEditingPriority}
                 priority={priority}
                 currentPriority={currentPriority}
+                isLastViewed={isLastViewed}
                 onEdit={onPriorityEdit}
                 onChange={onPriorityChange}
                 onBlur={onPriorityBlur}

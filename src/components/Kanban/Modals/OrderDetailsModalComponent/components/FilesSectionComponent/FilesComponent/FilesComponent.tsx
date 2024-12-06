@@ -16,12 +16,13 @@ const FilesComponent: React.FC<FilesComponentProps> = ({ files }) => {
                 padding: '16px',
                 backgroundColor: 'white',
                 borderRadius: '10px',
-                marginRight: '32px'
+                marginRight: '32px',
+                marginBottom: '16px'
             }}>
             {files.length ? (
                 files.map((file: FileProps) => <ItemFileComponent key={file.id} file={file} />)
             ) : (
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="#626879">
                     No files available in this category.
                 </Typography>
             )}

@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { useDrag } from 'react-dnd';
 import { Card, CardContent } from '@mui/material';
 import { useKanbanStore } from '../../../../store/kanbanStore';
-import { CardActionsComponent, CardBodyComponent, CardHeaderComponent, CardModalsComponent } from './components';
+import {
+    CardActionsComponent,
+    CardBodyComponent,
+    CardHeaderComponent,
+    CardModalsComponent,
+    DraggableCardWrapperComponent
+} from './components';
 import { DetailedCardProps } from '../../../../store/interfaces';
 
 interface DraggableCardProps {
@@ -12,6 +17,7 @@ interface DraggableCardProps {
     priority: string;
     estimatedShippingDate: string;
     columnId: string;
+    isLastViewed: boolean;
 }
 
 const DraggableCard: React.FC<DraggableCardProps> = ({
@@ -20,17 +26,9 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
     orderDescription,
     priority,
     estimatedShippingDate,
-    columnId
+    columnId,
+    isLastViewed
 }) => {
-    const [{ isDragging }, dragRef] = useDrag(() => ({
-        type: 'CARD',
-        item: { id, columnId },
-        canDrag: columnId !== 'last-viewed-column',
-        collect: monitor => ({
-            isDragging: monitor.isDragging()
-        })
-    }));
-
     const { columns, deleteCard, editCard, addTagToCard, removeTagFromCard, addLastViewed } = useKanbanStore();
 
     const [isEditingPriority, setIsEditingPriority] = useState(false);
@@ -41,18 +39,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
     const currentCard = columns.flatMap(col => col.cards).find(card => card.id === id) as DetailedCardProps | undefined;
 
     return (
-        <div
-            ref={dragRef}
-            id={`modal-card-${id}`}
-            style={{
-                opacity: isDragging ? 0.5 : 1,
-                marginBottom: '8px',
-                padding: '16px',
-                background: '#fff',
-                border: '1px solid #ddd',
-                borderRadius: '4px',
-                cursor: 'grab'
-            }}>
+        <DraggableCardWrapperComponent id={id} columnId={columnId} isLastViewed={isLastViewed}>
             <Card sx={{ backgroundColor: '#f3f4f5' }}>
                 <CardContent>
                     <CardHeaderComponent
@@ -77,6 +64,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
                         priority={priority}
                         estimatedShippingDate={estimatedShippingDate}
                         currentPriority={currentCard?.priority || priority}
+                        isLastViewed={isLastViewed}
                         isEditingPriority={isEditingPriority}
                         onPriorityChange={newPriority => {
                             editCard(id, { priority: newPriority });
@@ -111,7 +99,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
                 estimatedShippingDate={estimatedShippingDate}
                 currentCard={currentCard}
             />
-        </div>
+        </DraggableCardWrapperComponent>
     );
 };
 

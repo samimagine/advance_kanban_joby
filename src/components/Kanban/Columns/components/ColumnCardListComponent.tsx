@@ -46,7 +46,10 @@ const ColumnCardList: React.FC<ColumnCardListProps> = ({ cards, isLastViewed, co
                                                 gap: 2
                                             }}>
                                             <Typography variant="body2">Priority:</Typography>
-                                            <StatusColorChipComponent label={card.priority} />
+                                            <StatusColorChipComponent
+                                                label={card.priority}
+                                                isLastViewed={isLastViewed}
+                                            />
                                         </Box>
                                     )}
                                     <Typography variant="body2">Due Date: {card.estimatedShippingDate}</Typography>
@@ -73,6 +76,7 @@ const ColumnCardList: React.FC<ColumnCardListProps> = ({ cards, isLastViewed, co
                     priority={card.priority}
                     estimatedShippingDate={card.estimatedShippingDate}
                     columnId={columnId}
+                    isLastViewed={isLastViewed}
                 />
             )
         )}

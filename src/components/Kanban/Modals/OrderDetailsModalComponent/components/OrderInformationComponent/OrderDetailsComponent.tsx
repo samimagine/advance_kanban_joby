@@ -35,7 +35,7 @@ const OrderDetailsComponent: React.FC<OrderDetailsProps> = ({
         { label: 'Estimated Shipping Date', value: estimatedShippingDate },
         {
             label: 'Priority',
-            value: <StatusColorChipComponent label={priority} />
+            value: <StatusColorChipComponent label={priority} isLastViewed={false} />
         }
     ];
 
