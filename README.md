@@ -81,10 +81,10 @@ Built with **React**, **TypeScript**, and **Material-UI**, it offers a modern, r
 ## Preview
 
 ### Kanban Board Overview
-![Kanban Board Overview](https://imgur.com/EUa1Uus)
+![Kanban Board Overview](./assets/screenshots/OrderOverviewKanbanBoard.png)
 
 ### Order Details Modal
-![Order Details Modal](https://imgur.com/nVF68qy)
+![Order Details Modal](./assets/screenshots/OrderOverviewDetailModal.png)
 
 
 ---
