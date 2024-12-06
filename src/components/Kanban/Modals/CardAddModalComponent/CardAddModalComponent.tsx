@@ -19,7 +19,7 @@ interface AddCardModalProps {
     columnId: string;
 }
 
-const AddCardModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) => {
+const CardAddModalComponent: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) => {
     const addCard = useKanbanStore(state => state.addCard);
 
     const [form, setForm] = useState({
@@ -108,10 +108,10 @@ const AddCardModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
                         fullWidth
                         required
                     />
-                    <Select value={form.priority} onChange={handleSelectChange('priority')} fullWidth required>
-                        <MenuItem value="Standard">Standard</MenuItem>
-                        <MenuItem value="High Priority">High Priority</MenuItem>
-                        <MenuItem value="Critical Path">Critical Path</MenuItem>
+                    <Select value={form.priority} onChange={handleSelectChange('priority')} data-testid="priority-select" fullWidth required>
+                        <MenuItem value="Standard" role='option'>Standard</MenuItem>
+                        <MenuItem value="High Priority" role='option' data-testid="priority-option-high">High Priority</MenuItem>
+                        <MenuItem value="Critical Path" role='option'>Critical Path</MenuItem>
                     </Select>
                     <TextField
                         label="Estimated Shipping Date"
@@ -144,7 +144,8 @@ const AddCardModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
                         type="submit"
                         variant="contained"
                         fullWidth
-                        disabled={!form.title || !form.priority || !form.estimatedShippingDate}>
+                        disabled={!form.title || !form.priority || !form.estimatedShippingDate}
+                        data-testid="add-card-button">
                         Add Card
                     </Button>
                 </Box>
@@ -153,4 +154,4 @@ const AddCardModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
     );
 };
 
-export default AddCardModal;
+export default CardAddModalComponent;

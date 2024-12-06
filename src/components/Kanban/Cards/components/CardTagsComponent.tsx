@@ -24,7 +24,7 @@ const CardTagsComponent: React.FC<CardTagsComponentProps> = ({ tags, onAddTag, o
     return (
         <Box sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
             {tags.map((tag, index) => (
-                <Chip size="small" key={index} label={tag} onDelete={() => onRemoveTag(tag)} />
+                <Chip size="small" key={index} label={tag} onDelete={() => onRemoveTag(tag)} data-testid={`delete-tag-${index}`} />
             ))}
             {addingTag ? (
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -49,7 +49,8 @@ const CardTagsComponent: React.FC<CardTagsComponentProps> = ({ tags, onAddTag, o
                             '&:hover': {
                                 color: '#006ac6'
                             }
-                        }}>
+                        }}
+                        data-testid="add-tag-button">
                         <AddCircleIcon />
                     </IconButton>
                 </Box>

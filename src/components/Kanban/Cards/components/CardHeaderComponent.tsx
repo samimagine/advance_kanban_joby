@@ -76,6 +76,7 @@ const CardHeader: React.FC<CardHeaderProps> = ({ title, currentCard, onDetailsCl
                     </IconButton>
                     <IconButton
                         size="small"
+                        aria-label='more options'
                         onClick={event => onMenuClick(event)}
                         sx={{
                             padding: 0,

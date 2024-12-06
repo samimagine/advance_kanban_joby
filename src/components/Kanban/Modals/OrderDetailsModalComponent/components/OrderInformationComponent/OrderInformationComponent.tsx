@@ -31,7 +31,7 @@ const OrderInformationSectionComponent: React.FC<OrderInformationSectionProps> =
                 details={details}
             />
         </Box>
-        <Divider orientation="vertical" variant="middle" flexItem />
+        <Divider orientation="vertical" variant="middle" flexItem role='separator'/>
         <Box
             flex={1}
             pr={2}

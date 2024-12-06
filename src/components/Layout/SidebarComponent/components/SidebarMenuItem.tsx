@@ -21,8 +21,9 @@ interface SidebarMenuItemProps {
 
 const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ label, icon, selected, onClick }) => {
     return (
-        <Tooltip title={label} placement="right">
+        <Tooltip title={label} placement="right" aria-label={label}>
             <ListItem
+            role="button"
                 onClick={onClick}
                 sx={{
                     display: 'flex',

@@ -54,6 +54,7 @@ const StatusColorChipComponent: React.FC<StatusColorChipProps> = ({ label, isLas
             priority={label}
             isLastViewed={isLastViewed}
             onClick={isLastViewed ? undefined : onClick}
+            data-testid="status-chip"
         />
     );
 };

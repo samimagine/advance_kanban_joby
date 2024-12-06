@@ -1,0 +1,41 @@
+{
+    "root": true,
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended"
+    ],
+    "overrides": [
+        {
+            "files": ["jest.config.js"],
+            "env": {
+                "node": true
+            }
+        }
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "react"],
+    "rules": {
+      "react/react-in-jsx-scope": "off", // Next.js or modern React projects don't need React in scope
+      "react/prop-types": "off", // Disable prop-types for TypeScript
+      "react/display-name": "off"
+
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
+  }
