@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { mockCards } from './mock/mockData';
 import { DetailedCardProps, Column } from './interfaces';
+import { mockCards } from './mock/mockData';
 
 interface KanbanState {
     columns: Column[];

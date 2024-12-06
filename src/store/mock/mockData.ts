@@ -34,7 +34,7 @@ export const mockCards = [
                 category: 'Quality',
                 name: 'Controller Test Plan',
                 date: '15/Mar/2024',
-                description: "Detailed testing plan for the flight controller's quality validation.",
+                description: `"Detailed testing plan for the flight controller's quality validation."`,
                 type: 'DOC',
                 thumbnail: 'https://placehold.co/200x200?text=DOC'
             },
@@ -43,7 +43,7 @@ export const mockCards = [
                 category: 'Programming',
                 name: 'Controller Firmware Source Code',
                 date: '22/Mar/2024',
-                description: "Source code for the flight controller's embedded systems.",
+                description: `"Source code for the flight controller's embedded systems."`,
                 type: 'PDF',
                 thumbnail: 'https://placehold.co/200x200?text=PDF'
             },
@@ -143,7 +143,7 @@ export const mockCards = [
                 category: 'Process Engineering',
                 name: 'Algorithm Workflow',
                 date: '18/Jan/2024',
-                description: "Detailed workflow for the navigation algorithm's architecture.",
+                description: `"Detailed workflow for the navigation algorithm's architecture."`,
                 type: 'PDF',
                 thumbnail: 'https://placehold.co/200x200?text=PDF'
             },

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
+
 import bgImage from './assets/images/joby_background.jpg';
 import SidebarComponent from './components/Layout/SidebarComponent/SidebarComponent';
 import ContentRendererComponent from './components/Layout/ContentRendererComponent/ContentRendererComponent';
