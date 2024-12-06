@@ -86,6 +86,7 @@ Built with **React**, **TypeScript**, and **Material-UI**, it offers a modern, r
 ### Order Details Modal
 ![Order Details Modal](https://imgur.com/nVF68qy)
 
+
 ---
 
 ## 🛠️ Technical Stack
@@ -108,6 +109,7 @@ For this implementation, the data is not served through a remote API (e.g., Grap
 
 The application reads objects that are structured as follows:
 
+```
 {
   id: string;
   title: string;
@@ -141,6 +143,7 @@ The application reads objects that are structured as follows:
   tags: string[];
   isDeleted: boolean;
 }
+```
 
 ### Note:
 - The data was generated using AI-based models for simulation purposes.
@@ -152,25 +155,25 @@ The application reads objects that are structured as follows:
 
 ### Prerequisites
 Ensure the following are installed:
-- **Node.js**: `>=16.x` ⬇️
-- **npm**: `>=7.x` ⬇️
+- **Node.js**: `>=16.x` 
+- **npm**: `>=7.x` 
 
 ### Steps
 
 1. Clone the repository:
-   git clone https://github.com/samimagine/joby_aviation.git   
+   ` git clone https://github.com/samimagine/joby_aviation.git `
 
 2. Install dependencies:
-   npm install
+  ` npm install `
 
 3. Start the development server:
-   npm start
+ ` npm start `
 
 4. Run tests:
-   npm test
+  ` npm test `
 
 5. Build for production:
-   npm run build
+  ` npm run build `
 
 ---
 
@@ -181,21 +184,14 @@ This application is deployed using **GitHub Pages** to make the static build acc
 - **Deployment URL**: [https://samimagine.github.io/joby_aviation/](https://samimagine.github.io/joby_aviation/)
 - **Static Build Location**: The static files are located in the `docs` folder of the repository, which is used as the source for the GitHub Pages deployment.
 - **Deployment Tool**: Used `gh-pages` for an automated deployment process.
-
-To deploy changes:
-1. Run the build command: 
-   npm run build
-2. Copy the build output to the `docs` folder:
-   cp -R build/ docs/
-3. Commit and push the changes to the repository:
-   git add . && git commit -m "Update deployment" && git push
    
 ---
 
 ## 🔮 Future Enhancements (Additional)
 
 - **🚀 Backend Integration with GraphQL**:
-  - Have a backend service deployed online, utilizing **GraphQL** with **Apollo Server**, to enable efficient and seamless data fetching. This will involve creating a schema to represent the Kanban data structure and defining resolvers to handle specific queries and mutations. By integrating this backend, the application will leverage the power of GraphQL to fetch only the necessary data, simplify complex data operations, and enhance scalability.
+  - Have a backend service deployed online, utilizing **GraphQL** with **Apollo Server**, to enable efficient and seamless data fetching. 
+  This will involve creating a schema to represent the Kanban data structure and defining resolvers to handle specific queries and mutations. By integrating this backend, the application will leverage the power of GraphQL to fetch only the necessary data, simplify complex data operations, and enhance scalability.
   
 - **📦 Component Unification**:
   - Refactor and simplify reusable components such as titles, selects, tooltips, buttons and inputs for consistency.
