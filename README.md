@@ -159,7 +159,7 @@ The application reads objects that are structured as follows:
 ```
 
 ### Note:
-- The data was generated using AI-based models for simulation purposes.
+- The mockData was generated using AI-based models for simulation purposes.
 - This format ensures flexibility and scalability to support advanced features.
 
 ---
