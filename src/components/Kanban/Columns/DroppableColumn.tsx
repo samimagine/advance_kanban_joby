@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
-import {
-    AddCardButtonComponent,
-    ColumnHeaderComponent,
-    ColumnCardListComponent,
-    ColumnFilterPopoverComponent,
-    ColumnWrapperComponent
-} from './components';
+import { AddCardButton, ColumnHeader, ColumnCardList, ColumnFilterPopover, ColumnWrapper } from './components';
 import { DetailedCardProps } from '../../../store/interfaces';
 import { getFilteredAndSortedCards } from '../../../utils/cardUtils';
 
@@ -17,7 +11,7 @@ interface DroppableColumnProps {
     onDrop: (cardId: string, fromColumnId: string, toColumnId: string) => void;
 }
 
-const DroppableColumnComponent: React.FC<DroppableColumnProps> = ({ id, title, cards = [], onDrop }) => {
+const DroppableColumn: React.FC<DroppableColumnProps> = ({ id, title, cards = [], onDrop }) => {
     const [priorityFilter, setPriorityFilter] = useState<string>('');
     const [sortOrder, setSortOrder] = useState<string>('');
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -37,13 +31,9 @@ const DroppableColumnComponent: React.FC<DroppableColumnProps> = ({ id, title, c
     const filteredCards = getFilteredAndSortedCards(cards, priorityFilter, sortOrder);
 
     return (
-        <ColumnWrapperComponent dropRef={dropRef}>
-            <ColumnHeaderComponent
-                title={title}
-                isLastViewed={isLastViewed}
-                onFilterClick={e => setAnchorEl(e.currentTarget)}
-            />
-            <ColumnFilterPopoverComponent
+        <ColumnWrapper dropRef={dropRef}>
+            <ColumnHeader title={title} isLastViewed={isLastViewed} onFilterClick={e => setAnchorEl(e.currentTarget)} />
+            <ColumnFilterPopover
                 anchorEl={anchorEl}
                 isOpen={Boolean(anchorEl)}
                 onClose={() => setAnchorEl(null)}
@@ -58,10 +48,10 @@ const DroppableColumnComponent: React.FC<DroppableColumnProps> = ({ id, title, c
                     setAnchorEl(null);
                 }}
             />
-            <ColumnCardListComponent cards={filteredCards} isLastViewed={isLastViewed} columnId={id} />
-            {!isLastViewed && <AddCardButtonComponent columnId={id} />}
-        </ColumnWrapperComponent>
+            <ColumnCardList cards={filteredCards} isLastViewed={isLastViewed} columnId={id} />
+            {!isLastViewed && <AddCardButton columnId={id} />}
+        </ColumnWrapper>
     );
 };
 
-export default DroppableColumnComponent;
+export default DroppableColumn;

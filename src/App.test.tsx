@@ -3,24 +3,24 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from './App';
 
-jest.mock('./components/Layout/SidebarComponent/SidebarComponent', () => {
+jest.mock('./components/Layout/Sidebar/Sidebar', () => {
     const SidebarMock = ({ selectedView }: { selectedView: string }) => (
         <div data-testid="sidebar">{`Sidebar: ${selectedView}`}</div>
     );
-    SidebarMock.displayName = 'SidebarComponentMock';
+    SidebarMock.displayName = 'SidebarMock';
     return SidebarMock;
 });
 
-jest.mock('./components/Layout/ContentRendererComponent/ContentRendererComponent', () => {
+jest.mock('./components/Layout/ContentRenderer/ContentRenderer', () => {
     const ContentRendererMock = ({ selectedView }: { selectedView: string }) => (
         <div data-testid="content-renderer">{`Content: ${selectedView}`}</div>
     );
-    ContentRendererMock.displayName = 'ContentRendererComponentMock';
+    ContentRendererMock.displayName = 'ContentRendererMock';
     return ContentRendererMock;
 });
 
-describe('App Component', () => {
-    test('renders SidebarComponent and ContentRendererComponent', () => {
+describe('App ', () => {
+    test('renders Sidebar and ContentRenderer', () => {
         render(<App />);
 
         expect(screen.getByTestId('sidebar')).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe('App Component', () => {
         expect(screen.getByTestId('content-renderer')).toHaveTextContent('Content: Order Overview');
     });
 
-    test('changes the view when SidebarComponent updates the selectedView', () => {
+    test('changes the view when Sidebar updates the selectedView', () => {
         render(<App />);
 
         const sidebarElement = screen.getByTestId('sidebar');

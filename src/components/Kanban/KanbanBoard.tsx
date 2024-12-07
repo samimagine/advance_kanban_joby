@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
 import { useKanbanStore } from '../../store/kanbanStore';
-import ColumnsMainContainerComponent from './Layout/ColumnsMainContainerComponent';
-import SearchBarComponent from './Layout/SearchBarComponent';
+import ColumnsMainContainer from './Layout/ColumnsMainContainer';
+import SearchBar from './Layout/SearchBar';
 import { DetailedCardProps } from '../../store/interfaces';
 
 const KanbanBoard: React.FC = () => {
@@ -63,8 +63,8 @@ const KanbanBoard: React.FC = () => {
                 justifyContent: 'center',
                 width: '100vw'
             }}>
-            <SearchBarComponent searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-            <ColumnsMainContainerComponent columns={columns} filterCards={filterCards} onDrop={handleDrop} />
+            <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            <ColumnsMainContainer columns={columns} filterCards={filterCards} onDrop={handleDrop} />
         </Box>
     );
 };

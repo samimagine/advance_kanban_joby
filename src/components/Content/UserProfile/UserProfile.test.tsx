@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import UserProfile from './UserProfile';
 
-describe('UserProfile Component', () => {
+describe('UserProfile', () => {
     test('renders the User Profile header', () => {
         render(<UserProfile />);
 

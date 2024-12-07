@@ -10,7 +10,7 @@ jest.mock('../../store/kanbanStore', () => ({
     useKanbanStore: jest.fn()
 }));
 
-describe('KanbanBoard Component', () => {
+describe('KanbanBoard ', () => {
     const mockUseKanbanStore = useKanbanStore as jest.Mock;
     beforeEach(() => {
         mockUseKanbanStore.mockImplementation(() => ({
@@ -27,7 +27,7 @@ describe('KanbanBoard Component', () => {
         return render(<DndProvider backend={HTML5Backend}>{ui}</DndProvider>);
     };
 
-    it('renders SearchBarComponent and ColumnsMainContainerComponent', () => {
+    it('renders SearchBar and ColumnsMainContainer', () => {
         renderWithDndProvider(<KanbanBoard />);
 
         expect(screen.getByLabelText(/search cards/i)).toBeInTheDocument();

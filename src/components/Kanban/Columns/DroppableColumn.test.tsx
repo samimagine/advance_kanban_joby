@@ -10,18 +10,18 @@ jest.mock('react-dnd', () => ({
 }));
 
 jest.mock('./components', () => ({
-    AddCardButtonComponent: () => <div data-testid="add-card-button">Add Card Button</div>,
-    ColumnHeaderComponent: ({ title }: { title: string }) => <div data-testid="column-header">{title}</div>,
-    ColumnCardListComponent: ({ cards }: { cards: DetailedCardProps[] }) => (
+    AddCardButton: () => <div data-testid="add-card-button">Add Card Button</div>,
+    ColumnHeader: ({ title }: { title: string }) => <div data-testid="column-header">{title}</div>,
+    ColumnCardList: ({ cards }: { cards: DetailedCardProps[] }) => (
         <div data-testid="column-card-list">{cards.length} cards</div>
     ),
-    ColumnFilterPopoverComponent: () => <div data-testid="column-filter-popover">Filter Popover</div>,
-    ColumnWrapperComponent: ({ children }: { children: React.ReactNode }) => (
+    ColumnFilterPopover: () => <div data-testid="column-filter-popover">Filter Popover</div>,
+    ColumnWrapper: ({ children }: { children: React.ReactNode }) => (
         <div data-testid="column-wrapper">{children}</div>
     )
 }));
 
-describe('DroppableColumnComponent', () => {
+describe('DroppableColumn', () => {
     const mockOnDrop = jest.fn();
 
     beforeEach(() => {
@@ -44,7 +44,7 @@ describe('DroppableColumnComponent', () => {
         expect(screen.getByTestId('add-card-button')).toBeInTheDocument();
     });
 
-    it('does not render the AddCardButtonComponent when isLastViewed is true', () => {
+    it('does not render the AddCardButton when isLastViewed is true', () => {
         render(<DroppableColumn id="last-viewed-column" title="Last Viewed Column" cards={[]} onDrop={mockOnDrop} />);
 
         expect(screen.queryByTestId('add-card-button')).not.toBeInTheDocument();

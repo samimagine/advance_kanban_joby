@@ -11,7 +11,7 @@ jest.mock('../../Kanban/KanbanBoard', () => {
     return KanbanBoardMock;
 });
 
-describe('OrderOverview Component', () => {
+describe('OrderOverview', () => {
     test('renders the component correctly', () => {
         render(
             <DndProvider backend={HTML5Backend}>

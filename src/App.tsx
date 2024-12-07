@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Box } from '@mui/material';
 
 import bgImage from './assets/images/joby_background.jpg';
-import SidebarComponent from './components/Layout/SidebarComponent/SidebarComponent';
-import ContentRendererComponent from './components/Layout/ContentRendererComponent/ContentRendererComponent';
+import Sidebar from './components/Layout/Sidebar/Sidebar';
+import ContentRenderer from './components/Layout/ContentRenderer/ContentRenderer';
 
 const App = () => {
     const [selectedView, setSelectedView] = useState('Order Overview');
@@ -19,7 +19,7 @@ const App = () => {
                 backgroundRepeat: 'no-repeat',
                 backgroundAttachment: 'fixed'
             }}>
-            <SidebarComponent selectedView={selectedView} onViewChange={setSelectedView} />
+            <Sidebar selectedView={selectedView} onViewChange={setSelectedView} />
             <Box
                 sx={{
                     flexGrow: 1,
@@ -28,7 +28,7 @@ const App = () => {
                     height: '100vh',
                     width: 'fit-content'
                 }}>
-                <ContentRendererComponent selectedView={selectedView} />
+                <ContentRenderer selectedView={selectedView} />
             </Box>
         </Box>
     );

@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Settings from './Settings';
 
-describe('Settings Component', () => {
+describe('Settings', () => {
     test('renders the Settings header', () => {
         render(<Settings />);
 
