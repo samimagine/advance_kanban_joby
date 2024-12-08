@@ -26,6 +26,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedView, onViewChange }) => {
                 position: 'fixed',
                 height: '100vh',
                 overflow: 'auto',
+                zIndex: '100',
             }}>
             <Box
                 sx={{

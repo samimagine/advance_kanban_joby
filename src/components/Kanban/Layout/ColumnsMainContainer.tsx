@@ -16,8 +16,9 @@ const ColumnsMainContainer: React.FC<ColumnsMainContainerProps> = ({ columns, fi
         p={2}
         sx={{
             backgroundColor: 'hsl(0deg 0% 0% / 20%)',
-            width: 'fit-content',
             borderRadius: '20px',
+            height: 'fit-content',
+            width: 'fit-content',
         }}>
         {columns.map((column) => (
             <DroppableColumn

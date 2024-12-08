@@ -5,7 +5,6 @@ import ColumnsMainContainer from './ColumnsMainContainer';
 import { Column, DetailedCard } from '../../../store/interfaces';
 
 jest.mock('../Columns/DroppableColumn', () => {
-    // eslint-disable-next-line react/display-name
     return ({ id, title, cards }: { id: string; title: string; cards: DetailedCard[] }) => (
         <div data-testid={`column-${id}`}>
             <h3>{title}</h3>

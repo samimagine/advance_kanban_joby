@@ -19,6 +19,9 @@ const ColumnWrapper: React.FC<ColumnWrapperProps> = ({ dropRef, children }) => (
             minWidth: '200px',
             height: 'fit-content',
             paddingBottom: '24px',
+            flex: '1 1 auto',
+            maxWidth: '100%',
+            overflow: 'hidden',
         }}>
         {children}
     </Paper>

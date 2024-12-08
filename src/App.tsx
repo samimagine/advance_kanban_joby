@@ -12,7 +12,6 @@ const App = () => {
         <Box
             sx={{
                 display: 'flex',
-                height: '110vh',
                 backgroundImage: `url(${bgImage})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -25,7 +24,6 @@ const App = () => {
                     flexGrow: 1,
                     padding: 3,
                     overflowY: 'auto',
-                    height: '100vh',
                     width: 'fit-content',
                 }}>
                 <ContentRenderer selectedView={selectedView} />

@@ -60,11 +60,23 @@ const KanbanBoard: React.FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center',
-                width: '100vw',
+                justifyContent: 'flex-start',
+                overflow: 'hidden',
             }}>
             <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-            <ColumnsMainContainer columns={columns} filterCards={filterCards} onDrop={handleDrop} />
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    flexWrap: 'nowrap',
+                    overflowX: 'auto',
+                    width: '100%',
+                    padding: '16px',
+                    boxSizing: 'border-box',
+                    paddingLeft: '80px',
+                }}>
+                <ColumnsMainContainer columns={columns} filterCards={filterCards} onDrop={handleDrop} />
+            </Box>{' '}
         </Box>
     );
 };
