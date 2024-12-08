@@ -1,25 +1,25 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import DroppableColumn from '../Columns/DroppableColumn';
-import { DetailedCardProps, Column } from '../../../store/interfaces';
+import { DetailedCard, Column } from '../../../store/interfaces';
 
 interface ColumnsMainContainerProps {
     columns: Column[];
-    filterCards: (cards: DetailedCardProps[]) => DetailedCardProps[];
+    filterCards: (cards: DetailedCard[]) => DetailedCard[];
     onDrop: (cardId: string, fromColumnId: string, toColumnId: string) => void;
 }
 
 const ColumnsMainContainer: React.FC<ColumnsMainContainerProps> = ({ columns, filterCards, onDrop }) => (
     <Box
-        display="flex"
+        display='flex'
         gap={2}
         p={2}
         sx={{
             backgroundColor: 'hsl(0deg 0% 0% / 20%)',
             width: 'fit-content',
-            borderRadius: '20px'
+            borderRadius: '20px',
         }}>
-        {columns.map(column => (
+        {columns.map((column) => (
             <DroppableColumn
                 key={column.id}
                 id={column.id}

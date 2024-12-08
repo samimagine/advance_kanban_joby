@@ -13,7 +13,7 @@ describe('CardHeader', () => {
         currentCard: { title: 'Current Card Title' },
         onDetailsClick: mockOnDetailsClick,
         onMenuClick: mockOnMenuClick,
-        addLastViewed: mockAddLastViewed
+        addLastViewed: mockAddLastViewed,
     };
 
     it('renders the card title', () => {

@@ -11,7 +11,7 @@ describe('HeaderModal', () => {
     });
 
     it('renders the modal header with the given title', () => {
-        render(<HeaderModal title="Test Modal" onClose={mockOnClose} />);
+        render(<HeaderModal title='Test Modal' onClose={mockOnClose} />);
 
         expect(screen.getByText(/Test Modal/i)).toBeInTheDocument();
 
@@ -19,7 +19,7 @@ describe('HeaderModal', () => {
     });
 
     it('calls onClose when the close button is clicked', () => {
-        render(<HeaderModal title="Test Modal" onClose={mockOnClose} />);
+        render(<HeaderModal title='Test Modal' onClose={mockOnClose} />);
 
         fireEvent.click(screen.getByRole('button'));
 

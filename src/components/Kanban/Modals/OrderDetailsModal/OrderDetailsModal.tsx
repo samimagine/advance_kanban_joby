@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Box, Divider } from '@mui/material';
-import { DetailedCardProps, FileProps } from '../../../../store/interfaces';
+import { DetailedCard, File } from '../../../../store/interfaces';
 import FilesSection from './components/FilesSection/FilesSection';
 import HeaderModal from './components/HeaderModal/HeaderModal';
 import OrderInformationSection from './components/OrderInformationSection/OrderInformation';
@@ -12,7 +12,7 @@ interface OrderDetailsModalProps {
     orderDescription?: string;
     priority: string;
     estimatedShippingDate: string;
-    details?: DetailedCardProps;
+    details?: DetailedCard;
 }
 
 const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
@@ -22,7 +22,7 @@ const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
     orderDescription,
     priority,
     estimatedShippingDate,
-    details
+    details,
 }) => {
     const [selectedTab, setSelectedTab] = useState<string>('All Categories');
 
@@ -30,10 +30,10 @@ const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
         setSelectedTab(newValue);
     };
 
-    const filteredFiles: FileProps[] =
+    const filteredFiles: File[] =
         selectedTab === 'All Categories'
             ? details?.files || []
-            : details?.files?.filter((file: FileProps) => file.category === selectedTab) || [];
+            : details?.files?.filter((file: File) => file.category === selectedTab) || [];
 
     return (
         <Modal open={open} onClose={onClose}>
@@ -49,7 +49,7 @@ const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
                     borderRadius: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
                 }}>
                 <HeaderModal title={title} onClose={onClose} />
                 <Box
@@ -58,7 +58,7 @@ const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
                         flexDirection: 'column',
                         flex: 1,
                         padding: '16px 32px',
-                        overflow: 'hidden'
+                        overflow: 'hidden',
                     }}>
                     <OrderInformationSection
                         orderDescription={orderDescription}

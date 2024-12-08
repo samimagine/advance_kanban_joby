@@ -6,10 +6,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
 
 const icons: { [key: string]: JSX.Element } = {
-    HomeIcon: <HomeIcon fontSize="large" />,
-    PersonIcon: <PersonIcon fontSize="large" />,
-    SettingsIcon: <SettingsIcon fontSize="large" />,
-    NoteAltIcon: <NoteAltIcon fontSize="large" />
+    HomeIcon: <HomeIcon fontSize='large' />,
+    PersonIcon: <PersonIcon fontSize='large' />,
+    SettingsIcon: <SettingsIcon fontSize='large' />,
+    NoteAltIcon: <NoteAltIcon fontSize='large' />,
 };
 
 interface SidebarMenuItemProps {
@@ -21,16 +21,16 @@ interface SidebarMenuItemProps {
 
 const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ label, icon, selected, onClick }) => {
     return (
-        <Tooltip title={label} placement="right" aria-label={label}>
+        <Tooltip title={label} placement='right' aria-label={label}>
             <ListItem
-                role="button"
+                role='button'
                 onClick={onClick}
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     backgroundColor: selected ? '#e0e0e0' : 'transparent',
                     '&:hover': { backgroundColor: '#e0e0e0' },
-                    cursor: 'pointer'
+                    cursor: 'pointer',
                 }}>
                 <ListItemIcon sx={{ minWidth: 'auto' }}>{icons[icon]}</ListItemIcon>
             </ListItem>

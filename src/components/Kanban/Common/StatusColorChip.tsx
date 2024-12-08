@@ -9,7 +9,7 @@ interface StatusColorChipProps {
 }
 
 const StyledChip = styled(Chip, {
-    shouldForwardProp: prop => prop !== 'priority' && prop !== 'isLastViewed'
+    shouldForwardProp: (prop) => prop !== 'priority' && prop !== 'isLastViewed',
 })<{ priority: string; isLastViewed: boolean }>(({ priority, isLastViewed }) => {
     let backgroundColor;
     let textColor;
@@ -42,8 +42,8 @@ const StyledChip = styled(Chip, {
         height: '20px',
         cursor: isLastViewed ? 'default' : 'pointer',
         '&:hover': {
-            opacity: isLastViewed ? 1 : 0.8
-        }
+            opacity: isLastViewed ? 1 : 0.8,
+        },
     };
 });
 
@@ -54,7 +54,7 @@ const StatusColorChip: React.FC<StatusColorChipProps> = ({ label, isLastViewed, 
             priority={label}
             isLastViewed={isLastViewed}
             onClick={isLastViewed ? undefined : onClick}
-            data-testid="status-chip"
+            data-testid='status-chip'
         />
     );
 };

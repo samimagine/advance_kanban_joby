@@ -7,8 +7,8 @@ describe('ColumnWrapper', () => {
     it('renders its children', () => {
         const { getByTestId } = render(
             <ColumnWrapper>
-                <div data-testid="child-element">Child Content</div>
-            </ColumnWrapper>
+                <div data-testid='child-element'>Child Content</div>
+            </ColumnWrapper>,
         );
 
         const childElement = getByTestId('child-element');
@@ -21,7 +21,7 @@ describe('ColumnWrapper', () => {
         render(
             <ColumnWrapper dropRef={mockRef}>
                 <div>Child Content</div>
-            </ColumnWrapper>
+            </ColumnWrapper>,
         );
 
         expect(mockRef.current).toBeInstanceOf(HTMLDivElement);

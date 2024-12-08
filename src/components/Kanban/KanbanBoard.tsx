@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import { useKanbanStore } from '../../store/kanbanStore';
 import ColumnsMainContainer from './Layout/ColumnsMainContainer';
 import SearchBar from './Layout/SearchBar';
-import { DetailedCardProps } from '../../store/interfaces';
+import { DetailedCard } from '../../store/interfaces';
 
 const KanbanBoard: React.FC = () => {
     const { columns, loadCards } = useKanbanStore();
@@ -20,23 +20,23 @@ const KanbanBoard: React.FC = () => {
         }
 
         const { columns, moveCard } = useKanbanStore.getState();
-        const sourceColumn = columns.find(col => col.id === fromColumnId);
-        const targetColumn = columns.find(col => col.id === toColumnId);
+        const sourceColumn = columns.find((col) => col.id === fromColumnId);
+        const targetColumn = columns.find((col) => col.id === toColumnId);
 
         if (!sourceColumn || !targetColumn) {
             console.error('Source or Target column not found:', {
                 fromColumnId,
-                toColumnId
+                toColumnId,
             });
             return;
         }
 
-        const sourceIndex = sourceColumn.cards.findIndex(card => card.id === cardId);
+        const sourceIndex = sourceColumn.cards.findIndex((card) => card.id === cardId);
 
         if (sourceIndex === -1) {
             console.error('Card not found in source column:', {
                 cardId,
-                sourceColumn
+                sourceColumn,
             });
             return;
         }
@@ -45,8 +45,8 @@ const KanbanBoard: React.FC = () => {
         moveCard(fromColumnId, toColumnId, sourceIndex, destinationIndex);
     };
 
-    const filterCards = (cards: DetailedCardProps[]) => {
-        return cards.filter(card => {
+    const filterCards = (cards: DetailedCard[]) => {
+        return cards.filter((card) => {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { priority, ...cardWithoutPriority } = card;
 
@@ -61,7 +61,7 @@ const KanbanBoard: React.FC = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '100vw'
+                width: '100vw',
             }}>
             <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
             <ColumnsMainContainer columns={columns} filterCards={filterCards} onDrop={handleDrop} />

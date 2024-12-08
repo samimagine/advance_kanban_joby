@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { FileProps } from '../../../../../../../store/interfaces';
+import { File } from '../../../../../../../store/interfaces';
 import ItemFile from './components/ItemFile';
 
 interface FilesProps {
-    files: FileProps[];
+    files: File[];
 }
 
 const Files: React.FC<FilesProps> = ({ files }) => {
@@ -17,12 +17,12 @@ const Files: React.FC<FilesProps> = ({ files }) => {
                 backgroundColor: 'white',
                 borderRadius: '10px',
                 marginRight: '32px',
-                marginBottom: '16px'
+                marginBottom: '16px',
             }}>
             {files.length ? (
-                files.map((file: FileProps) => <ItemFile key={file.id} file={file} />)
+                files.map((file: File) => <ItemFile key={file.id} file={file} />)
             ) : (
-                <Typography variant="body2" color="#626879">
+                <Typography variant='body2' color='#626879'>
                     No files available in this category.
                 </Typography>
             )}

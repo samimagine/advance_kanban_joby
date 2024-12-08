@@ -6,11 +6,11 @@ import CardEditModal from '../../Modals/CardEditModal/CardEditModal';
 import OrderDetailsModal from '../../Modals/OrderDetailsModal/OrderDetailsModal';
 
 jest.mock('../../Modals/CardEditModal/CardEditModal', () => {
-    return jest.fn(({ open }) => (open ? <div data-testid="card-edit-modal">Edit Modal</div> : null));
+    return jest.fn(({ open }) => (open ? <div data-testid='card-edit-modal'>Edit Modal</div> : null));
 });
 
 jest.mock('../../Modals/OrderDetailsModal/OrderDetailsModal', () => {
-    return jest.fn(({ open }) => (open ? <div data-testid="order-details-modal">Details Modal</div> : null));
+    return jest.fn(({ open }) => (open ? <div data-testid='order-details-modal'>Details Modal</div> : null));
 });
 
 const mockedCardEditModal = CardEditModal as jest.Mock;
@@ -33,8 +33,8 @@ describe('CardModals', () => {
             orderDescription: 'Test Order',
             priority: 'High Priority',
             estimatedShippingDate: '2023-12-31',
-            tags: []
-        }
+            tags: [],
+        },
     };
 
     it('renders modals but they are closed by default', () => {

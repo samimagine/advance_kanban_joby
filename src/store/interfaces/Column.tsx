@@ -1,9 +1,9 @@
-import { DetailedCardProps } from './Cards';
+import { DetailedCard } from './Cards';
 
 export interface Column {
     id: string;
     title: string;
-    cards: DetailedCardProps[];
+    cards: DetailedCard[];
 }
 
 export type AddCardColumn = Column;

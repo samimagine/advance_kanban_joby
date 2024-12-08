@@ -14,8 +14,8 @@ describe('ProcessDetails', () => {
                 material: 'Steel',
                 materialStockSize: '20x20x100 mm',
                 surfaceTreatment: 'Anodizing',
-                machine: 'CNC Milling Machine'
-            }
+                machine: 'CNC Milling Machine',
+            },
         };
 
         render(<ProcessDetails details={mockDetails} />);
@@ -40,8 +40,8 @@ describe('ProcessDetails', () => {
                 material: '',
                 materialStockSize: '',
                 surfaceTreatment: '',
-                machine: ''
-            }
+                machine: '',
+            },
         };
 
         render(<ProcessDetails details={mockDetails} />);
@@ -55,7 +55,7 @@ describe('ProcessDetails', () => {
             id: '3',
             title: 'No Details Test',
             priority: 'Low',
-            estimatedShippingDate: '2023-12-25'
+            estimatedShippingDate: '2023-12-25',
         };
 
         render(<ProcessDetails details={mockDetails} />);

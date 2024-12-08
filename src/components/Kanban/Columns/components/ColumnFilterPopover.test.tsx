@@ -14,11 +14,11 @@ describe('ColumnFilterPopover', () => {
                 anchorEl={document.body}
                 isOpen={true}
                 onClose={mockOnClose}
-                priorityFilter="High Priority"
-                sortOrder="newest"
+                priorityFilter='High Priority'
+                sortOrder='newest'
                 onPriorityChange={mockOnPriorityChange}
                 onSortChange={mockOnSortChange}
-            />
+            />,
         );
 
     it('calls onPriorityChange when a priority is selected', () => {

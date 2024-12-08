@@ -10,9 +10,9 @@ interface DroppableColumnHeaderProps {
 
 const ColumnHeader: React.FC<DroppableColumnHeaderProps> = ({ title, isLastViewed, onFilterClick }) => (
     <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
+        display='flex'
+        justifyContent='space-between'
+        alignItems='center'
         mb={2}
         sx={{
             backgroundColor: '#61687c',
@@ -20,25 +20,25 @@ const ColumnHeader: React.FC<DroppableColumnHeaderProps> = ({ title, isLastViewe
             padding: '0 16px',
             borderTopLeftRadius: '15px',
             borderTopRightRadius: '15px',
-            height: '30px'
+            height: '30px',
         }}>
         <Typography
-            variant="subtitle2"
+            variant='subtitle2'
             sx={{
-                fontWeight: '700'
+                fontWeight: '700',
             }}>
             {title}
         </Typography>
         {!isLastViewed && (
-            <Tooltip title="Filter">
+            <Tooltip title='Filter'>
                 <IconButton
-                    size="medium"
+                    size='medium'
                     onClick={onFilterClick}
                     sx={{
                         color: '#a3d5ff',
                         '&:hover': {
-                            color: '#ffffff'
-                        }
+                            color: '#ffffff',
+                        },
                     }}>
                     <FilterListIcon />
                 </IconButton>

@@ -13,9 +13,9 @@ const DraggableCardWrapper: React.FC<DraggableCardWrapperProps> = ({ children, i
         type: 'CARD',
         item: { id, columnId },
         canDrag: !isLastViewed,
-        collect: monitor => ({
-            isDragging: monitor.isDragging()
-        })
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging(),
+        }),
     }));
 
     return (
@@ -28,7 +28,7 @@ const DraggableCardWrapper: React.FC<DraggableCardWrapperProps> = ({ children, i
                 background: '#fff',
                 border: '1px solid #ddd',
                 borderRadius: '4px',
-                cursor: isLastViewed ? 'default' : 'grab'
+                cursor: isLastViewed ? 'default' : 'grab',
             }}>
             {children}
         </div>

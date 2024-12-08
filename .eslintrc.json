@@ -9,11 +9,11 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
         "plugin:import/errors",
         "plugin:import/warnings",
         "plugin:import/typescript",
         "plugin:prettier/recommended",
-        "plugin:react/recommended",
         "prettier"
     ],
     "overrides": [
@@ -40,11 +40,12 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint", "react", "import", "jest"],
+    "plugins": ["@typescript-eslint", "react", "react-hooks", "prettier", "import", "jest"],
     "rules": {
         "semi": ["error", "always"],
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",
+        "react/jsx-uses-react": "off",
         "react/display-name": "off",
         "@typescript-eslint/no-unused-vars": ["error"],
         "@typescript-eslint/explicit-function-return-type": "off",
@@ -53,7 +54,15 @@
         "@typescript-eslint/no-non-null-assertion": "error",
         "import/order": "off",
         "import/no-unresolved": "error",
-        "prettier/prettier": "error"
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true,
+                "semi": true,
+                "jsxSingleQuote": true
+            }
+        ],
+        "quotes": ["error", "single"]
     },
     "settings": {
         "react": {

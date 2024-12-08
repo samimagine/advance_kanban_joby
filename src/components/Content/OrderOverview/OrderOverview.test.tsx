@@ -6,7 +6,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 jest.mock('../../Kanban/KanbanBoard', () => {
-    const KanbanBoardMock = () => <div data-testid="kanban-board">Kanban Board Mock</div>;
+    const KanbanBoardMock = () => <div data-testid='kanban-board'>Kanban Board Mock</div>;
     KanbanBoardMock.displayName = 'KanbanBoardMock';
     return KanbanBoardMock;
 });
@@ -16,7 +16,7 @@ describe('OrderOverview', () => {
         render(
             <DndProvider backend={HTML5Backend}>
                 <OrderOverview />
-            </DndProvider>
+            </DndProvider>,
         );
 
         expect(screen.getByRole('heading', { name: /order overview/i })).toBeInTheDocument();

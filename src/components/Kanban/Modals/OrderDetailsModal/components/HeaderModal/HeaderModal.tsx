@@ -20,17 +20,17 @@ const HeaderModal: React.FC<HeaderModalProps> = ({ title, onClose }) => (
             borderTopRightRadius: '6px',
             color: '#61677c',
             padding: '2px 10px',
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
         }}>
         <Typography
             sx={{
                 fontWeight: '700',
                 color: '#61677c',
-                marginLeft: '16px'
+                marginLeft: '16px',
             }}>
             {title}
         </Typography>
-        <IconButton size="medium" onClick={onClose}>
+        <IconButton size='medium' onClick={onClose}>
             <CancelIcon sx={{ color: '#61677c' }} />
         </IconButton>
     </Box>

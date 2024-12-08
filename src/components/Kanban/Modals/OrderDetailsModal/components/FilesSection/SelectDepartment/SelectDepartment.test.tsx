@@ -11,13 +11,13 @@ describe('SelectDepartment', () => {
     });
 
     it('renders the component with all tabs and the selected tab', () => {
-        render(<SelectDepartment selectedTab="All Categories" onTabChange={mockOnTabChange} />);
+        render(<SelectDepartment selectedTab='All Categories' onTabChange={mockOnTabChange} />);
 
         expect(screen.getByText(/Select a Department:/i)).toBeInTheDocument();
 
         const tabs = ['All Categories', 'Process Engineering', 'Quality', 'Programming', 'Surface Treatment'];
 
-        tabs.forEach(tab => {
+        tabs.forEach((tab) => {
             expect(screen.getByText(tab)).toBeInTheDocument();
         });
 
@@ -26,7 +26,7 @@ describe('SelectDepartment', () => {
     });
 
     it('calls onTabChange when a tab is clicked', () => {
-        render(<SelectDepartment selectedTab="All Categories" onTabChange={mockOnTabChange} />);
+        render(<SelectDepartment selectedTab='All Categories' onTabChange={mockOnTabChange} />);
 
         const tab = screen.getByRole('tab', { name: 'Quality' });
         fireEvent.click(tab);

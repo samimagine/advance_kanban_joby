@@ -1,4 +1,4 @@
-import { FileProps } from './Files';
+import { File } from './Files';
 
 export interface Cards {
     id: string;
@@ -7,7 +7,7 @@ export interface Cards {
     estimatedShippingDate: string;
 }
 
-export interface DetailedCardProps extends Cards {
+export interface DetailedCard extends Cards {
     orderDetails?: {
         part: string;
         partNumber: string;
@@ -21,7 +21,7 @@ export interface DetailedCardProps extends Cards {
         surfaceTreatment: string;
         machine: string;
     };
-    files?: FileProps[];
+    files?: File[];
     orderDescription?: string;
     isDeleted?: boolean;
     tags?: string[];

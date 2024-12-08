@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
 
-import bgImage from './assets/images/joby_background.jpg';
+import bgImage from './assets/images/joby_background.webp';
 import Sidebar from './components/Layout/Sidebar/Sidebar';
 import ContentRenderer from './components/Layout/ContentRenderer/ContentRenderer';
 
@@ -17,7 +17,7 @@ const App = () => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
-                backgroundAttachment: 'fixed'
+                backgroundAttachment: 'fixed',
             }}>
             <Sidebar selectedView={selectedView} onViewChange={setSelectedView} />
             <Box
@@ -26,7 +26,7 @@ const App = () => {
                     padding: 3,
                     overflowY: 'auto',
                     height: '100vh',
-                    width: 'fit-content'
+                    width: 'fit-content',
                 }}>
                 <ContentRenderer selectedView={selectedView} />
             </Box>

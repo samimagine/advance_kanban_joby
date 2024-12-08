@@ -5,7 +5,7 @@ import OrderDetails from './OrderDetails';
 
 jest.mock('../../../../Common/StatusColorChip', () => ({
     __esModule: true,
-    default: ({ label }: { label: string }) => <span data-testid="status-chip">{label}</span>
+    default: ({ label }: { label: string }) => <span data-testid='status-chip'>{label}</span>,
 }));
 
 describe('OrderDetails', () => {
@@ -20,17 +20,17 @@ describe('OrderDetails', () => {
                 partNumber: 'P12345',
                 releaseStatus: 'Released',
                 drawingNumber: 'DR123',
-                flightArticle: 'FA456'
-            }
+                flightArticle: 'FA456',
+            },
         };
 
         render(
             <OrderDetails
-                orderDescription="Test Part"
-                estimatedShippingDate="2023-12-15"
-                priority="Critical Path"
+                orderDescription='Test Part'
+                estimatedShippingDate='2023-12-15'
+                priority='Critical Path'
                 details={mockDetails}
-            />
+            />,
         );
 
         const labels = [
@@ -40,15 +40,15 @@ describe('OrderDetails', () => {
             'Drawing Number',
             'Flight Article',
             'Estimated Shipping Date',
-            'Priority'
+            'Priority',
         ];
         const values = ['Test Part', 'P12345', 'Released', 'DR123', 'FA456', '2023-12-15'];
 
-        labels.forEach(label => {
+        labels.forEach((label) => {
             expect(screen.getByText(label)).toBeInTheDocument();
         });
 
-        values.forEach(value => {
+        values.forEach((value) => {
             expect(screen.getByText(value)).toBeInTheDocument();
         });
 
@@ -66,17 +66,17 @@ describe('OrderDetails', () => {
                 partNumber: '',
                 releaseStatus: '',
                 drawingNumber: '',
-                flightArticle: ''
-            }
+                flightArticle: '',
+            },
         };
 
         render(
             <OrderDetails
-                orderDescription="Fallback Test"
-                estimatedShippingDate="2023-12-20"
-                priority="High Priority"
+                orderDescription='Fallback Test'
+                estimatedShippingDate='2023-12-20'
+                priority='High Priority'
                 details={mockDetails}
-            />
+            />,
         );
 
         expect(screen.getByText('Fallback Test')).toBeInTheDocument();

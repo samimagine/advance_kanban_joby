@@ -5,7 +5,7 @@ import App from './App';
 
 jest.mock('./components/Layout/Sidebar/Sidebar', () => {
     const SidebarMock = ({ selectedView }: { selectedView: string }) => (
-        <div data-testid="sidebar">{`Sidebar: ${selectedView}`}</div>
+        <div data-testid='sidebar'>{`Sidebar: ${selectedView}`}</div>
     );
     SidebarMock.displayName = 'SidebarMock';
     return SidebarMock;
@@ -13,7 +13,7 @@ jest.mock('./components/Layout/Sidebar/Sidebar', () => {
 
 jest.mock('./components/Layout/ContentRenderer/ContentRenderer', () => {
     const ContentRendererMock = ({ selectedView }: { selectedView: string }) => (
-        <div data-testid="content-renderer">{`Content: ${selectedView}`}</div>
+        <div data-testid='content-renderer'>{`Content: ${selectedView}`}</div>
     );
     ContentRendererMock.displayName = 'ContentRendererMock';
     return ContentRendererMock;

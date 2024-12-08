@@ -1,21 +1,21 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { DetailedCardProps } from '../../../../../../store/interfaces';
+import { DetailedCard } from '../../../../../../store/interfaces';
 import OrderInformationSection from './OrderInformation';
 
 jest.mock('./OrderDetails', () => ({
     __esModule: true,
-    default: () => <div data-testid="order-details-component">OrderDetails</div>
+    default: () => <div data-testid='order-details-component'>OrderDetails</div>,
 }));
 
 jest.mock('./ProcessDetails', () => ({
     __esModule: true,
-    default: () => <div data-testid="process-details-component">ProcessDetails</div>
+    default: () => <div data-testid='process-details-component'>ProcessDetails</div>,
 }));
 
 describe('OrderInformationSection', () => {
-    const mockDetails: DetailedCardProps = {
+    const mockDetails: DetailedCard = {
         id: '1',
         title: 'Test Card',
         priority: 'High Priority',
@@ -25,24 +25,24 @@ describe('OrderInformationSection', () => {
             partNumber: 'P12345',
             releaseStatus: 'Released',
             drawingNumber: 'DR123',
-            flightArticle: 'FA456'
+            flightArticle: 'FA456',
         },
         processDetails: {
             material: 'Steel',
             materialStockSize: '20x20x100 mm',
             surfaceTreatment: 'Anodizing',
-            machine: 'CNC Milling Machine'
-        }
+            machine: 'CNC Milling Machine',
+        },
     };
 
     it('renders OrderDetails and ProcessDetails', () => {
         render(
             <OrderInformationSection
-                orderDescription="Test Order"
-                estimatedShippingDate="2023-12-15"
-                priority="High Priority"
+                orderDescription='Test Order'
+                estimatedShippingDate='2023-12-15'
+                priority='High Priority'
                 details={mockDetails}
-            />
+            />,
         );
 
         expect(screen.getByTestId('order-details-component')).toBeInTheDocument();
@@ -52,11 +52,11 @@ describe('OrderInformationSection', () => {
     it('renders without details', () => {
         render(
             <OrderInformationSection
-                orderDescription="Test Order"
-                estimatedShippingDate="2023-12-15"
-                priority="High Priority"
+                orderDescription='Test Order'
+                estimatedShippingDate='2023-12-15'
+                priority='High Priority'
                 details={undefined}
-            />
+            />,
         );
 
         expect(screen.getByTestId('order-details-component')).toBeInTheDocument();
@@ -66,18 +66,18 @@ describe('OrderInformationSection', () => {
     it('renders the layout with divider', () => {
         render(
             <OrderInformationSection
-                orderDescription="Test Order"
-                estimatedShippingDate="2023-12-15"
-                priority="High Priority"
+                orderDescription='Test Order'
+                estimatedShippingDate='2023-12-15'
+                priority='High Priority'
                 details={mockDetails}
-            />
+            />,
         );
 
         expect(screen.getByRole('separator')).toBeInTheDocument();
     });
 
     it('renders with missing nested details in processDetails', () => {
-        const incompleteDetails: DetailedCardProps = {
+        const incompleteDetails: DetailedCard = {
             id: '2',
             title: 'Incomplete Details',
             priority: 'Medium Priority',
@@ -86,17 +86,17 @@ describe('OrderInformationSection', () => {
                 material: '',
                 materialStockSize: '',
                 surfaceTreatment: '',
-                machine: ''
-            }
+                machine: '',
+            },
         };
 
         render(
             <OrderInformationSection
-                orderDescription="Incomplete Details Test"
-                estimatedShippingDate="2023-12-20"
-                priority="Medium Priority"
+                orderDescription='Incomplete Details Test'
+                estimatedShippingDate='2023-12-20'
+                priority='Medium Priority'
                 details={incompleteDetails}
-            />
+            />,
         );
 
         expect(screen.getByTestId('order-details-component')).toBeInTheDocument();

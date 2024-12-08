@@ -1,16 +1,17 @@
 {
   "files": {
     "main.css": "/joby_aviation/static/css/main.e6c13ad2.css",
-    "main.js": "/joby_aviation/static/js/main.9e18e318.js",
+    "main.js": "/joby_aviation/static/js/main.3ddfb3b9.js",
     "static/js/453.4e1a02b7.chunk.js": "/joby_aviation/static/js/453.4e1a02b7.chunk.js",
-    "static/media/joby_background.jpg": "/joby_aviation/static/media/joby_background.840ffd17167835aa1f8d.jpg",
+    "static/media/joby_background.webp": "/joby_aviation/static/media/joby_background.7614372efb774f6f69d3.webp",
+    "static/media/joby_logo.webp": "/joby_aviation/static/media/joby_logo.3f3055325fdbf69c562d.webp",
     "index.html": "/joby_aviation/index.html",
     "main.e6c13ad2.css.map": "/joby_aviation/static/css/main.e6c13ad2.css.map",
-    "main.9e18e318.js.map": "/joby_aviation/static/js/main.9e18e318.js.map",
+    "main.3ddfb3b9.js.map": "/joby_aviation/static/js/main.3ddfb3b9.js.map",
     "453.4e1a02b7.chunk.js.map": "/joby_aviation/static/js/453.4e1a02b7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.9e18e318.js"
+    "static/js/main.3ddfb3b9.js"
   ]
 }

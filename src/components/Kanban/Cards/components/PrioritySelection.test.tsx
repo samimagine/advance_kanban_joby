@@ -8,12 +8,12 @@ describe('PrioritySelection', () => {
         render(
             <PrioritySelection
                 isEditingPriority={false}
-                priority="Standard"
+                priority='Standard'
                 isLastViewed={false}
                 onEdit={jest.fn()}
                 onChange={jest.fn()}
                 onBlur={jest.fn()}
-            />
+            />,
         );
 
         expect(screen.getByText('Standard')).toBeInTheDocument();
@@ -23,12 +23,12 @@ describe('PrioritySelection', () => {
         render(
             <PrioritySelection
                 isEditingPriority={true}
-                priority="Standard"
+                priority='Standard'
                 isLastViewed={false}
                 onEdit={jest.fn()}
                 onChange={jest.fn()}
                 onBlur={jest.fn()}
-            />
+            />,
         );
 
         const selectDropdown = screen.getByRole('combobox');
@@ -42,12 +42,12 @@ describe('PrioritySelection', () => {
         render(
             <PrioritySelection
                 isEditingPriority={false}
-                priority="Standard"
+                priority='Standard'
                 isLastViewed={false}
                 onEdit={mockOnEdit}
                 onChange={jest.fn()}
                 onBlur={jest.fn()}
-            />
+            />,
         );
 
         fireEvent.click(screen.getByText('Standard'));

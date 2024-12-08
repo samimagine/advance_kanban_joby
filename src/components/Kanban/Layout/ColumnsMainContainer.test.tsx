@@ -2,11 +2,11 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ColumnsMainContainer from './ColumnsMainContainer';
-import { Column, DetailedCardProps } from '../../../store/interfaces';
+import { Column, DetailedCard } from '../../../store/interfaces';
 
 jest.mock('../Columns/DroppableColumn', () => {
     // eslint-disable-next-line react/display-name
-    return ({ id, title, cards }: { id: string; title: string; cards: DetailedCardProps[] }) => (
+    return ({ id, title, cards }: { id: string; title: string; cards: DetailedCard[] }) => (
         <div data-testid={`column-${id}`}>
             <h3>{title}</h3>
             <p>{cards.length} cards</p>
@@ -15,7 +15,7 @@ jest.mock('../Columns/DroppableColumn', () => {
 });
 
 describe('ColumnsMainContainer', () => {
-    const mockFilterCards = jest.fn(cards => cards);
+    const mockFilterCards = jest.fn((cards) => cards);
     const mockOnDrop = jest.fn();
 
     it('renders all columns with correct titles and card counts', () => {
@@ -25,14 +25,14 @@ describe('ColumnsMainContainer', () => {
                 title: 'Column 1',
                 cards: [
                     { id: 'card1', title: 'Card 1', priority: 'High', estimatedShippingDate: '2023-12-31' },
-                    { id: 'card2', title: 'Card 2', priority: 'Low', estimatedShippingDate: '2024-01-15' }
-                ]
+                    { id: 'card2', title: 'Card 2', priority: 'Low', estimatedShippingDate: '2024-01-15' },
+                ],
             },
             {
                 id: 'column2',
                 title: 'Column 2',
-                cards: [{ id: 'card3', title: 'Card 3', priority: 'Medium', estimatedShippingDate: '2024-03-10' }]
-            }
+                cards: [{ id: 'card3', title: 'Card 3', priority: 'Medium', estimatedShippingDate: '2024-03-10' }],
+            },
         ];
 
         render(<ColumnsMainContainer columns={columns} filterCards={mockFilterCards} onDrop={mockOnDrop} />);

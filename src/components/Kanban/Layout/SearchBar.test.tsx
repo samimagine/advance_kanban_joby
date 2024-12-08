@@ -33,7 +33,7 @@ describe('SearchBar', () => {
     it('displays the search icon in the input field', () => {
         const mockSetSearchQuery = jest.fn();
 
-        render(<SearchBar searchQuery="" setSearchQuery={mockSetSearchQuery} />);
+        render(<SearchBar searchQuery='' setSearchQuery={mockSetSearchQuery} />);
 
         expect(screen.getByTestId('SearchIcon')).toBeInTheDocument();
     });

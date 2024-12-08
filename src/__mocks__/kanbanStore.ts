@@ -1,7 +1,7 @@
 export const useKanbanStore = jest.fn(() => ({
     columns: [
         { id: 'todo-column', title: 'To Do', cards: [] },
-        { id: 'in-progress-column', title: 'In Progress', cards: [] }
+        { id: 'in-progress-column', title: 'In Progress', cards: [] },
     ],
     lastViewed: [],
     loadCards: jest.fn(),
@@ -11,5 +11,5 @@ export const useKanbanStore = jest.fn(() => ({
     removeTagFromCard: jest.fn(),
     editCard: jest.fn(),
     addCard: jest.fn(),
-    deleteCard: jest.fn()
+    deleteCard: jest.fn(),
 }));

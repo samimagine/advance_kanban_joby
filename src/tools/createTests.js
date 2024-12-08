@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const targetDir = path.resolve(__dirname, 'src');
 
-const testTemplate = componentName => `
+const testTemplate = (componentName) => `
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ${componentName} from './${componentName}';
@@ -23,7 +23,7 @@ describe('${componentName} Component', () => {
 function createTestFiles(dir) {
     const files = fs.readdirSync(dir);
 
-    files.forEach(file => {
+    files.forEach((file) => {
         const fullPath = path.join(dir, file);
 
         if (fs.statSync(fullPath).isDirectory()) {

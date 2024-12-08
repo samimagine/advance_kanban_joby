@@ -28,68 +28,68 @@ const CardHeader: React.FC<CardHeaderProps> = ({ title, currentCard, onDetailsCl
             sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                alignItems: 'center'
+                alignItems: 'center',
             }}>
             <Box
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
                     width: '100%',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
                 }}>
                 <Tooltip title={isTruncated ? currentCard?.title || title : ''}>
                     <Typography
                         ref={textRef}
-                        variant="h6"
+                        variant='h6'
                         sx={{
                             maxWidth: '120px',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
-                            cursor: 'default'
+                            cursor: 'default',
                         }}>
                         {currentCard?.title || title}
                     </Typography>
                 </Tooltip>
                 <Box sx={{ marginRight: '-8px' }}>
                     <IconButton
-                        aria-label="details"
-                        size="medium"
+                        aria-label='details'
+                        size='medium'
                         onClick={() => {
                             addLastViewed();
                             onDetailsClick();
                         }}
                         sx={{
-                            padding: 0
+                            padding: 0,
                         }}>
-                        <Tooltip title="Details" placement="bottom">
+                        <Tooltip title='Details' placement='bottom'>
                             <DescriptionIcon
-                                fontSize="inherit"
+                                fontSize='inherit'
                                 sx={{
                                     color: '#626879',
                                     '&:hover': {
-                                        color: '#006ac6'
-                                    }
+                                        color: '#006ac6',
+                                    },
                                 }}
                             />
                         </Tooltip>
                     </IconButton>
                     <IconButton
-                        size="small"
-                        aria-label="more options"
-                        onClick={event => onMenuClick(event)}
+                        size='small'
+                        aria-label='more options'
+                        onClick={(event) => onMenuClick(event)}
                         sx={{
                             padding: 0,
                             '&:hover': {
-                                color: '#006ac6'
-                            }
+                                color: '#006ac6',
+                            },
                         }}>
                         <MoreVertIcon
                             sx={{
                                 color: '#626879',
                                 '&:hover': {
-                                    color: '#006ac6'
-                                }
+                                    color: '#006ac6',
+                                },
                             }}
                         />
                     </IconButton>

@@ -20,7 +20,7 @@ const ContentRenderer: React.FC<ContentRendererProps> = ({ selectedView }) => {
         case 'Order Overview':
             return <OrderOverview />;
         default:
-            return <Typography variant="h4">Welcome Home</Typography>;
+            return <Typography variant='h4'>Welcome Home</Typography>;
     }
 };
 

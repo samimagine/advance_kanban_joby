@@ -19,24 +19,24 @@ const PrioritySelection: React.FC<PrioritySelectionProps> = ({
     isLastViewed,
     onEdit,
     onChange,
-    onBlur
+    onBlur,
 }) => {
     return isEditingPriority && !isLastViewed ? (
         <Select
             value={currentPriority || priority}
-            size="small"
-            onChange={e => onChange(e.target.value)}
+            size='small'
+            onChange={(e) => onChange(e.target.value)}
             onBlur={onBlur}
             sx={{
                 width: '120px',
                 fontSize: '12px',
                 '& .MuiSelect-select': {
-                    padding: '4px'
-                }
+                    padding: '4px',
+                },
             }}>
-            <MenuItem value="Standard">Standard</MenuItem>
-            <MenuItem value="High Priority">High Priority</MenuItem>
-            <MenuItem value="Critical Path">Critical Path</MenuItem>
+            <MenuItem value='Standard'>Standard</MenuItem>
+            <MenuItem value='High Priority'>High Priority</MenuItem>
+            <MenuItem value='Critical Path'>Critical Path</MenuItem>
         </Select>
     ) : (
         <StatusColorChip label={currentPriority || priority} onClick={onEdit} isLastViewed={isLastViewed} />

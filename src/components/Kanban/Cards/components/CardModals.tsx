@@ -1,7 +1,7 @@
 import React from 'react';
 import CardEditModal from '../../Modals/CardEditModal/CardEditModal';
 import OrderDetailsModal from '../../Modals/OrderDetailsModal/OrderDetailsModal';
-import { DetailedCardProps } from '../../../../store/interfaces';
+import { DetailedCard } from '../../../../store/interfaces';
 
 interface CardModalsProps {
     openDetailsModal: boolean;
@@ -13,7 +13,7 @@ interface CardModalsProps {
     orderDescription?: string;
     priority: string;
     estimatedShippingDate: string;
-    currentCard?: DetailedCardProps;
+    currentCard?: DetailedCard;
 }
 
 const CardModals: React.FC<CardModalsProps> = ({
@@ -26,7 +26,7 @@ const CardModals: React.FC<CardModalsProps> = ({
     orderDescription,
     priority,
     estimatedShippingDate,
-    currentCard
+    currentCard,
 }) => (
     <>
         <CardEditModal
@@ -37,7 +37,7 @@ const CardModals: React.FC<CardModalsProps> = ({
                 title,
                 orderDescription,
                 priority,
-                estimatedShippingDate
+                estimatedShippingDate,
             }}
         />
         <OrderDetailsModal

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent } from '@mui/material';
 import { useKanbanStore } from '../../../store/kanbanStore';
 import { CardActions, CardBody, CardHeader, CardModals, DraggableCardWrapper } from './components';
-import { DetailedCardProps } from '../../../store/interfaces';
+import { DetailedCard } from '../../../store/interfaces';
 
 interface DraggableCardProps {
     id: string;
@@ -21,7 +21,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
     priority,
     estimatedShippingDate,
     columnId,
-    isLastViewed
+    isLastViewed,
 }) => {
     const { columns, deleteCard, editCard, addTagToCard, removeTagFromCard, addLastViewed } = useKanbanStore();
 
@@ -30,7 +30,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
     const [openEditModal, setOpenEditModal] = useState(false);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-    const currentCard = columns.flatMap(col => col.cards).find(card => card.id === id) as DetailedCardProps | undefined;
+    const currentCard = columns.flatMap((col) => col.cards).find((card) => card.id === id) as DetailedCard | undefined;
 
     return (
         <DraggableCardWrapper id={id} columnId={columnId} isLastViewed={isLastViewed}>
@@ -41,7 +41,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
                         orderDescription={orderDescription}
                         currentCard={currentCard}
                         onDetailsClick={() => setOpenDetailsModal(true)}
-                        onMenuClick={e => setAnchorEl(e.currentTarget)}
+                        onMenuClick={(e) => setAnchorEl(e.currentTarget)}
                         addLastViewed={() =>
                             addLastViewed({
                                 id,
@@ -49,7 +49,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
                                 orderDescription,
                                 priority,
                                 estimatedShippingDate,
-                                tags: currentCard?.tags || []
+                                tags: currentCard?.tags || [],
                             })
                         }
                     />
@@ -60,15 +60,15 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
                         currentPriority={currentCard?.priority || priority}
                         isLastViewed={isLastViewed}
                         isEditingPriority={isEditingPriority}
-                        onPriorityChange={newPriority => {
+                        onPriorityChange={(newPriority) => {
                             editCard(id, { priority: newPriority });
                             setIsEditingPriority(false);
                         }}
                         onPriorityEdit={() => setIsEditingPriority(true)}
                         onPriorityBlur={() => setIsEditingPriority(false)}
                         tags={currentCard?.tags || []}
-                        onAddTag={tag => addTagToCard(id, columnId, tag)}
-                        onRemoveTag={tag => removeTagFromCard(id, columnId, tag)}
+                        onAddTag={(tag) => addTagToCard(id, columnId, tag)}
+                        onRemoveTag={(tag) => removeTagFromCard(id, columnId, tag)}
                     />
                 </CardContent>
             </Card>

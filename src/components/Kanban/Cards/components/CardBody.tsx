@@ -29,19 +29,19 @@ const CardBody: React.FC<CardBodyProps> = ({
     priority,
     tags,
     onAddTag,
-    onRemoveTag
+    onRemoveTag,
 }) => (
     <>
-        <Typography variant="body2">{orderDescription}</Typography>
+        <Typography variant='body2'>{orderDescription}</Typography>
         <Divider sx={{ my: '10px' }} />
         <Box
             sx={{
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                gap: 2
+                gap: 2,
             }}>
-            <Typography variant="body2">Priority:</Typography>
+            <Typography variant='body2'>Priority:</Typography>
             <PrioritySelection
                 isEditingPriority={isEditingPriority}
                 priority={priority}
@@ -52,7 +52,7 @@ const CardBody: React.FC<CardBodyProps> = ({
                 onBlur={onPriorityBlur}
             />
         </Box>
-        <Typography variant="body2">Due Date: {estimatedShippingDate}</Typography>
+        <Typography variant='body2'>Due Date: {estimatedShippingDate}</Typography>
         <CardTags tags={tags} onAddTag={onAddTag} onRemoveTag={onRemoveTag} />
     </>
 );

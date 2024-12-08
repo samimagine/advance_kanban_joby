@@ -12,8 +12,8 @@ jest.mock('../../../store/kanbanStore', () => ({
         editCard: jest.fn(),
         addTagToCard: jest.fn(),
         removeTagFromCard: jest.fn(),
-        addLastViewed: jest.fn()
-    }))
+        addLastViewed: jest.fn(),
+    })),
 }));
 
 describe('DraggableCard', () => {
@@ -24,14 +24,14 @@ describe('DraggableCard', () => {
     it('renders card title and priority', () => {
         renderWithDndProvider(
             <DraggableCard
-                id="1"
-                title="Test Card"
-                orderDescription="Test Order"
-                priority="High Priority"
-                estimatedShippingDate="2023-12-31"
-                columnId="todo-column"
+                id='1'
+                title='Test Card'
+                orderDescription='Test Order'
+                priority='High Priority'
+                estimatedShippingDate='2023-12-31'
+                columnId='todo-column'
                 isLastViewed={false}
-            />
+            />,
         );
 
         expect(screen.getByText(/Test Card/i)).toBeInTheDocument();

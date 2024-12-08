@@ -7,7 +7,7 @@ import KanbanBoard from './KanbanBoard';
 import { useKanbanStore } from '../../__mocks__/kanbanStore';
 
 jest.mock('../../store/kanbanStore', () => ({
-    useKanbanStore: jest.fn()
+    useKanbanStore: jest.fn(),
 }));
 
 describe('KanbanBoard ', () => {
@@ -16,10 +16,10 @@ describe('KanbanBoard ', () => {
         mockUseKanbanStore.mockImplementation(() => ({
             columns: [
                 { id: 'todo-column', title: 'To Do', cards: [] },
-                { id: 'in-progress-column', title: 'In Progress', cards: [] }
+                { id: 'in-progress-column', title: 'In Progress', cards: [] },
             ],
             lastViewed: [],
-            loadCards: jest.fn()
+            loadCards: jest.fn(),
         }));
     });
 
@@ -41,7 +41,7 @@ describe('KanbanBoard ', () => {
         mockUseKanbanStore.mockImplementation(() => ({
             columns: [],
             lastViewed: [],
-            loadCards: loadCardsMock
+            loadCards: loadCardsMock,
         }));
 
         renderWithDndProvider(<KanbanBoard />);

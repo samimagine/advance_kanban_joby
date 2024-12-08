@@ -8,7 +8,7 @@ import {
     IconButton,
     Select,
     MenuItem,
-    SelectChangeEvent
+    SelectChangeEvent,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useKanbanStore } from '../../../../store/kanbanStore';
@@ -20,7 +20,7 @@ interface AddCardModalProps {
 }
 
 const CardAddModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) => {
-    const addCard = useKanbanStore(state => state.addCard);
+    const addCard = useKanbanStore((state) => state.addCard);
 
     const [form, setForm] = useState({
         title: '',
@@ -30,7 +30,7 @@ const CardAddModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
         partNumber: '',
         releaseStatus: '',
         drawingNumber: '',
-        flightArticle: ''
+        flightArticle: '',
     });
 
     const [dateError, setDateError] = useState(false);
@@ -44,16 +44,16 @@ const CardAddModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
             partNumber: '',
             releaseStatus: '',
             drawingNumber: '',
-            flightArticle: ''
+            flightArticle: '',
         });
 
     const handleTextFieldChange = (field: keyof typeof form) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        setForm(prev => ({ ...prev, [field]: event.target.value }));
+        setForm((prev) => ({ ...prev, [field]: event.target.value }));
         if (field === 'estimatedShippingDate') setDateError(false);
     };
 
     const handleSelectChange = (field: keyof typeof form) => (event: SelectChangeEvent<string>) => {
-        setForm(prev => ({ ...prev, [field]: event.target.value }));
+        setForm((prev) => ({ ...prev, [field]: event.target.value }));
     };
 
     const handleSubmit = (event: React.FormEvent) => {
@@ -71,8 +71,8 @@ const CardAddModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
                 partNumber: form.partNumber,
                 releaseStatus: form.releaseStatus,
                 drawingNumber: form.drawingNumber,
-                flightArticle: form.flightArticle
-            }
+                flightArticle: form.flightArticle,
+            },
         });
         resetForm();
         onClose();
@@ -81,7 +81,7 @@ const CardAddModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
     return (
         <Modal open={open} onClose={onClose}>
             <Box
-                component="form"
+                component='form'
                 onSubmit={handleSubmit}
                 sx={{
                     position: 'absolute',
@@ -92,41 +92,44 @@ const CardAddModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
                     bgcolor: 'background.paper',
                     boxShadow: 24,
                     borderRadius: 2,
-                    p: 3
+                    p: 3,
                 }}>
-                <Box display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography variant="h6">Add New Card</Typography>
+                <Box display='flex' justifyContent='space-between' alignItems='center'>
+                    <Typography variant='h6'>Add New Card</Typography>
                     <IconButton onClick={onClose}>
                         <CloseIcon />
                     </IconButton>
                 </Box>
-                <Box mt={2} display="flex" flexDirection="column" gap={2}>
+                <Box mt={2} display='flex' flexDirection='column' gap={2}>
                     <TextField
-                        label="Title"
+                        name='Title'
+                        label='Title'
                         value={form.title}
                         onChange={handleTextFieldChange('title')}
                         fullWidth
                         required
                     />
                     <Select
+                        name='Priority'
                         value={form.priority}
                         onChange={handleSelectChange('priority')}
-                        data-testid="priority-select"
+                        data-testid='priority-select'
                         fullWidth
                         required>
-                        <MenuItem value="Standard" role="option">
+                        <MenuItem value='Standard' role='option'>
                             Standard
                         </MenuItem>
-                        <MenuItem value="High Priority" role="option" data-testid="priority-option-high">
+                        <MenuItem value='High Priority' role='option' data-testid='priority-option-high'>
                             High Priority
                         </MenuItem>
-                        <MenuItem value="Critical Path" role="option">
+                        <MenuItem value='Critical Path' role='option'>
                             Critical Path
                         </MenuItem>
                     </Select>
                     <TextField
-                        label="Estimated Shipping Date"
-                        type="date"
+                        name='Estimated Shipping Date'
+                        label='Estimated Shipping Date'
+                        type='date'
                         value={form.estimatedShippingDate}
                         onChange={handleTextFieldChange('estimatedShippingDate')}
                         InputLabelProps={{ shrink: true }}
@@ -135,15 +138,16 @@ const CardAddModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
                         fullWidth
                         required
                     />
-                    <Typography variant="subtitle1">Order Details</Typography>
+                    <Typography variant='subtitle1'>Order Details</Typography>
                     {[
                         { label: 'Part', value: form.part, key: 'part' },
                         { label: 'Part Number', value: form.partNumber, key: 'partNumber' },
                         { label: 'Release Status', value: form.releaseStatus, key: 'releaseStatus' },
                         { label: 'Drawing Number', value: form.drawingNumber, key: 'drawingNumber' },
-                        { label: 'Flight Article', value: form.flightArticle, key: 'flightArticle' }
-                    ].map(field => (
+                        { label: 'Flight Article', value: form.flightArticle, key: 'flightArticle' },
+                    ].map((field) => (
                         <TextField
+                            name={field.label}
                             key={field.key}
                             label={field.label}
                             value={field.value}
@@ -152,11 +156,11 @@ const CardAddModal: React.FC<AddCardModalProps> = ({ open, onClose, columnId }) 
                         />
                     ))}
                     <Button
-                        type="submit"
-                        variant="contained"
+                        type='submit'
+                        variant='contained'
                         fullWidth
                         disabled={!form.title || !form.priority || !form.estimatedShippingDate}
-                        data-testid="add-card-button">
+                        data-testid='add-card-button'>
                         Add Card
                     </Button>
                 </Box>

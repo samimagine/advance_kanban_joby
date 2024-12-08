@@ -18,8 +18,8 @@ describe('ColumnCardList when isLastViewed is true', () => {
                 partNumber: 'PN-123',
                 releaseStatus: 'Released',
                 drawingNumber: 'DR-456',
-                flightArticle: 'FA-789'
-            }
+                flightArticle: 'FA-789',
+            },
         },
         {
             id: '2',
@@ -34,13 +34,13 @@ describe('ColumnCardList when isLastViewed is true', () => {
                 partNumber: 'PN-456',
                 releaseStatus: 'Not Released',
                 drawingNumber: 'DR-789',
-                flightArticle: 'FA-123'
-            }
-        }
+                flightArticle: 'FA-123',
+            },
+        },
     ];
 
     it('renders static cards with correct properties', () => {
-        render(<ColumnCardList cards={mockCards} isLastViewed={true} columnId="column-1" />);
+        render(<ColumnCardList cards={mockCards} isLastViewed={true} columnId='column-1' />);
 
         expect(screen.getByText('Card 1')).toBeInTheDocument();
         expect(screen.getByText('Description 1')).toBeInTheDocument();
@@ -53,7 +53,7 @@ describe('ColumnCardList when isLastViewed is true', () => {
     });
 
     it('renders a tooltip for deleted cards', async () => {
-        render(<ColumnCardList cards={mockCards} isLastViewed={true} columnId="column-1" />);
+        render(<ColumnCardList cards={mockCards} isLastViewed={true} columnId='column-1' />);
 
         const deletedCard = screen.getByText('Deleted Card');
         fireEvent.mouseOver(deletedCard);

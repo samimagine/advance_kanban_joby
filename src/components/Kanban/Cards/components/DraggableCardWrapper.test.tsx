@@ -12,9 +12,9 @@ describe('DraggableCardWrapper', () => {
 
     it('renders children and applies correct styles', () => {
         renderWithDndProvider(
-            <DraggableCardWrapper id="test-card" columnId="test-column" isLastViewed={false}>
-                <div data-testid="child-content">Child Content</div>
-            </DraggableCardWrapper>
+            <DraggableCardWrapper id='test-card' columnId='test-column' isLastViewed={false}>
+                <div data-testid='child-content'>Child Content</div>
+            </DraggableCardWrapper>,
         );
 
         const wrapper = screen.getByTestId('child-content').parentElement;
@@ -27,9 +27,9 @@ describe('DraggableCardWrapper', () => {
 
     it('applies correct styles when isLastViewed is true', () => {
         renderWithDndProvider(
-            <DraggableCardWrapper id="test-card" columnId="test-column" isLastViewed={true}>
-                <div data-testid="child-content">Child Content</div>
-            </DraggableCardWrapper>
+            <DraggableCardWrapper id='test-card' columnId='test-column' isLastViewed={true}>
+                <div data-testid='child-content'>Child Content</div>
+            </DraggableCardWrapper>,
         );
 
         const wrapper = screen.getByTestId('child-content').parentElement;

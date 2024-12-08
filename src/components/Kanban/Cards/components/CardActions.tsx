@@ -26,7 +26,7 @@ const CardActions: React.FC<CardActionsProps> = ({ anchorEl, onClose, onDelete, 
                 }}>
                 Edit
             </Button>
-            <Button startIcon={<DeleteForeverOutlinedIcon />} color="error" onClick={onDelete}>
+            <Button startIcon={<DeleteForeverOutlinedIcon />} color='error' onClick={onDelete}>
                 Delete
             </Button>
         </Box>

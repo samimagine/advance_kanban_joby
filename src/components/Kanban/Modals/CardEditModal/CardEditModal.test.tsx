@@ -13,13 +13,13 @@ describe('CardEditModal', () => {
         id: 'card1',
         title: 'Test Card',
         priority: 'Standard',
-        estimatedShippingDate: '15/Dec/2023'
+        estimatedShippingDate: '15/Dec/2023',
     };
 
     beforeEach(() => {
         jest.clearAllMocks();
         (useKanbanStore as jest.Mock).mockReturnValue({
-            editCard: mockEditCard
+            editCard: mockEditCard,
         });
     });
 

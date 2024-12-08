@@ -1,12 +1,12 @@
-import { DetailedCardProps } from '../store/interfaces';
+import { DetailedCard } from '../store/interfaces';
 
 export const getFilteredAndSortedCards = (
-    cards: DetailedCardProps[],
+    cards: DetailedCard[],
     priorityFilter: string,
-    sortOrder: string
-): DetailedCardProps[] => {
+    sortOrder: string,
+): DetailedCard[] => {
     return cards
-        .filter(card => (priorityFilter ? card.priority === priorityFilter : true))
+        .filter((card) => (priorityFilter ? card.priority === priorityFilter : true))
         .sort((a, b) => {
             if (sortOrder === 'oldest') {
                 return new Date(a.estimatedShippingDate).getTime() - new Date(b.estimatedShippingDate).getTime();
